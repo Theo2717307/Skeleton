@@ -63,7 +63,7 @@ namespace Testing2
             //with the two number counting from the right being decimal places
             AnOrderLine.Price = TestData;
             //test to see if the values are the same
-            Assert.AreEqual(AnOrderLine.Price, TestData)
+            Assert.AreEqual(AnOrderLine.Price, TestData);
         }
     }
 }
