@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Testing4
@@ -79,6 +80,18 @@ namespace Testing4
             anCustomer.CustomerPassword = TestData;
             Assert.AreEqual(anCustomer.CustomerPassword, TestData);
         }
+
+        [TestMethod]
+        public void ActivePropertyOK()
+        {
+            clsCustomer anCustomer = new clsCustomer();
+            Boolean TestData = true;
+            anCustomer.Active = TestData;
+            Assert.AreEqual(anCustomer.Active, TestData);
+        }
+
+
+
 
 
     }
