@@ -13,6 +13,7 @@ namespace Testing5
             clsStock AnStock = new clsStock();
 
             Assert.IsNotNull(AnStock);
+            //test
         }
 
 
