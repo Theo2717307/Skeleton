@@ -17,6 +17,14 @@ namespace Testing5
         }
 
 
-        []
+        [TestMethod]
+        public void product_idPropertyOK()
+        {
+
+            clsStock AnStock = new clsStock();
+            Int32 TestData = 1;
+            AnStock.Active = TestData;
+            Assert.AreEqual(AnStock.Active, TestData);
+        }
     }
 }
