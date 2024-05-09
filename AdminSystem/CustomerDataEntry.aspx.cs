@@ -33,6 +33,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
 
+        //capture CustomerId
+        AnCustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
+
         //capture firstName 
         AnCustomer.CustomerFirstName = txtFirstName.Text;
 
