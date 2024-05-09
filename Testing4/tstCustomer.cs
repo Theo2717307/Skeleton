@@ -5,11 +5,11 @@ using System;
 namespace Testing4
 {
     [TestClass]
-    public class tstCustomer
+    public class TstCustomer
 
     {
         [TestMethod]
-        public void instanceOK()
+        public void InstanceOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             Assert.IsNotNull(anCustomer);
