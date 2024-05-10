@@ -90,6 +90,200 @@ namespace Testing4
             Assert.AreEqual(anCustomer.Active, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomer anCustomer = new clsCustomer();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the methods
+            Int32 CustomerId = 22;
+            //invoke the methods
+            Found = anCustomer.Find(CustomerId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]   
+        public void TestCustomerIdFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer Id
+            if(anCustomer.CustomerId != 20)
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK); 
+        }
+
+        [TestMethod]
+        public void TestCustomerFirstNameFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer firstname property
+            if (anCustomer.CustomerFirstName != "Sahil") ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerLastNameFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer Lastname property
+            if (anCustomer.CustomerLastName != "Suresh") ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerPhoneNumberFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer phone number property
+            if (anCustomer.CustomerPhoneNumber != "+447373485923") ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerEmailFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer email property
+            if (anCustomer.CustomerEmail != "test@gmail.com") ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerPasswordFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer Password property
+            if (anCustomer.CustomerPassword != "testPassWord234") ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerAddressFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer address property
+            if (anCustomer.CustomerAddress != "some street name, LE4 6JP") ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 customerId = 20;
+            //invoke the methods 
+            Found = anCustomer.Find(customerId);
+            //check the customer address property
+            if (anCustomer.Active != true) ;
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+
+
+
 
 
 
