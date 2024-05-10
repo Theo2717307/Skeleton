@@ -24,6 +24,6 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnOrder.Order_timestamp);
         Response.Write("<br/>");
         //display the order processed for this entry
-        Response.Write(AnOrder.Order_processed)
+        Response.Write(AnOrder.Order_processed);
     }
 }
