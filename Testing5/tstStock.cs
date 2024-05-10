@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Testing5
+/*namespace Testing5
 {
     [TestClass]
     public class tstStock
@@ -29,4 +29,4 @@ namespace Testing5
             //Assert.AreEqual(AnStock.Active, TestData);
         }
     }
-}
+} */

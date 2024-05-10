@@ -6,42 +6,42 @@ namespace ClassLibrary
     public class clsCustomer
     {
         //Private data member for the address ID, firstname, lastname, phonenumber, email, password, address, and active property
-        private Int32 mCustomerId;
-        private string mCustomerFirstName;
-        private string mCustomerLastName;
-        private string mCustomerPhoneNumber;
-        private string mCustomerEmail;
-        private string mCustomerPassword;
-        private string mCustomerAddress;
+        private Int32 mCustomer_Id;
+        private string mCustomer_FirstName;
+        private string mCustomer_LastName;
+        private string mCustomer_PhoneNumber;
+        private string mCustomer_Email;
+        private string mCustomer_Password;
+        private string mCustomer_Address;
         private Boolean mActive;
 
         //CustomerId public property
 
-        public string CustomerAddress {
+        public string Customer_Address {
             get 
             {
                 //This line of code send data out of the property
-                return mCustomerAddress;
+                return mCustomer_Address;
             }
             set 
             {
                 //This line of code allows data into the property
-                mCustomerAddress = value;
+                mCustomer_Address = value;
             } 
 
         }
 
         //CustomerId public property
-        public Int32 CustomerId {
+        public Int32 Customer_Id {
             get
             {
                 //this Line of code send data out of the property
-                return mCustomerId;
+                return mCustomer_Id;
             }
             set
             {
                 //this line of code allows data into the property
-                mCustomerId = value;
+                mCustomer_Id = value;
             }
         }
 
@@ -57,80 +57,97 @@ namespace ClassLibrary
                 mActive = value;
             } 
         }
-        public string CustomerPassword { 
+        public string Customer_Password{ 
             get 
             {
                 //This line of code send data out of the property
-                return mCustomerPassword;
+                return mCustomer_Password;
             } 
             set 
             { 
                 //This  line of code allows data into the property
-                mCustomerPassword = value;      
+                mCustomer_Password = value;      
             } 
         }
-        public string CustomerEmail {
+        public string Customer_Email{
             get 
             {
                 //this Line of code send data out of the property
-                return mCustomerEmail;
+                return mCustomer_Email;
             }
             set 
             {
                 //this line of code allows data into the property
-                mCustomerEmail = value;
+                mCustomer_Email = value;
             }
                 }
-        public string CustomerPhoneNumber { 
+        public string Customer_PhoneNumber{ 
             get 
             {
                 //this line of code send data out of the property
-                return mCustomerPhoneNumber;
+                return mCustomer_PhoneNumber;
             } 
             set 
             { 
                 //this line of code allows data into the property
-                mCustomerPhoneNumber = value;
+                mCustomer_PhoneNumber = value;
             } 
         }
-        public string CustomerLastName {
+        public string Customer_LastName {
             get {
                 //this Line of code send data out of the property
-                return mCustomerLastName;
+                return mCustomer_LastName;
             }
             set {
                 //this line of code allows data into the property
-                mCustomerLastName = value;
+                mCustomer_LastName = value;
             }
         }
-        public string CustomerFirstName {
+        public string Customer_FirstName{
             get
             {
                 //this line of code sends data out of the property
-                return mCustomerFirstName;
+                return mCustomer_FirstName;
             }
             set
             {
                 //this line of code allows data into the property
-                mCustomerFirstName = value;
+                mCustomer_FirstName = value;
             }
 
         }
 
-        public bool Find(int customerId)
+        public bool Find(int Customer_Id)
         {
-            //set the private data members to the test data value
-            mCustomerId = 20;
-            mCustomerFirstName = "Sahil";
-            mCustomerLastName = "Suresh";
-            mCustomerPhoneNumber = "+447373485923";
-            mCustomerEmail = "test@gmail.com";
-            mCustomerPassword = "testPassWord234";
-            mCustomerAddress = "some street name, LE4 6JP";
-            mActive = true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@Customer_Id", Customer_Id);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+            //if one record is found (there should be either one or zero)
+            if(DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomer_Id = Convert.ToInt32(DB.DataTable.Rows[0]["Customer_Id"]);
+                mCustomer_FirstName = Convert.ToString(DB.DataTable.Rows[0]["Customer_FirstName"]);
+                mCustomer_LastName = Convert.ToString(DB.DataTable.Rows[0]["Customer_LastName"]);
+                mCustomer_PhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["Customer_PhoneNumber"]);
+                mCustomer_Email = Convert.ToString(DB.DataTable.Rows[0]["Customer_Email"]);
+                mCustomer_Password = Convert.ToString(DB.DataTable.Rows[0]["Customer_Password"]);
+                mCustomer_Address = Convert.ToString(DB.DataTable.Rows[0]["Customer_Address"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
 
-            //always return true
-            return true;
+                //return that everything worked OK
+                return true;
+
+            }
+            //if no record was found 
+            else
+            {
+                //return false indicating there is a problem 
+                return false;
+            }
         }
     }
 }
