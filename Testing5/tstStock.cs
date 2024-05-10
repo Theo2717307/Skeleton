@@ -20,11 +20,13 @@ namespace Testing5
         [TestMethod]
         public void product_idPropertyOK()
         {
+            //Please test your changes before you commit to the master branch
+            //clsStock did not exist and it does not have a .Active method
 
-            clsStock AnStock = new clsStock();
-            Int32 TestData = 1;
-            AnStock.Active = TestData;
-            Assert.AreEqual(AnStock.Active, TestData);
+            //clsStock AnStock = new clsStock();
+            //Int32 TestData = 1;
+            //AnStock.Active = TestData;
+            //Assert.AreEqual(AnStock.Active, TestData);
         }
     }
 }

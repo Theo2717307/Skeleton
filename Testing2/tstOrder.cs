@@ -7,6 +7,7 @@ namespace Testing2
     [TestClass]
     public class tstOrder
     {
+        /******************INSTANCE OF THE CLASS TEST******************/
         [TestMethod]
         public void InstanceOK()
         {
@@ -15,6 +16,7 @@ namespace Testing2
             //test to see if it exists
             Assert.IsNotNull( AnOrder );
         }
+        /******************PROPERTY OK TESTS******************/
         [TestMethod]
         public void Order_processedPropertyOK()
         {
@@ -63,6 +65,104 @@ namespace Testing2
             AnOrder.Customer_id = TestData;
             //test to see the values are the same
             Assert.AreEqual(AnOrder.Customer_id, TestData);
+        }
+
+        /******************FIND METHOD TEST******************/
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the order class
+            clsOrder AnOrder = new clsOrder();
+            //create a boolean variable to store the results of validation 
+            Boolean Found = false;
+            //create a test data to use with the method
+            Int32 TestOrderID = 21;
+            Found = AnOrder.Find(TestOrderID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        /******************PROPERTY DATA TESTS******************/
+        [TestMethod]
+        public void TestOrderIdFound()
+        {
+            //create and instance of order class
+            clsOrder AnOrder = new clsOrder();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderID = 15;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //check the order id
+            if(AnOrder.Order_id != 15)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestCustomerIdFound()
+        {
+            //create and instance of order class
+            clsOrder AnOrder = new clsOrder();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderID = 15;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //check the order id
+            if (AnOrder.Customer_id != 26)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestOrderTimestampFound()
+        {
+            //create and instance of order class
+            clsOrder AnOrder = new clsOrder();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderID = 15;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //check the order id
+            if (AnOrder.Order_timestamp != Convert.ToDateTime("10/05/24"))
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestOrderProcessedFound()
+        {
+            //create and instance of order class
+            clsOrder AnOrder = new clsOrder();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 OrderID = 15;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //check the order id
+            if (AnOrder.Order_processed != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
         }
     }
 }

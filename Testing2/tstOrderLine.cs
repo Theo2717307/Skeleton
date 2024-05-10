@@ -65,5 +65,111 @@ namespace Testing2
             //test to see if the values are the same
             Assert.AreEqual(AnOrderLine.Price, TestData);
         }
+
+        /******************FIND METHOD TEST******************/
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the order class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //create a boolean variable to store the results of validation 
+            Boolean Found = false;
+            //create a test data to use with the method
+            Int32 TestOrderID = 15;
+            Int32 TestCustomerID = 26;
+            Found = AnOrderLine.Find(TestOrderID, TestCustomerID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        /******************PROPERTY DATA TESTS******************/
+        [TestMethod]
+        public void TestOrderIdFound()
+        {
+            //create and instance of order class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 TestOrderID = 15;
+            Int32 TestCustomerID = 26;
+            //invoke the method
+            Found = AnOrderLine.Find(TestOrderID, TestCustomerID);
+            //check the order id
+            if (AnOrderLine.Order_id != 15)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerIdFound()
+        {
+            //create and instance of order class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 TestOrderID = 15;
+            Int32 TestCustomerID = 26;
+            //invoke the method
+            Found = AnOrderLine.Find(TestOrderID, TestCustomerID);
+            //check the order id
+            if (AnOrderLine.Customer_id != 26)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            //create and instance of order class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 TestOrderID = 15;
+            Int32 TestCustomerID = 26;
+            //invoke the method
+            Found = AnOrderLine.Find(TestOrderID, TestCustomerID);
+            //check the order id
+            if (AnOrderLine.Price != 560)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+            //create and instance of order class
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            //create boolean var to store the result of the search
+            Boolean Found = false;
+            //create boolean var to store if the method is ok
+            Boolean OK = true;
+            //create test data
+            Int32 TestOrderID = 15;
+            Int32 TestCustomerID = 26;
+            //invoke the method
+            Found = AnOrderLine.Find(TestOrderID, TestCustomerID);
+            //check the order id
+            if (AnOrderLine.Quantity != 45)
+            {
+                OK = false;
+            }
+            //test to see that the result is ok
+            Assert.IsTrue(OK);
+        }
     }
 }
