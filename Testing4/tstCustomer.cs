@@ -16,69 +16,69 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void CustomerIdPropertyOK()
+        public void Customer_IdPropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             Int32 TestData = 1;
-            anCustomer.CustomerId = TestData;
-            Assert.AreEqual(anCustomer.CustomerId, TestData);
+            anCustomer.Customer_Id = TestData;
+            Assert.AreEqual(anCustomer.Customer_Id, TestData);
         }
 
         [TestMethod]
-        public void CustomerFirstNamePropertyOK()
+        public void Customer_FirstNamePropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             String TestData = "Sahil";
-            anCustomer.CustomerFirstName = TestData;
-            Assert.AreEqual(anCustomer.CustomerFirstName, TestData);
+            anCustomer.Customer_FirstName = TestData;
+            Assert.AreEqual(anCustomer.Customer_FirstName, TestData);
         }
 
         [TestMethod]
-        public void CustomerLastNamePropertyOK()
+        public void Customer_LastNamePropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             String TestData = "Suresh";
-            anCustomer.CustomerLastName = TestData;
-            Assert.AreEqual(anCustomer.CustomerLastName, TestData);
+            anCustomer.Customer_LastName = TestData;
+            Assert.AreEqual(anCustomer.Customer_LastName, TestData);
         }
 
         [TestMethod]
-        public void CusomterPhoneNumberPropertyOK()
+        public void Cusomter_PhoneNumberPropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             String TestData = "+447979481200";
-            anCustomer.CustomerPhoneNumber = TestData;
-            Assert.AreEqual(anCustomer.CustomerPhoneNumber, TestData);
+            anCustomer.Customer_PhoneNumber = TestData;
+            Assert.AreEqual(anCustomer.Customer_PhoneNumber, TestData);
         }
 
 
         [TestMethod]
-        public void CusomterEmailPropertyOK()
+        public void Cusomter_EmailPropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             String TestData = "sahilsurseh199@gmail.com";
-            anCustomer.CustomerEmail = TestData;
-            Assert.AreEqual(anCustomer.CustomerEmail, TestData);
+            anCustomer.Customer_Email = TestData;
+            Assert.AreEqual(anCustomer.Customer_Email, TestData);
         }
 
 
         [TestMethod]
-        public void CusomterAddressPropertyOK()
+        public void Cusomter_AddressPropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             String TestData = "Some Street";
-            anCustomer.CustomerAddress = TestData;
-            Assert.AreEqual(anCustomer.CustomerAddress, TestData);
+            anCustomer.Customer_Address = TestData;
+            Assert.AreEqual(anCustomer.Customer_Address, TestData);
         }
 
         
         [TestMethod]
-        public void CusomterPasswordPropertyOK()
+        public void Cusomter_PasswordPropertyOK()
         {
             clsCustomer anCustomer = new clsCustomer();
             String TestData = "+$sahilsursh";
-            anCustomer.CustomerPassword = TestData;
-            Assert.AreEqual(anCustomer.CustomerPassword, TestData);
+            anCustomer.Customer_Password = TestData;
+            Assert.AreEqual(anCustomer.Customer_Password, TestData);
         }
 
         [TestMethod]
@@ -98,15 +98,15 @@ namespace Testing4
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the methods
-            Int32 CustomerId = 22;
+            Int32 Customer_Id = 5;
             //invoke the methods
-            Found = anCustomer.Find(CustomerId);
+            Found = anCustomer.Find(Customer_Id);
             //test to see if the result is true
             Assert.IsTrue(Found);
         }
 
         [TestMethod]   
-        public void TestCustomerIdFound()
+        public void TestCustomer_IdFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -115,11 +115,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer Id
-            if(anCustomer.CustomerId != 20)
+            if(anCustomer.Customer_Id != 5)
             {
                 OK = false;
             }
@@ -128,7 +128,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerFirstNameFound()
+        public void TestCustomer_FirstNameFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -137,11 +137,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer firstname property
-            if (anCustomer.CustomerFirstName != "Sahil") ;
+            if (anCustomer.Customer_FirstName != "Karkit")
             {
                 OK = false;
             }
@@ -150,7 +150,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerLastNameFound()
+        public void TestCustomer_LastNameFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -159,11 +159,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer Lastname property
-            if (anCustomer.CustomerLastName != "Suresh") ;
+            if (anCustomer.Customer_LastName != "Dinesh")
             {
                 OK = false;
             }
@@ -172,7 +172,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerPhoneNumberFound()
+        public void TestCustomer_PhoneNumberFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -181,11 +181,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer phone number property
-            if (anCustomer.CustomerPhoneNumber != "+447373485923") ;
+            if (anCustomer.Customer_PhoneNumber != "07263548563")
             {
                 OK = false;
             }
@@ -194,7 +194,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerEmailFound()
+        public void TestCustomer_EmailFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -203,11 +203,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer email property
-            if (anCustomer.CustomerEmail != "test@gmail.com") ;
+            if (anCustomer.Customer_Email != "Kartik@gmail.com")
             {
                 OK = false;
             }
@@ -216,7 +216,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerPasswordFound()
+        public void TestCustomer_PasswordFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -225,11 +225,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer Password property
-            if (anCustomer.CustomerPassword != "testPassWord234") ;
+            if (anCustomer.Customer_Password != "youarefix")
             {
                 OK = false;
             }
@@ -238,7 +238,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void TestCustomerAddressFound()
+        public void TestCustomer_AddressFound()
         {
             //create an instanec of the class we want to create
             clsCustomer anCustomer = new clsCustomer();
@@ -247,11 +247,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer address property
-            if (anCustomer.CustomerAddress != "some street name, LE4 6JP") ;
+            if (anCustomer.Customer_Address != "Some street, LE6 7OP") 
             {
                 OK = false;
             }
@@ -269,11 +269,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerId = 20;
+            Int32 Customer_Id = 5;
             //invoke the methods 
-            Found = anCustomer.Find(customerId);
+            Found = anCustomer.Find(Customer_Id);
             //check the customer address property
-            if (anCustomer.Active != true) ;
+            if (anCustomer.Active != true)
             {
                 OK = false;
             }
