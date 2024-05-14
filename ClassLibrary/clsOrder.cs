@@ -91,5 +91,56 @@ namespace ClassLibrary
                 return false;
             }
         }
+        public string Valid(string order_id,
+                            string customer_id,
+                            string order_timestamp,
+                            Boolean order_processed)
+        {
+            //This function accepts four parameters for validation
+            //The function returns a string containing any error message
+            //If no errors are found it returns a empty string
+            string error_message = "";
+
+            /********************DATE********************/
+            //create a temp var for the date values
+            DateTime date_temp;
+            //check the timestamp exists
+            if ((order_timestamp == null) || (order_timestamp == ""))
+            {
+                error_message += "The date must exist : ";
+                
+            }
+            else //the rest of the date testing in the else
+            {
+                //copy the value into temp
+                try
+                {
+                    date_temp = Convert.ToDateTime(order_timestamp);
+
+                    //if the date is less than todays date
+                    if (date_temp < DateTime.Now.Date)
+                    {
+                        error_message += "The date cannot be in the past : ";
+                    }
+                    //if the date is greater than todays date
+                    if (date_temp > DateTime.Now.Date)
+                    {
+                        error_message += "The date cannot be in the future :";
+                    }
+                }
+                catch
+                {
+                    error_message += "The date was invalid :";
+                }
+                
+                
+
+            }
+            /********************a********************/
+
+
+
+            return error_message;
+        }
     }
 }

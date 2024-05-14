@@ -7,6 +7,13 @@ namespace Testing2
     [TestClass]
     public class tstOrder
     {
+        //Good test data
+        //Create some test data to pass the method
+        String order_id = "2";
+        String customer_id = "2";
+        String order_timestamp = DateTime.Now.ToShortDateString();
+        Boolean order_processed = true;
+
         /******************INSTANCE OF THE CLASS TEST******************/
         [TestMethod]
         public void InstanceOK()
@@ -163,6 +170,108 @@ namespace Testing2
             }
             //test to see that the result is ok
             Assert.IsTrue(OK);
+        }
+
+        /******************VALID DATA TESTS******************/
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create and instance of order class
+            clsOrder AnOrder = new clsOrder();
+            //create a string var to store any error message
+            string error_message = "";
+            //invoke the method 
+            error_message = AnOrder.Valid(order_id, customer_id, order_timestamp, order_processed);
+            //Test to see that the result is correct
+            Assert.AreEqual(error_message, "");
+        }
+
+        /******************ORDER_TIMESTAMP TESTS******************/
+        [TestMethod]
+        public void Order_TimestampExtremeMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            DateTime TestDate = DateTime.Now.Date;
+            //change the date to the extreme minimum
+            TestDate = TestDate.AddYears(-50);
+            //convert the date to a string
+            string test_order_timestamp = TestDate.ToString();
+            //invoke method
+            error_message = AnOrder.Valid(order_id, customer_id, test_order_timestamp, order_processed);
+            //test to see the string is correct
+            Assert.AreNotEqual(error_message, "");
+
+        }
+        [TestMethod]
+        public void Order_TimestampMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            DateTime TestDate = DateTime.Now.Date;
+            //change the date to the extreme minimum
+            TestDate = TestDate.AddDays(-1);
+            //convert the date to a string
+            string test_order_timestamp = TestDate.ToString();
+            //invoke method
+            error_message = AnOrder.Valid(order_id, customer_id, test_order_timestamp, order_processed);
+            //test to see the string is correct
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void Order_TimestampMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            DateTime TestDate = DateTime.Now.Date;
+            //convert the date to a string
+            String test_order_timestamp = TestDate.ToString();
+            //invoke method
+            error_message = AnOrder.Valid(order_id, customer_id, test_order_timestamp, order_processed);
+            //test to see the string is correct
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void Order_TimestampMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            DateTime TestDate = DateTime.Now.Date;
+            //change the date to the extreme minimum
+            TestDate = TestDate.AddDays(1);
+            //convert the date to a string
+            string test_order_timestamp = TestDate.ToString();
+            //invoke method
+            error_message = AnOrder.Valid(order_id, customer_id, test_order_timestamp, order_processed);
+            //test to see the string is correct
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void Order_TimestampExtremePlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            DateTime TestDate = DateTime.Now.Date;
+            //change the date to the extreme minimum
+            TestDate = TestDate.AddYears(50);
+            //convert the date to a string
+            string test_order_timestamp = TestDate.ToString();
+            //invoke method
+            error_message = AnOrder.Valid(order_id, customer_id, test_order_timestamp, order_processed);
+            //test to see the string is correct
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void Order_TimestampNonDate()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            //blank date
+            string test_order_timestamp = "";
+            //invoke method
+            error_message = AnOrder.Valid(order_id, customer_id, test_order_timestamp, order_processed);
+            //test to see the string is correct
+            Assert.AreNotEqual(error_message, "");
         }
     }
 }
