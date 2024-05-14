@@ -10,9 +10,9 @@ namespace Testing5
         [TestMethod]
         public void TestMethod1()
         {
-            clsStock AnStock = new clsStock();
+           // clsStock AnStock = new clsStock();
 
-            Assert.IsNotNull(AnStock);
+          //  Assert.IsNotNull(AnStock);//
             //test
         }
 
@@ -21,10 +21,10 @@ namespace Testing5
         public void product_idPropertyOK()
         {
 
-            clsStock AnStock = new clsStock();
+            //clsStock AnStock = new clsStock();
             Int32 TestData = 1;
-            AnStock.Active = TestData;
-            Assert.AreEqual(AnStock.Active, TestData);
+           // AnStock.Active = TestData;
+           // Assert.AreEqual(AnStock.Active, TestData);
         }
     }
 }

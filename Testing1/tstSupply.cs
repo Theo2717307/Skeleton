@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Testing1
 {
@@ -26,7 +27,7 @@ namespace Testing1
         public void Supplier_Phone_NumberPropertyOK()
         {
             clsSupply Supply = new clsSupply();
-            String TestData = "abc";
+            Int64 TestData = 0;
             Supply.Supplier_Phone_Number = TestData;
             Assert.AreEqual(Supply.Supplier_Phone_Number, TestData);
         }
@@ -75,5 +76,44 @@ namespace Testing1
             Supply.Supplier_Trade_Restrictions = TestData;
             Assert.AreEqual(Supply.Supplier_Trade_Restrictions, TestData);
         }
-    }      
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsSupply ExampleSupplier = new clsSupply();
+            Boolean Found = false;
+            string Supplier70 = "John";
+            Found = ExampleSupplier.Find(Supplier70);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestSupplier_First_NameFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            String Supplier70 = "John";
+            Found = Example_Supplier.Find(Supplier70);
+            if (Example_Supplier.Supplier_Name != "John")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        public void TestSupplier_Phone_NumberFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int64 PNumber = 07376106016;
+            Found = Example_Supplier.Find(PNumber);
+            if (Example_Supplier.Supplier_Phone_Number != 07376106016)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+    }
 }
