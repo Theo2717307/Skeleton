@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ClassLibrary
@@ -149,5 +150,138 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        //Function for the public validation methods
+        public string Valid(string Customer_FirstName,
+                              string Customer_LastName,
+                              string Customer_PhoneNumber,
+                              string Customer_Email,
+                              string Customer_Password,
+                              string Customer_Address)
+            ////this function accepts 6 parameters for validation
+            ///this function returns a string containing any error message
+            ///if no errors found then a blank string is returnd 
+        {
+            //create a string variable to store the errors
+            String Error = "";
+            //if the customer first name is blank
+            if (Customer_FirstName.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The FirstName may not be blank : ";
+            }
+
+            //if the Customer first name is greater than 50 character
+            if(Customer_FirstName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The FirstName must be less than 50 Character : ";
+            }
+
+            if (Customer_LastName.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The LastName may not be blank : ";
+            }
+
+            //if the Customer PhoneNumber is greater than 50 character
+            if (Customer_LastName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The LastName must be less than 50 Character : ";
+            }
+
+            if (Customer_PhoneNumber.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The PhoneNumber may not be blank : ";
+            }
+
+            //if the Customer PhoneNumber is greater than 20 character
+            if (Customer_PhoneNumber.Length > 20)
+            {
+                //record the error
+                Error = Error + "The PhoneNumber must be less than 20 Character : ";
+            }
+
+            //if the customer PhoneNumber is less than 11 character
+            if (Customer_PhoneNumber.Length < 11)
+            {
+                //record the error
+                Error = Error + "The PhoneNumber length is too short : ";
+            }
+
+            if (Customer_Email.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The Email may not be blank : ";
+            }
+
+            //if the Customer email is greater than 20 character
+            if (Customer_Email.Length > 100)
+            {
+                //record the error
+                Error = Error + "The Email Address must be less than 100 Character : ";
+            }
+
+            //if the customer email is less than 11 character
+            if (Customer_Email.Length < 3)
+            {
+                //record the error
+                Error = Error + "The Email Address length is too short : ";
+            }
+
+
+            if (Customer_Password.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The password may not be blank : ";
+            }
+
+            //if the Customer password is greater than 20 character
+            if (Customer_Password.Length > 200)
+            {
+                //record the error
+                Error = Error + "The password must be less than 200 Character : ";
+            }
+
+            //if the customer password is less than 11 character
+            if (Customer_Password.Length < 8)
+            {
+                //record the error
+                Error = Error + "The passsword length is too short : ";
+            }
+
+
+            if (Customer_Address.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The password may not be blank : ";
+            }
+
+            //if the Customer password is greater than 20 character
+            if (Customer_Address.Length > 200)
+            {
+                //record the error
+                Error = Error + "The password must be less than 200 Character : ";
+            }
+
+            //if the customer password is less than 11 character
+            if (Customer_Address.Length < 7)
+            {
+                //record the error
+                Error = Error + "The Address is too short : ";
+            }
+
+
+
+
+            //return the error messages
+            return Error; 
+        }
+
+     
+
+
     }
 }
