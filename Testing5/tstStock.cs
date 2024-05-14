@@ -10,9 +10,11 @@ using System;
         [TestMethod]
         public void TestMethod1()
         {
+
             //clsStock AnStock = new clsStock();
 
             //Assert.IsNotNull(AnStock);
+
             //test
         }
 
@@ -24,6 +26,7 @@ using System;
             //clsStock did not exist and it does not have a .Active method
 
             //clsStock AnStock = new clsStock();
+
             //Int32 TestData = 1;
             //AnStock.Active = TestData;
             //Assert.AreEqual(AnStock.Active, TestData);
