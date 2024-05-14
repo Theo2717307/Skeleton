@@ -76,7 +76,7 @@ namespace Testing2
             //create a boolean variable to store the results of validation 
             Boolean Found = false;
             //create a test data to use with the method
-            Int32 TestOrderID = 21;
+            Int32 TestOrderID = 2;
             Found = AnOrder.Find(TestOrderID);
             //test to see if the result is true
             Assert.IsTrue(Found);
@@ -93,11 +93,11 @@ namespace Testing2
             //create boolean var to store if the method is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderID = 15;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
-            //check the order id
-            if(AnOrder.Order_id != 15)
+            //check the order 
+            if(AnOrder.Order_id != 2)
             {
                 OK = false;
             }
@@ -113,11 +113,11 @@ namespace Testing2
             //create boolean var to store if the method is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderID = 15;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order id
-            if (AnOrder.Customer_id != 26)
+            if (AnOrder.Customer_id != 2)
             {
                 OK = false;
             }
@@ -133,7 +133,7 @@ namespace Testing2
             //create boolean var to store if the method is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderID = 15;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order id
@@ -153,7 +153,7 @@ namespace Testing2
             //create boolean var to store if the method is ok
             Boolean OK = true;
             //create test data
-            Int32 OrderID = 15;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order id

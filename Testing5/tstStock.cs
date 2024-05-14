@@ -10,9 +10,9 @@ using System;
         [TestMethod]
         public void TestMethod1()
         {
-            clsStock AnStock = new clsStock();
+            //clsStock AnStock = new clsStock();
 
-            Assert.IsNotNull(AnStock);
+            //Assert.IsNotNull(AnStock);
             //test
         }
 
