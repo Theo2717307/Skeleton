@@ -25,24 +25,48 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsSatff
+        //create a new instance of clsStaff
         clsStaff AnStaff = new clsStaff();
-        //capture the first name
-        AnStaff.FirstName = txtFirstName.Text;
-        //capture the last name
-        AnStaff.LastName = txtLastName.Text;
+        //capture the Firstname
+        string FirstName = txtFirstName.Text;
+        //capture the lastnamw
+        string LastName = txtLastName.Text;
         //capture the position
-        AnStaff.Position = txtPosition.Text;
-        //capture the department
-        AnStaff.Department = txtDepartment.Text;
-        //capture the start date
-        AnStaff.StartDate = Convert.ToDateTime(DateTime.Now);
-        //capture the Mananger access
-        AnStaff.IsManager = chkIsManager.Checked;
-        Session["AnStaff"] = AnStaff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        string Position = txtPosition.Text;
+        //capture Department
+        string Department = txtDepartment.Text;
+        //capture start Start date
+        string StartDate = txtStartDate.Text;
+        //capture is manager check box
+        string IsManager = chkIsManager.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnStaff.Valid(FirstName, LastName, Position, Department, StartDate);
+        if (Error == "")
+        {
+            //capture the first name
+            AnStaff.FirstName = FirstName;
+            //capture the last name
+            AnStaff.LastName = LastName;
+            //capture the position
+            AnStaff.Position = Position;
+            //capture the department
+            AnStaff.Department = Department;
+            //capture the start date
+            AnStaff.StartDate = Convert.ToDateTime(StartDate);
+            //store the staff in session object
+            Session["AnStaff"] = AnStaff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error msg
+            lblError.Text = Error;
+        }
     }
+
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
