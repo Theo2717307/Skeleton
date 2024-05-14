@@ -17,12 +17,13 @@ public partial class _1Viewer : System.Web.UI.Page
         AnCustomer = (clsCustomer)Session["AnCustomer"];
 
         //display the Customer first name for this entry
-        Response.Write(AnCustomer.CustomerId + "<br>");
-        Response.Write(AnCustomer.CustomerFirstName + " ");
-        Response.Write(AnCustomer.CustomerLastName + "<br>");
-        Response.Write(AnCustomer.CustomerEmail + "<br>");
-        Response.Write(AnCustomer.CustomerAddress + "<br>");
-        Response.Write(AnCustomer.CustomerPassword + "<br>");
+
+        Response.Write(AnCustomer.Customer_Id + "<br>");
+        Response.Write(AnCustomer.Customer_FirstName + " ");
+        Response.Write(AnCustomer.Customer_LastName + "<br>");
+        Response.Write(AnCustomer.Customer_Email + "<br>");
+        Response.Write(AnCustomer.Customer_Address + "<br>");
+        Response.Write(AnCustomer.Customer_Password + "<br>");
         Response.Write(AnCustomer.Active);
 
     }

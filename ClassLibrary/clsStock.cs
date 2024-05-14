@@ -2,5 +2,8 @@
 {
     public class clsStock
     {
+        public clsStock()
+        {
+        }
     }
 }

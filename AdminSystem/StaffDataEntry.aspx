@@ -11,13 +11,14 @@
         <div>
             <asp:Label ID="lblStaff_ID" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute" Text="Staff ID" width="48px"></asp:Label>
             <asp:TextBox ID="txtStaff_ID" runat="server" height="22px" style="z-index: 1; left: 115px; top: 13px; position: absolute" width="128px"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 297px; top: 28px; position: absolute" Text="Find" />
         </div>
         <p>
-            <asp:Label ID="lblFirstName" runat="server" style="z-index: 1; left: 10px; top: 53px; position: absolute" Text="First Name" width="48px"></asp:Label>
+            <asp:Label ID="lblFirstName" runat="server" style="z-index: 1; left: 10px; top: 53px; position: absolute; width: 92px;" Text="First Name"></asp:Label>
             <asp:TextBox ID="txtFirstName" runat="server" height="22px" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 115px; top: 50px; position: absolute" width="128px"></asp:TextBox>
         </p>
         <p>
-            <asp:Label ID="lblLastName" runat="server" style="z-index: 1; left: 10px; top: 91px; position: absolute" Text="Last Name" width="48px"></asp:Label>
+            <asp:Label ID="lblLastName" runat="server" style="z-index: 1; left: 10px; top: 91px; position: absolute; width: 75px;" Text="Last Name"></asp:Label>
         </p>
         <asp:TextBox ID="txtLastName" runat="server" height="22px" style="z-index: 1; left: 115px; top: 89px; position: absolute" width="128px"></asp:TextBox>
         <asp:Label ID="lblPosition" runat="server" style="z-index: 1; left: 9px; top: 130px; position: absolute" Text="Position" width="48px"></asp:Label>
