@@ -21,7 +21,8 @@ namespace ClassLibrary
             {
 
                 //This line of code allows data into the property
-                mStaff_ID = value; }
+                mStaff_ID = value;
+            }
 
 
         }
@@ -143,40 +144,92 @@ namespace ClassLibrary
 
 
         //function for the public validation method
-        
-        public string Valid(string firstName, string lastName, string position, string department, string startDate)
+
+        public string Valid(string FirstName, string LastName, string Position, string Department, string StartDate)
         {
             // Create a string variable to store the error
             string Error = "";
 
-            //create a temporary variable to store data values
             DateTime DateTemp;
 
             // If the FirstName is blank
-            if (firstName.Length == 0)
+            if (FirstName.Length == 0)
             {
                 // Record the error
                 Error = "The first name may not be blank. ";
             }
             // If the FirstName is greater than 50 characters
-            if (firstName.Length > 50)
+            if (FirstName.Length > 50)
             {
                 // Record the error
                 Error += "The first name must be less than or equal to 50 characters. ";
             }
-            DateTemp = Convert.ToDateTime(StartDate);
-            if (DateTemp < DateTime.Now.AddYears(-20))
+
+            try
+            {//copy the dateAdded value to the DateTemp variable 
+                DateTemp = Convert.ToDateTime(StartDate);
+                if (DateTemp < DateTime.Now.Date)
+                { //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                //check to see if the date is greater than today's date 
+
+                if (DateTemp > DateTime.Now.Date)
+                { //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            
+            catch
             {
-                Error += "The date cannot be more than 20 years in the past. ";
+                //record the error
+                Error = Error + "The date was not a valid date: ";
+            }
+            // Check if the LastName is blank
+            if (LastName.Length == 0)
+            {
+                // Record the error
+                Error += "The last name may not be blank. ";
             }
 
-            if (DateTemp > DateTime.Now.Date)
+            // If the LastName is too long
+            if (LastName.Length > 50)
             {
-                Error += "The date cannot be in the future: ";
+                // Record the error
+                Error += "The last name must be less than 50 characters. ";
+            }
+
+            // Check if the Position is blank
+            if (Position.Length == 0)
+            {
+                // Record the error
+                Error += "The position may not be blank. ";
+            }
+
+            // If the Position is too long
+            if (Position.Length > 50)
+            {
+                // Record the error
+                Error += "The position must be less than 50 characters. ";
+            }
+
+            // Check if the Department is blank
+            if (Department.Length == 0)
+            {
+                // Record the error
+                Error += "The department may not be blank. ";
+            }
+
+            // If the Department is too long
+            if (Department.Length > 50)
+            {
+                // Record the error
+                Error += "The department must be less than 50 characters. ";
             }
 
             // Return any error messages
             return Error;
+            }
         }
     }
-}
