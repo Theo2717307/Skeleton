@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ClassLibrary
 {
@@ -7,9 +8,9 @@ namespace ClassLibrary
         //private data member for the staff id property
         private Int32 mStaff_ID;
 
-        public Int32 Staff_ID 
-        
-        { 
+        public Int32 Staff_ID
+
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -17,12 +18,12 @@ namespace ClassLibrary
 
             }
             set
-            { 
-                    
+            {
+
                 //This line of code allows data into the property
-                mStaff_ID = value;}
-        
-        
+                mStaff_ID = value; }
+
+
         }
 
         private string mFirstName;
@@ -71,7 +72,7 @@ namespace ClassLibrary
             {
                 return mDepartment;
             }
-           set
+            set
             {
                 mDepartment = value;
             }
@@ -140,5 +141,42 @@ namespace ClassLibrary
             }
         }
 
+
+        //function for the public validation method
+        
+        public string Valid(string firstName, string lastName, string position, string department, string startDate)
+        {
+            // Create a string variable to store the error
+            string Error = "";
+
+            //create a temporary variable to store data values
+            DateTime DateTemp;
+
+            // If the FirstName is blank
+            if (firstName.Length == 0)
+            {
+                // Record the error
+                Error = "The first name may not be blank. ";
+            }
+            // If the FirstName is greater than 50 characters
+            if (firstName.Length > 50)
+            {
+                // Record the error
+                Error += "The first name must be less than or equal to 50 characters. ";
+            }
+            DateTemp = Convert.ToDateTime(StartDate);
+            if (DateTemp < DateTime.Now.AddYears(-20))
+            {
+                Error += "The date cannot be more than 20 years in the past. ";
+            }
+
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error += "The date cannot be in the future: ";
+            }
+
+            // Return any error messages
+            return Error;
+        }
     }
 }
