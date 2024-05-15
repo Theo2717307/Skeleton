@@ -22,8 +22,11 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnCustomer.Customer_FirstName + " ");
         Response.Write(AnCustomer.Customer_LastName + "<br>");
         Response.Write(AnCustomer.Customer_Email + "<br>");
-        Response.Write(AnCustomer.Customer_Address + "<br>");
         Response.Write(AnCustomer.Customer_Password + "<br>");
+        Response.Write(AnCustomer.Customer_Address + "<br>");
+        Response.Write(AnCustomer.Customer_PostCode + "<br>");
+        Response.Write(AnCustomer.Registration + "<br>");
+
         Response.Write(AnCustomer.Active);
 
     }

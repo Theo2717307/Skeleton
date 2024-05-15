@@ -14,6 +14,8 @@ namespace ClassLibrary
         private string mCustomer_Email;
         private string mCustomer_Password;
         private string mCustomer_Address;
+        private string mCustomer_PostCode;
+        private DateTime mRegistration;
         private Boolean mActive;
 
         //CustomerId public property
@@ -81,7 +83,11 @@ namespace ClassLibrary
                 //this line of code allows data into the property
                 mCustomer_Email = value;
             }
-                }
+                
+        }
+
+
+
         public string Customer_PhoneNumber{ 
             get 
             {
@@ -118,6 +124,27 @@ namespace ClassLibrary
 
         }
 
+        public string Customer_PostCode {
+            get 
+            {
+                return mCustomer_PostCode;
+            } 
+            set 
+            { 
+                mCustomer_PostCode = value;
+            } 
+        }
+        public DateTime Registration {
+            get 
+            {
+                return mRegistration;
+            } 
+            set 
+            { 
+               mRegistration = value;
+            } 
+        }
+
         public bool Find(int Customer_Id)
         {
             //create an instance of the data connection
@@ -137,6 +164,8 @@ namespace ClassLibrary
                 mCustomer_Email = Convert.ToString(DB.DataTable.Rows[0]["Customer_Email"]);
                 mCustomer_Password = Convert.ToString(DB.DataTable.Rows[0]["Customer_Password"]);
                 mCustomer_Address = Convert.ToString(DB.DataTable.Rows[0]["Customer_Address"]);
+                mCustomer_PostCode = Convert.ToString(DB.DataTable.Rows[0]["Customer_PostCode"]);
+                mRegistration = Convert.ToDateTime(DB.DataTable.Rows[0]["Registration"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
 
                 //return that everything worked OK
@@ -157,13 +186,20 @@ namespace ClassLibrary
                               string Customer_PhoneNumber,
                               string Customer_Email,
                               string Customer_Password,
-                              string Customer_Address)
+                              string Customer_Address,
+                              string Customer_PostCode,
+                              string Registration)
             ////this function accepts 6 parameters for validation
             ///this function returns a string containing any error message
             ///if no errors found then a blank string is returnd 
         {
             //create a string variable to store the errors
             String Error = "";
+
+            //Create a temporary variable to store date values
+            DateTime DateTemp;
+
+
             //if the customer first name is blank
             if (Customer_FirstName.Length == 0)
             {
@@ -256,23 +292,53 @@ namespace ClassLibrary
             if (Customer_Address.Length == 0)
             {
                 //records the error 
-                Error = Error + "The password may not be blank : ";
+                Error = Error + "The Address may not be blank : ";
             }
 
             //if the Customer password is greater than 20 character
             if (Customer_Address.Length > 200)
             {
                 //record the error
-                Error = Error + "The password must be less than 200 Character : ";
+                Error = Error + "The Address must be less than 200 Character : ";
+            }
+
+         
+
+
+            if (Customer_PostCode.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The Address may not be blank : ";
+            }
+
+            //if the Customer password is greater than 20 character
+            if (Customer_PostCode.Length > 10)
+            {
+                //record the error
+                Error = Error + "The PostCode must be less than 10 Character : ";
             }
 
             //if the customer password is less than 11 character
-            if (Customer_Address.Length < 7)
+            if (Customer_PostCode.Length < 6)
             {
                 //record the error
-                Error = Error + "The Address is too short : ";
+                Error = Error + "The PostCode is too short : ";
             }
 
+
+            //Copy the Registration date value to the datetemp variable
+            DateTemp = Convert.ToDateTime(Registration);
+            if(DateTemp < DateTime.Now.Date) 
+            {
+                //Record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+
+            if(DateTemp > DateTime.Now.Date) 
+            {
+                //recrod the error
+                Error = Error + "The date cannot be in the Future : ";
+            }
 
 
 

@@ -16,6 +16,8 @@ namespace Testing4
         string Customer_Email = "sahilsursh43@gmail.com";
         string Customer_Password = "039723865sa";
         string Customer_Address = "Some test street, LE5 6Jf";
+        string Customer_PostCode = "LE6 9GG";
+        string Registration = DateTime.Now.ToShortDateString();
 
 
         [TestMethod]
@@ -81,7 +83,32 @@ namespace Testing4
             Assert.AreEqual(anCustomer.Customer_Address, TestData);
         }
 
-        
+        [TestMethod]
+        public void Cusomter_PostCodePropertyOK()
+        {
+            clsCustomer anCustomer = new clsCustomer();
+            String TestData = "LE3 6JW";
+            anCustomer.Customer_PostCode = TestData;
+            Assert.AreEqual(anCustomer.Customer_PostCode, TestData);
+        }
+
+        [TestMethod]
+        public void RegistrationPropertyOK()
+        {
+            clsCustomer anCustomer = new clsCustomer();
+            //create some test data to assign to the property
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            anCustomer.Registration = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(anCustomer.Registration, TestData);
+
+        }
+
+
+
+
+
         [TestMethod]
         public void Cusomter_PasswordPropertyOK()
         {
@@ -99,6 +126,8 @@ namespace Testing4
             anCustomer.Active = TestData;
             Assert.AreEqual(anCustomer.Active, TestData);
         }
+
+        //testing ID Found
 
         [TestMethod]
         public void FindMethodOK()
@@ -270,6 +299,50 @@ namespace Testing4
         }
 
         [TestMethod]
+        public void TestCustomer_PostCodeFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Customer_Id = 5;
+            //invoke the methods 
+            Found = anCustomer.Find(Customer_Id);
+            //check the customer address property
+            if (anCustomer.Customer_PostCode != "PL5 5EE")
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestRegistrationFound()
+        {
+            //create an instanec of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (Assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Customer_Id = 5;
+            //invoke the methods 
+            Found = anCustomer.Find(Customer_Id);
+            //check the customer address property
+            if (anCustomer.Registration != Convert.ToDateTime("20/02/2023"))
+            {
+                OK = false;
+            }
+            //Test to see that the restul is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
         public void TestActiveFound()
         {
             //create an instanec of the class we want to create
@@ -299,7 +372,7 @@ namespace Testing4
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -314,7 +387,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = ""; //This should trigger an error
                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration );
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -329,7 +402,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = "J"; //This should trigger an error
                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -344,7 +417,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = "Le"; //This should trigger an error
                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -359,7 +432,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = "aersdfsdfjghfjfjfjssssaaaaarrgggggrjejejerotjerej"; //This should trigger an error
                                               //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -374,7 +447,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = "aersdfsdfjghfjfjfjssssaaaaarrgggggrjejejerotjerejs"; //This should trigger an error
                                                                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -389,7 +462,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = "aersdfsdfjghfjfjfjssssaaaaarrgggggrjejejerotjerejss"; //This should trigger an error
                                                                                               //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -404,7 +477,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_FirstName = "aersdfsdfjghfjfjfjssssaaa"; //This should trigger an error
                                                                                                //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -421,7 +494,7 @@ namespace Testing4
             Customer_FirstName = Customer_FirstName.PadRight(500, 'a'); //This should fail
 
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -438,7 +511,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = ""; //This should trigger an error
                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -453,7 +526,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = "J"; //This should trigger an error
                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -468,7 +541,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = "Le"; //This should trigger an error
                                               //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -483,7 +556,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = "aersdfsdfjghfjfjfjssssaaaaarrgggggrjejejerotjerej"; //This should trigger an error
                                                                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -498,7 +571,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = "aersdfsdfjghfjfjfjssssaaaaarrgggggrjejejerotjerejs"; //This should trigger an error
                                                                                               //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -513,7 +586,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = "aersdfsdfjghfjfjfjssssaaaaarrgggggrjejejerotjerejss"; //This should trigger an error
                                                                                                //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -528,7 +601,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_LastName = "aersdfsdfjghfjfjfjssssaaa"; //This should trigger an error
                                                                      //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -545,7 +618,7 @@ namespace Testing4
             Customer_LastName = Customer_LastName.PadRight(500, 'a'); //This should fail
 
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -560,7 +633,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = ""; //This should trigger an error
                                            //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -575,7 +648,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = "0797948129"; //This should trigger an error
                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -590,7 +663,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = "079794812902"; //This should trigger an error
                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -605,7 +678,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = "0797928129023456789"; //This should trigger an error
                                                                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -620,7 +693,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = "+4407979382194756930"; //This should trigger an error
                                                                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -635,7 +708,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = "++4407979382194756930"; //This should trigger an error
                                                                                               //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -650,7 +723,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_PhoneNumber = "07979481290"; //This should trigger an error
                                                                     //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -667,7 +740,7 @@ namespace Testing4
             Customer_PhoneNumber= Customer_PhoneNumber.PadRight(500, 'a'); //This should fail
 
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -682,7 +755,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_Email = "as"; //This should trigger an error
                                            //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -697,7 +770,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_Email = "a@s"; //This should trigger an error
                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -712,7 +785,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_Email = "as@s"; //This should trigger an error
                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -728,7 +801,7 @@ namespace Testing4
             String Customer_Email = "";
             Customer_Email = Customer_Email.PadRight(99, 'a'); //This should fail
                                                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -744,7 +817,7 @@ namespace Testing4
             String Customer_Email = "";
             Customer_Email = Customer_Email.PadRight(100, 's');
                                                                                              //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -760,7 +833,7 @@ namespace Testing4
             String Customer_Email = ""; //This should trigger an error
             Customer_Email = Customer_Email.PadRight(101, 's');
                                                                                               //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -776,7 +849,7 @@ namespace Testing4
             String Customer_Email = ""; //This should trigger an error
             Customer_Email = Customer_Email.PadRight(50, 's');
                                                                     //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -793,7 +866,7 @@ namespace Testing4
             Customer_Email = Customer_Email.PadRight(500, 'a'); //This should fail
 
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -810,7 +883,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_Password = "9372fjd"; //This should trigger an error
                                           //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -825,7 +898,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_Password = "07979sde"; //This should trigger an error
                                            //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -840,7 +913,7 @@ namespace Testing4
             //create some test data to pass to the methods
             String Customer_Password = "07979sdes"; //This should trigger an error
                                             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -856,7 +929,7 @@ namespace Testing4
             String Customer_Password = "";
             Customer_Password = Customer_Password.PadRight(199, 'a'); //This should fail
                                                                //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -872,7 +945,7 @@ namespace Testing4
             String Customer_Password = "";
             Customer_Password = Customer_Password.PadRight(200, 's');
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -888,7 +961,7 @@ namespace Testing4
             String Customer_Password = ""; //This should trigger an error
             Customer_Password = Customer_Password.PadRight(201, 's');
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -904,7 +977,7 @@ namespace Testing4
             String Customer_Password = ""; //This should trigger an error
             Customer_Password = Customer_Password.PadRight(100, 's');
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -921,7 +994,7 @@ namespace Testing4
             Customer_Password = Customer_Password.PadRight(500, 'a'); //This should fail
 
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -934,9 +1007,9 @@ namespace Testing4
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String Customer_Password = "9372fjd"; //This should trigger an error
+            String Customer_Address = ""; //This should trigger an error
                                                   //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -949,9 +1022,9 @@ namespace Testing4
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String Customer_Password = "07979sde"; //This should trigger an error
+            String Customer_Address = "S"; //This should trigger an error
                                                    //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -964,9 +1037,9 @@ namespace Testing4
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String Customer_Address = "07979sdes"; //This should trigger an error
+            String Customer_Address = "Sj"; //This should trigger an error
                                                     //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -982,7 +1055,7 @@ namespace Testing4
             String Customer_Address = "";
             Customer_Address = Customer_Address.PadRight(199, 'a'); //This should fail
                                                                       //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -998,7 +1071,7 @@ namespace Testing4
             String Customer_Address = "";
             Customer_Address = Customer_Address.PadRight(200, 's');
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -1014,7 +1087,7 @@ namespace Testing4
             String Customer_Address = ""; //This should trigger an error
             Customer_Address = Customer_Address.PadRight(201, 's');
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -1030,7 +1103,7 @@ namespace Testing4
             String Customer_Address = ""; //This should trigger an error
             Customer_Address = Customer_Address.PadRight(100, 's');
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
@@ -1047,8 +1120,238 @@ namespace Testing4
             Customer_Address = Customer_Address.PadRight(500, 'a'); //This should fail
 
             //invoke the methods
-            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
             //test to see that the restult is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void Customer_PostCodeMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = "LE45H"; //This should trigger an error
+                                                  //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = "Le45hj"; //This should trigger an error
+                                                   //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = "LE5 8JP"; //This should trigger an error
+                                                   //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = "LeUh4 5hp";
+             
+                                                                    //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = "";
+            Customer_PostCode = Customer_PostCode.PadRight(10, 's');
+            //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = ""; //This should trigger an error
+            Customer_PostCode = Customer_PostCode.PadRight(11, 's');
+            //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeMid()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = ""; //This should trigger an error
+            Customer_PostCode = Customer_PostCode.PadRight(5, 's');
+            //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Customer_PostCodeExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String Customer_PostCode = "";
+            Customer_PostCode = Customer_PostCode.PadRight(500, 'a'); //This should fail
+
+            //invoke the methods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the restult is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years 
+            TestDate = TestDate.AddYears(-100);
+            //convert the data variable to a string variable
+            string Registration = TestDate.ToString();
+            //invoke the moethods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years 
+            TestDate = TestDate.AddYears(-1);
+            //convert the data variable to a string variable
+            string Registration = TestDate.ToString();
+            //invoke the moethods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the data variable to a string variable
+            string Registration = TestDate.ToString();
+            //invoke the moethods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the data variable to a string variable
+            string Registration = TestDate.ToString();
+            //invoke the moethods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer anCustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddYears(100);
+            //convert the data variable to a string variable
+            string Registration = TestDate.ToString();
+            //invoke the moethods
+            Error = anCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
