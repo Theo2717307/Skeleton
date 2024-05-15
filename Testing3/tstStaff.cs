@@ -529,7 +529,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void DateAddedInvalidData() 
+        public void StartDateInvalidData() 
         {  
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
