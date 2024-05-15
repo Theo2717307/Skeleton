@@ -27,7 +27,7 @@ namespace Testing1
         public void Supplier_Phone_NumberPropertyOK()
         {
             clsSupply Supply = new clsSupply();
-            Int64 TestData = 0;
+            string TestData = "0";
             Supply.Supplier_Phone_Number = TestData;
             Assert.AreEqual(Supply.Supplier_Phone_Number, TestData);
         }
@@ -102,18 +102,106 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
         public void TestSupplier_Phone_NumberFound()
         {
             clsSupply Example_Supplier = new clsSupply();
             Boolean Found = false;
             Boolean OK = true;
-            Int64 PNumber = 07376106016;
+            string PNumber = "07376106016";
             Found = Example_Supplier.Find(PNumber);
-            if (Example_Supplier.Supplier_Phone_Number != 07376106016)
+            if (Example_Supplier.Supplier_Phone_Number != "07376106016")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void TestSupplier_AddressFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            string SAddress = "12 Darwin Close";
+            Found = Example_Supplier.Find(SAddress);
+            if (Example_Supplier.Supplier_Address != "12 Darwin Close")
+            {
+                OK = false;
+                {
+                    Assert.IsTrue(OK);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestSupplier_EmailFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            string SEmail = "jhigginson@gmail.com";
+            Found = Example_Supplier.Find(SEmail);
+            if (Example_Supplier.Supplier_Email != "jhigginson@gmail.com")
+            {
+                OK = false;
+                {
+                    Assert.IsTrue(OK);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestSupplier_CountryFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            string SCountry = "England";
+            Found = Example_Supplier.Find(SCountry);
+            if (Example_Supplier.Supplier_Country != "England")
+            {
+                OK = false;
+                {
+                    Assert.IsTrue(OK);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestSupplier_ExportFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            String SExport = "false";
+            Found = Example_Supplier.Find(SExport);
+            if (Example_Supplier.Supplier_Export != false)
+            {
+                OK = false;
+                {
+                    Assert.IsTrue(OK);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestSupplier_Trade_RestrictionsFound()
+        {
+            clsSupply Example_Supplier = new clsSupply();
+            Boolean Found = false;
+            Boolean OK = true;
+            String SRestrictions = "false";
+            Found = Example_Supplier.Find(SRestrictions);
+            if (Example_Supplier.Supplier_Trade_Restrictions != false)
+            {
+                OK = false;
+                {
+                    Assert.IsTrue(OK);
+                }
+            }
+        }
     }
-}
+ }
+
+ 
