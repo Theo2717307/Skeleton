@@ -125,20 +125,34 @@ namespace ClassLibrary
                     //if the date is greater than todays date
                     if (date_temp > DateTime.Now.Date)
                     {
-                        error_message += "The date cannot be in the future :";
+                        error_message += "The date cannot be in the future : ";
                     }
                 }
                 catch
                 {
-                    error_message += "The date was invalid :";
+                    error_message += "The date was invalid : ";
                 }
                 
                 
 
             }
-            /********************a********************/
+            /********************BOOLEAN********************/
+            //create a temp var for the order_processed boolean
+            Boolean processed_temp;
 
-
+            try
+            {
+                processed_temp = order_processed;
+                //if the date is true or false
+                if ((processed_temp != true) && (processed_temp != false))
+                {
+                    error_message += "The boolean must be true or false : ";
+                }
+            }
+            catch
+            {
+                error_message += "Processed must be valid";
+            }
 
             return error_message;
         }
