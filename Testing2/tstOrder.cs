@@ -273,5 +273,24 @@ namespace Testing2
             //test to see the string is correct
             Assert.AreNotEqual(error_message, "");
         }
+        /******************ORDER_PROCESSED TESTS******************/
+        [TestMethod]
+        public void Order_ProcessedMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            Boolean test_order_processed = false;
+            error_message = AnOrder.Valid(order_id, customer_id, order_timestamp, test_order_processed);
+        }
+        [TestMethod]
+        public void Order_ProcessedMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            Boolean test_order_processed = true;
+            error_message = AnOrder.Valid(order_id, customer_id, order_timestamp, test_order_processed);
+        }
+        
+
     }
 }
