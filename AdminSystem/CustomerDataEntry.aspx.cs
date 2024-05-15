@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsCustomer AnCustomer = new clsCustomer();
 
         //capture CustomerId
-        /*AnCustomer.Customer_Id = Convert.ToInt32(txtCustomer_Id.Text);
+        AnCustomer.Customer_Id = Convert.ToInt32(txtCustomer_Id.Text);
 
         //capture firstName 
         AnCustomer.Customer_FirstName = txtCustomer_FirstName.Text;
@@ -51,11 +51,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture address
         AnCustomer.Customer_Address = txtCustomer_Address.Text;
 
+        //capture PostCode
+        AnCustomer.Customer_PostCode = txtCustomer_PostCode.Text;  
+
+        //Capture registration date
+        AnCustomer.Registration = Convert.ToDateTime(txtRegistration.Text);
+
         //capture password
         AnCustomer.Customer_Password = txtCustomer_Password.Text;
 
         //capture active box
-        AnCustomer.Active = CheckBox1.Checked;*/
+        AnCustomer.Active = CheckBox1.Checked;
 
         //Capturing user input
         string Customer_FirstName = txtCustomer_FirstName.Text;
@@ -64,12 +70,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Customer_Email = txtCustomer_Email.Text;
         string Customer_Password = txtCustomer_Password.Text; 
         string Customer_Address = txtCustomer_Address.Text;
+        string Customer_PostCode = txtCustomer_PostCode.Text;
+        string Registration = txtRegistration.Text;
 
         //variable to store any error messages
         string Error = "";
 
         //validation the data
-        Error = AnCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address);
+        Error = AnCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
         if(Error == "")
         {
             //capture the firstname
@@ -89,6 +97,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             //Capture the Address
             AnCustomer.Customer_Address = Customer_Address;
+
+            //Capture the postcode
+            AnCustomer.Customer_PostCode = Customer_PostCode;
+
+            //Capture the registration
+            AnCustomer.Registration = Convert.ToDateTime(Registration);
+
             //store the address in the sessoin object
             Session["AnCustomer"] = AnCustomer;
 
@@ -128,6 +143,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomer_Email.Text = anCustomer.Customer_Email;
             txtCustomer_Password.Text = anCustomer.Customer_Password;  
             txtCustomer_Address.Text = anCustomer.Customer_Address;
+            txtCustomer_PostCode.Text = anCustomer.Customer_PostCode;
+            txtRegistration.Text = anCustomer.Registration.ToString();
             CheckBox1.Checked = anCustomer.Active;
         }
 
