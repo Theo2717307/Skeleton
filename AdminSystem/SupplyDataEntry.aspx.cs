@@ -20,7 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the supplier name
         Supplier1.Supplier_Name = txtSupplier_Name.Text;
         //capture the supplier number
-        Supplier1.Supplier_Phone_Number = Convert.ToInt64(txtSupplier_Phone_Number.Text);
+        Supplier1.Supplier_Phone_Number = txtSupplier_Phone_Number.Text;
         //capture the supplier address
         Supplier1.Supplier_Address = txtSupplier_Address.Text;
         //capture the supplier email
