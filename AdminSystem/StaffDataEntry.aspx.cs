@@ -55,10 +55,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStaff.Department = Department;
             //capture the start date
             AnStaff.StartDate = Convert.ToDateTime(StartDate);
+            //capute ismanager
+            AnStaff.IsManager = chkIsManager.Checked;
             //store the staff in session object
-            Session["AnStaff"] = AnStaff;
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = AnStaff;
+            //add the new rec
+            StaffList.Add();
             //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
