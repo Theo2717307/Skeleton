@@ -87,7 +87,7 @@ namespace ClassLibrary
             //if no record was found
             else
             {
-                //return a false indicating there is a 
+                //return a false indicating there is an error
                 return false;
             }
         }
@@ -151,9 +151,32 @@ namespace ClassLibrary
             }
             catch
             {
-                error_message += "Processed must be valid";
+                error_message += "Processed must be valid : ";
             }
-
+            /********************Integers********************/
+            //create temp var for the order_id and customer_id
+            Int32 order_id_temp;
+            Int32 customer_id_temp;
+            //ORDER ID
+            try
+            {
+                order_id_temp = Convert.ToInt32(order_id);
+                if (order_id_temp < 0) { error_message += "order_id must be a positive number : "; }
+            }
+            catch
+            {
+                error_message += "order_id must be an number : ";
+            }
+            //CUSTOMER ID
+            try
+            {
+                customer_id_temp = Convert.ToInt32(customer_id);
+                if (customer_id_temp < 0) { error_message += "customer_id must be a positive number : "; }
+            }
+            catch
+            {
+                error_message += "customer_id must be an number : ";
+            }
             return error_message;
         }
     }
