@@ -1,7 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System; // Import the System namespace
+
 
 using System.Collections.Generic;
 
@@ -50,9 +50,9 @@ namespace Testing3
 
         }
 
-     
+
         [TestMethod]
-        public void ThisStaffPropertyOK() 
+        public void ThisStaffPropertyOK()
         {
             //create instance of the class we want to create
             clsStaffCollection AllStaff = new clsStaffCollection();
@@ -98,6 +98,41 @@ namespace Testing3
             Assert.AreEqual(AllStaff.Count, TestList.Count);
 
         }
+        //****** ADD , Updare & Delete Tests **********//
+
+        [TestMethod]
+        public void AddMethodOK() 
+        {
+            //create an isntance of the class we want to creat
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set it's properties
+            TestItem.IsManager = true;
+            TestItem.Staff_ID = 1;
+            TestItem.FirstName = "John";
+            TestItem.LastName = "Wick";
+            TestItem.StartDate = DateTime.Now;
+            TestItem.Department = "Luxury";
+            TestItem.Position = "Assistant";
+            //set ThisStaff to the test data 
+            AllStaff.ThisStaff =  TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primau key of the test data
+            TestItem.Staff_ID = PrimaryKey;
+            //find this record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+        }
+
+
+        
+        
     
     }
 }

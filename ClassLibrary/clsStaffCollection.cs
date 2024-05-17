@@ -6,7 +6,12 @@ namespace ClassLibrary
 {
     public class clsStaffCollection
     {
+       
+        //private data member for the list
+        
         List<clsStaff> mStaffList = new List<clsStaff>();
+        //private member data for thisStaff
+        clsStaff mThisStaff = new clsStaff();
 
         //public property for the staff list
 
@@ -37,7 +42,25 @@ namespace ClassLibrary
 
             }
         }
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                // return the private data
+                return mThisStaff;
+                ;
+
+
+            }
+            set
+            {
+                //set the private data
+                mThisStaff = value;
+                ;
+            }
+        }
+
+        
 
         public clsStaffCollection()
         {
@@ -72,7 +95,25 @@ namespace ClassLibrary
             }
  
         }
-       
 
+        public int Add()
+        {
+            //adds a record to the database based on vals of mThisStaff
+            //set the primary key value of the new record
+            clsDataConnection DB = new clsDataConnection();
+            //set the paremeters for the stored procedure
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@Position", mThisStaff.Position);
+            DB.AddParameter("@Department", mThisStaff.Department);
+            DB.AddParameter("@StartDate", mThisStaff.StartDate);
+            DB.AddParameter("@IsManager", mThisStaff.IsManager);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblStaff_Insert");
+            
+        }
+
+      
     }
 }
