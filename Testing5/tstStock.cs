@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-/*namespace Testing5
+namespace Testing5
 {
     [TestClass]
     public class tstStock
@@ -11,25 +11,93 @@ using System;
         public void TestMethod1()
         {
 
-            //clsStock AnStock = new clsStock();
+            clsStock AnStock = new clsStock();
 
-            //Assert.IsNotNull(AnStock);
+            Assert.IsNotNull(AnStock);
 
-            //test
+
         }
 
 
         [TestMethod]
         public void product_idPropertyOK()
         {
-            //Please test your changes before you commit to the master branch
-            //clsStock did not exist and it does not have a .Active method
+            
 
-            //clsStock AnStock = new clsStock();
+            clsStock AnStock = new clsStock();
 
-            //Int32 TestData = 1;
-            //AnStock.Active = TestData;
-            //Assert.AreEqual(AnStock.Active, TestData);
+            Int32 TestData = 1;
+            AnStock.product_id = TestData;
+            Assert.AreEqual(AnStock.product_id, TestData);
         }
+
+        public void stockNamePropertyOK()
+        {
+
+
+            clsStock AnStock = new clsStock();
+
+            String TestData = "Mercedes";
+            AnStock.stockName = TestData;
+            Assert.AreEqual(AnStock.stockName, TestData);
+        }
+
+        public void stockDetailsPropertyOK()
+        {
+
+
+            clsStock AnStock = new clsStock();
+
+            String TestData = "Vehicle Description";
+            AnStock.stockDetails = TestData;
+            Assert.AreEqual(AnStock.stockDetails, TestData);
+        }
+
+        public void quantityPropertyOK()
+        {
+
+
+            clsStock AnStock = new clsStock();
+
+            Int32 TestData = 1;
+            AnStock.quantity = TestData;
+            Assert.AreEqual(AnStock.quantity, TestData);
+        }
+
+        public void unit_pricePropertyOK()
+        {
+
+
+            clsStock AnStock = new clsStock();
+
+            Int32 TestData = 1;
+            AnStock.unit_price = TestData;
+            Assert.AreEqual(AnStock.product_id, TestData);
+        }
+
+        public void last_restock_datePropertyOK()
+        {
+
+             
+            clsStock AnStock = new clsStock();
+
+        date TestData = 14/01/2024;
+            AnStock.last_restock_date = TestData;
+            Assert.AreEqual(AnStock.last_restock_date, TestData);
+        }
+
+        public void discontinuedPropertyOK()
+        {
+
+
+            clsStock AnStock = new clsStock();
+
+            bool TestData = false;
+            AnStock.product_id = TestData;
+            Assert.AreEqual(AnStock.product_id, TestData);
+        }
+
+
+
     }
-} */
+}
