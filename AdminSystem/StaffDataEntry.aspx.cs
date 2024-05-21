@@ -8,9 +8,39 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 Staff_ID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the staff to be processed
+        Staff_ID = Convert.ToInt32(Session["Staff_ID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (Staff_ID != -1)
+            {
+                //display the current data for the reocrd
+                DisplayStaff();
+            }
 
+        }
+
+
+    }
+
+private void DisplayStaff()
+    {
+        //create an instance of the staff book 
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        //find the record to update
+        StaffBook.ThisStaff.Find(Staff_ID);
+        //dispaly the data for the record
+        txtStaff_ID.Text = StaffBook.ThisStaff.Staff_ID.ToString();
+        txtFirstName.Text = StaffBook.ThisStaff.FirstName.ToString();
+        txtLastName.Text = StaffBook.ThisStaff.LastName.ToString();
+        txtPosition.Text = StaffBook.ThisStaff.Position.ToString();
+        txtDepartment.Text = StaffBook.ThisStaff.Department.ToString();
+        txtStartDate.Text = StaffBook.ThisStaff.StartDate.ToString();
+        chkIsManager.Checked = StaffBook.ThisStaff.IsManager;
     }
 
     protected void txtStaff_ID_TextChanged(object sender, EventArgs e)
@@ -45,6 +75,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(FirstName, LastName, Position, Department, StartDate);
         if (Error == "")
         {
+            //capture the Staff ID
+            AnStaff.Staff_ID = Staff_ID;
             //capture the first name
             AnStaff.FirstName = FirstName;
             //capture the last name
