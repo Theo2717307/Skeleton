@@ -7,6 +7,7 @@ namespace ClassLibrary
     {
         // Private field
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
 
 
         //Constructor
@@ -107,11 +108,37 @@ namespace ClassLibrary
                 
             } 
         }
-        public clsCustomer ThisAddress { get; set; }
-
-       
-
+        public clsCustomer ThisCustomer 
+        {
+            get 
+            {
+                return mThisCustomer;
+            } 
+            set 
+            {
+                mThisCustomer = value;
+            } 
         }
+
+        public int Add()
+        {
+           clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters of the stored procedure
+            DB.AddParameter("@Customer_FirstName", mThisCustomer.Customer_FirstName);
+            DB.AddParameter("@Customer_LastName", mThisCustomer.Customer_LastName);
+            DB.AddParameter("@Customer_PhoneNumber", mThisCustomer.Customer_PhoneNumber);
+            DB.AddParameter("@Customer_Email", mThisCustomer.Customer_Email);
+            DB.AddParameter("@Customer_Password", mThisCustomer.Customer_Password);
+            DB.AddParameter("@Customer_Address", mThisCustomer.Customer_Address);
+            DB.AddParameter("@Customer_PostCode", mThisCustomer.Customer_PostCode);
+            DB.AddParameter("@Registration", mThisCustomer.Registration);
+            DB.AddParameter("@Active", mThisCustomer.Active);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
+    }
 
 
     

@@ -75,9 +75,42 @@ namespace Testing4
             TestItem.Customer_PostCode = "LE4 5UU";
             TestItem.Registration = DateTime.Now;
             //Assign the data to the property
-            AllCustomer.ThisAddress = TestItem;
+            AllCustomer.ThisCustomer = TestItem;
             //test to see that two values are the same
-            Assert.AreEqual(AllCustomer.ThisAddress, TestItem);
+            Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
+        }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create some test data to assign to the property
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.Customer_Id = 1;
+            TestItem.Customer_FirstName = "Sahil";
+            TestItem.Customer_LastName = "Suresh";
+            TestItem.Customer_PhoneNumber = "1234567890";
+            TestItem.Customer_Email = "sahilsuresh@gmail.com";
+            TestItem.Customer_Password = "034SAagk";
+            TestItem.Customer_Address = "Some Street";
+            TestItem.Customer_PostCode = "LE4 5UU";
+            TestItem.Registration = DateTime.Now;
+            //Assign the data to the property
+            AllCustomer.ThisCustomer = TestItem;
+
+            //Add the record
+            PrimaryKey = AllCustomer.Add();
+            //Set the primary key of the test data
+            TestItem.Customer_Id = PrimaryKey;
+            //find the record
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that two values are the same
+            Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
         }
 
 

@@ -104,11 +104,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //Capture the registration
             AnCustomer.Registration = Convert.ToDateTime(Registration);
 
-            //store the address in the sessoin object
-            Session["AnCustomer"] = AnCustomer;
+            //Capture active
+            AnCustomer.Active = CheckBox1.Checked;
+
+            //Create a new instance of the address collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the thiscustomer property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add the new record
+            CustomerList.Add();
 
             //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
