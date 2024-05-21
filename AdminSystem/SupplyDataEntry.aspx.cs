@@ -44,4 +44,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the name class
+        clsSupply Supplier_Name = new clsSupply();
+        //create a variable to store the primary key
+        string Bentley;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        Bentley = (txtSupplier_Name.Text);
+        //find the record
+        Found = Supplier_Name.Find(Bentley);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtSupplier_Phone_Number.Text = Supplier_Name.Supplier_Phone_Number;
+            txtSupplier_Address.Text = Supplier_Name.Supplier_Address;
+            txtSupplier_Email.Text = Supplier_Name.Supplier_Email;
+            txtSupplier_Country.Text = Supplier_Name.Supplier_Country;
+            chkYes.Checked = Supplier_Name.Supplier_Export;
+            chkYes2.Checked = Supplier_Name.Supplier_Trade_Restrictions;
+        }
+    }
 }

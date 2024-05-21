@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace ClassLibrary
 {
@@ -72,17 +73,35 @@ namespace ClassLibrary
         public bool Supplier_Export { get; set; }
         public bool Supplier_Trade_Restrictions { get; set; }
 
-        public bool Find(string supplier70)
+        // FIND METHOD //
+        public bool Find(string Supplier_Name)
         {
-            mSupplier_Name = "John";
-            mSupplier_Phone_Number = "07376106016";
-            mSupplier_Address = "12 Darwin Close";
-            mSupplier_Email = "jhigginson@gmail.com";
-            mSupplier_Country = "England";
-            mSupplier_Export = false;
-            mSupplier_Trade_Restrictions = false;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the supplier name to search for
+            DB.AddParameter("@Supplier_Name", Supplier_Name);
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupply_FilterBySupplier_Name");
+            if (DB.Count == 1)
+            {
+                //copy the data from the databse to the private data members
+                mSupplier_Name = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Name"]);
+                mSupplier_Phone_Number = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Phone_Number"]);
+                mSupplier_Address = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Address"]);
+                mSupplier_Email = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Email"]);
+                mSupplier_Country = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Country"]);
+                mSupplier_Export = Convert.ToBoolean(DB.DataTable.Rows[0]["Supplier_Export"]);
+                mSupplier_Trade_Restrictions = Convert.ToBoolean(DB.DataTable.Rows[0]["Supplier_Trade_Restrictions"]);
+                //return that everything worked successfully
+                return true;
+            }
+            //if no record was found 
+            else
+            {
 
-            return true;
+                //return false indicating there is a problem
+                return false;
+            }
         }
 
         public bool Find(long pNumber)

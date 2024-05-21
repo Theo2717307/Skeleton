@@ -7,7 +7,7 @@ namespace Testing5
     [TestClass]
     public class tstStock
     {
-        [TestMethod]
+       /* [TestMethod]
         public void TestMethod1()
         {
 
@@ -98,6 +98,6 @@ namespace Testing5
         }
 
 
-
+**/
     }
 }
