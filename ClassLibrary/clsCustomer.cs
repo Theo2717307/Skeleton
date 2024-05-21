@@ -12,7 +12,6 @@ namespace ClassLibrary
         private string mCustomer_LastName;
         private string mCustomer_PhoneNumber;
         private string mCustomer_Email;
-        private string mCustomer_Password;
         private string mCustomer_Address;
         private string mCustomer_PostCode;
         private DateTime mRegistration;
@@ -60,18 +59,7 @@ namespace ClassLibrary
                 mActive = value;
             } 
         }
-        public string Customer_Password{ 
-            get 
-            {
-                //This line of code send data out of the property
-                return mCustomer_Password;
-            } 
-            set 
-            { 
-                //This  line of code allows data into the property
-                mCustomer_Password = value;      
-            } 
-        }
+      
         public string Customer_Email{
             get 
             {
@@ -162,7 +150,6 @@ namespace ClassLibrary
                 mCustomer_LastName = Convert.ToString(DB.DataTable.Rows[0]["Customer_LastName"]);
                 mCustomer_PhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["Customer_PhoneNumber"]);
                 mCustomer_Email = Convert.ToString(DB.DataTable.Rows[0]["Customer_Email"]);
-                mCustomer_Password = Convert.ToString(DB.DataTable.Rows[0]["Customer_Password"]);
                 mCustomer_Address = Convert.ToString(DB.DataTable.Rows[0]["Customer_Address"]);
                 mCustomer_PostCode = Convert.ToString(DB.DataTable.Rows[0]["Customer_PostCode"]);
                 mRegistration = Convert.ToDateTime(DB.DataTable.Rows[0]["Registration"]);
@@ -185,7 +172,6 @@ namespace ClassLibrary
                               string Customer_LastName,
                               string Customer_PhoneNumber,
                               string Customer_Email,
-                              string Customer_Password,
                               string Customer_Address,
                               string Customer_PostCode,
                               string Registration)
@@ -268,25 +254,6 @@ namespace ClassLibrary
             }
 
 
-            if (Customer_Password.Length == 0)
-            {
-                //records the error 
-                Error = Error + "The password may not be blank : ";
-            }
-
-            //if the Customer password is greater than 20 character
-            if (Customer_Password.Length > 200)
-            {
-                //record the error
-                Error = Error + "The password must be less than 200 Character : ";
-            }
-
-            //if the customer password is less than 11 character
-            if (Customer_Password.Length < 8)
-            {
-                //record the error
-                Error = Error + "The passsword length is too short : ";
-            }
 
 
             if (Customer_Address.Length == 0)

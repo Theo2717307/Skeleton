@@ -96,7 +96,6 @@ namespace Testing4
             TestItem.Customer_LastName = "Suresh";
             TestItem.Customer_PhoneNumber = "1234567890";
             TestItem.Customer_Email = "sahilsuresh@gmail.com";
-            TestItem.Customer_Password = "034SAagk";
             TestItem.Customer_Address = "Some Street";
             TestItem.Customer_PostCode = "LE4 5UU";
             TestItem.Registration = DateTime.Now;
@@ -129,7 +128,6 @@ namespace Testing4
             TestItem.Customer_LastName = "Suresh";
             TestItem.Customer_PhoneNumber = "1234567890";
             TestItem.Customer_Email = "sahilsuresh@gmail.com";
-            TestItem.Customer_Password = "034SAagk";
             TestItem.Customer_Address = "Some Street";
             TestItem.Customer_PostCode = "LE4 5UU";
             TestItem.Registration = DateTime.Now;
@@ -147,7 +145,6 @@ namespace Testing4
             TestItem.Customer_LastName = "July";
             TestItem.Customer_PhoneNumber = "07979481293";
             TestItem.Customer_Email = "RomeshJly@gmail.com";
-            TestItem.Customer_Password = "Sahia&3h4";
             TestItem.Customer_Address = "Another Street";
             TestItem.Customer_PostCode = "BS9 5UU";
             TestItem.Registration = DateTime.Now;
@@ -178,7 +175,6 @@ namespace Testing4
             TestItem.Customer_FirstName = "Sahil";
             TestItem.Customer_LastName = "Suresh";
             TestItem.Customer_PhoneNumber = "1234567890";
-            TestItem.Customer_Password= "17890sdfaf";
             TestItem.Customer_Email = "sahilsuresh@gmail.com";
             TestItem.Customer_Address = "Some Street";
             TestItem.Customer_PostCode = "LE4 5UU";
@@ -200,7 +196,41 @@ namespace Testing4
             Assert.AreEqual(Customer.Count, 2);
         }*/
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create some test data to assign to the property
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.Customer_Id = 1;
+            TestItem.Customer_FirstName = "Sahil";
+            TestItem.Customer_LastName = "Suresh";
+            TestItem.Customer_PhoneNumber = "1234567890";
+            TestItem.Customer_Email = "sahilsuresh@gmail.com";
+            TestItem.Customer_Address = "Some Street";
+            TestItem.Customer_PostCode = "LE4 5UU";
+            TestItem.Registration = DateTime.Now;
+            //Assign the data to the property
+            AllCustomer.ThisCustomer = TestItem;
 
+            //Add the record
+            PrimaryKey = AllCustomer.Add();
+            //Set the primary key of the test data
+            TestItem.Customer_Id = PrimaryKey;
+            //find the record
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //Delet the record
+            AllCustomer.Delete();
+            //Now find the record
+            Boolean Found = AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that two values are the same
+            Assert.IsFalse(Found );
+        }
 
     }
 }
