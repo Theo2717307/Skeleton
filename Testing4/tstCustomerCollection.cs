@@ -113,8 +113,56 @@ namespace Testing4
             Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create some test data to assign to the property
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Active = true;
+            TestItem.Customer_Id = 1;
+            TestItem.Customer_FirstName = "Sahil";
+            TestItem.Customer_LastName = "Suresh";
+            TestItem.Customer_PhoneNumber = "1234567890";
+            TestItem.Customer_Email = "sahilsuresh@gmail.com";
+            TestItem.Customer_Password = "034SAagk";
+            TestItem.Customer_Address = "Some Street";
+            TestItem.Customer_PostCode = "LE4 5UU";
+            TestItem.Registration = DateTime.Now;
+            //Assign the data to the property
+            AllCustomer.ThisCustomer = TestItem;
 
-        /*[TestMethod]
+            //Add the record
+            PrimaryKey = AllCustomer.Add();
+            //Set the primary key of the test data
+            TestItem.Customer_Id = PrimaryKey;
+            //modify the test record
+            TestItem.Active = false;
+            TestItem.Customer_Id = 4;
+            TestItem.Customer_FirstName = "Romesh";
+            TestItem.Customer_LastName = "July";
+            TestItem.Customer_PhoneNumber = "07979481293";
+            TestItem.Customer_Email = "RomeshJly@gmail.com";
+            TestItem.Customer_Password = "Sahia&3h4";
+            TestItem.Customer_Address = "Another Street";
+            TestItem.Customer_PostCode = "BS9 5UU";
+            TestItem.Registration = DateTime.Now;
+            //set the record based on the new test data
+            AllCustomer.ThisCustomer = TestItem;
+            //update the record
+            AllCustomer.Update();
+            //Find the record
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that two values are the same
+            Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
+        }
+
+
+        [TestMethod]
         public void ListAndCountOK()
         {
             //create an instance of the class we want to create
@@ -130,6 +178,7 @@ namespace Testing4
             TestItem.Customer_FirstName = "Sahil";
             TestItem.Customer_LastName = "Suresh";
             TestItem.Customer_PhoneNumber = "1234567890";
+            TestItem.Customer_Password= "17890sdfaf";
             TestItem.Customer_Email = "sahilsuresh@gmail.com";
             TestItem.Customer_Address = "Some Street";
             TestItem.Customer_PostCode = "LE4 5UU";
@@ -142,7 +191,7 @@ namespace Testing4
             Assert.AreEqual(AllCustomer.Count, TestList.Count);
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void TwoRecordsPresent()
         {
             //create an instance of the class
