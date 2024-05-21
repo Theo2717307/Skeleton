@@ -5,26 +5,21 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        //private data member for the staff id property
+        // private data member for the staff id property
         private Int32 mStaff_ID;
 
         public Int32 Staff_ID
-
         {
             get
             {
-                //this line of code sends data out of the property
+                // this line of code sends data out of the property
                 return mStaff_ID;
-
             }
             set
             {
-
-                //This line of code allows data into the property
+                // This line of code allows data into the property
                 mStaff_ID = value;
             }
-
-
         }
 
         private string mFirstName;
@@ -105,8 +100,7 @@ namespace ClassLibrary
             }
         }
 
-
-        //********** FIND METHOD****//
+        //********** FIND METHOD ****//
 
         public bool Find(int Staff_ID)
         {
@@ -142,15 +136,14 @@ namespace ClassLibrary
             }
         }
 
-
-        //function for the public validation method
-
+        // function for the public validation method
         public string Valid(string FirstName, string LastName, string Position, string Department, string StartDate)
         {
             // Create a string variable to store the error
             string Error = "";
 
             DateTime DateTemp;
+            DateTime minDate = new DateTime(2018, 1, 1);
 
             // If the FirstName is blank
             if (FirstName.Length == 0)
@@ -166,26 +159,29 @@ namespace ClassLibrary
             }
 
             try
-            {//copy the dateAdded value to the DateTemp variable 
+            {
+                // Copy the StartDate value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(StartDate);
-                if (DateTemp < DateTime.Now.Date)
-                { //record the error
-                    Error = Error + "The date cannot be in the past : ";
+
+                if (DateTemp < minDate)
+                {
+                    // Record the error
+                    Error = Error + "The date cannot be before 01/01/2018: ";
                 }
 
-                //check to see if the date is greater than today's date 
-
+                // Check to see if the date is in the future
                 if (DateTemp > DateTime.Now.Date)
-                { //record the error
-                    Error = Error + "The date cannot be in the future : ";
+                {
+                    // Record the error
+                    Error = Error + "The date cannot be in the future: ";
                 }
             }
-            
             catch
             {
-                //record the error
+                // Record the error
                 Error = Error + "The date was not a valid date: ";
             }
+
             // Check if the LastName is blank
             if (LastName.Length == 0)
             {
@@ -230,6 +226,6 @@ namespace ClassLibrary
 
             // Return any error messages
             return Error;
-            }
         }
     }
+}

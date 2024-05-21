@@ -40,4 +40,49 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("StaffDataEntry.aspx");
     }
+
+ 
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        Int32 Staff_ID;
+        //if a record has been selected from the list
+        if (lstStaffList.SelectedIndex != -1) 
+        {
+            //get the primary key value of the record to edit
+            Staff_ID = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in the ession object
+            Session["Staff_ID"] = Staff_ID;
+            //redirect to the edit page
+            Response.Redirect("StaffDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a rcord from the list to edit";
+        }
+
+    }
+
+
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be dlted
+        Int32 Staff_ID;
+        //if a record has been selected fromthe list
+        if ( lstStaffList.SelectedIndex != -1 ) 
+        {
+            //get th primary key value of the record delete
+            Staff_ID = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in the session object
+            Session["Staff_ID"] = Staff_ID;
+            // redirect to the delete page
+            Response.Redirect("StaffConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            //display an error messgae
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
 }
