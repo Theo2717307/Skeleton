@@ -16,13 +16,14 @@
         <asp:TextBox ID="txtSupplier_Phone_Number" runat="server" height="17px" style="z-index: 1; left: 104px; top: 56px; position: absolute; width: 128px"></asp:TextBox>
         <p>
             <asp:TextBox ID="txtSupplier_Address" runat="server" style="z-index: 1; left: 104px; top: 98px; position: absolute; height: 17px" width="128px"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 280px; top: 8px; position: absolute; right: 1133px" Text="Find" Width="100px" />
         </p>
         <p>
             <asp:Label ID="lblSupplier_Address" runat="server" height="24px" style="z-index: 1; left: 16px; top: 102px; position: absolute; width: 73px" Text="Address:"></asp:Label>
         </p>
         <p>
             <asp:TextBox ID="txtSupplier_Email" runat="server" height="17px" style="z-index: 1; left: 104px; top: 140px; position: absolute; width: 128px"></asp:TextBox>
-            <asp:TextBox ID="txtSupplier_Country" runat="server" style="z-index: 1; top: 186px; position: absolute; height: 17px; width: 128px; right: 1245px; bottom: 467px"></asp:TextBox>
+            <asp:TextBox ID="txtSupplier_Country" runat="server" style="z-index: 1; top: 186px; position: absolute; height: 17px; width: 128px; left: 104px; bottom: 467px"></asp:TextBox>
             <asp:Label ID="lblSupplier_Email" runat="server" height="24px" style="z-index: 1; top: 145px; position: absolute; bottom: 507px; left: 16px" Text="Email:" width="73px"></asp:Label>
         </p>
         <asp:Label ID="lblSupplier_Country" runat="server" height="24px" style="z-index: 1; left: 16px; position: absolute; top: 186px; width: 73px" Text="Country:"></asp:Label>
@@ -37,7 +38,7 @@
             <asp:Label ID="lblSupplier_Trade_Restrictions" runat="server" style="z-index: 1; left: 16px; top: 270px; position: absolute; height: 24px" Text="Restrictions:"></asp:Label>
             <asp:CheckBox ID="chkYes" runat="server" style="z-index: 1; top: 226px; position: absolute; left: 104px" Text="Yes" />
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 89px; top: 344px; position: absolute; bottom: 306px" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" height="26px" style="z-index: 1; left: 89px; top: 344px; position: absolute;" Text="Cancel" Width="60px" />
         <p>
             <asp:CheckBox ID="chkYes2" runat="server" style="z-index: 1; left: 105px; position: absolute; top: 270px" Text="Yes" />
         </p>

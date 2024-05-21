@@ -82,20 +82,20 @@ namespace Testing1
         {
             clsSupply ExampleSupplier = new clsSupply();
             Boolean Found = false;
-            string Supplier70 = "John";
+            string Supplier70 = "Bentley";
             Found = ExampleSupplier.Find(Supplier70);
             Assert.IsTrue(Found);
         }
 
         [TestMethod]
-        public void TestSupplier_First_NameFound()
+        public void TestSupplier_NameFound()
         {
             clsSupply Example_Supplier = new clsSupply();
             Boolean Found = false;
             Boolean OK = true;
-            String Supplier70 = "John";
+            String Supplier70 = "Bentley";
             Found = Example_Supplier.Find(Supplier70);
-            if (Example_Supplier.Supplier_Name != "John")
+            if (Example_Supplier.Supplier_Name != "Bentley")
             {
                 OK = false;
             }
@@ -106,11 +106,11 @@ namespace Testing1
         public void TestSupplier_Phone_NumberFound()
         {
             clsSupply Example_Supplier = new clsSupply();
+            string Supplier_Name = "Bentley";
             Boolean Found = false;
             Boolean OK = true;
-            string PNumber = "07376106016";
-            Found = Example_Supplier.Find(PNumber);
-            if (Example_Supplier.Supplier_Phone_Number != "07376106016")
+            Found = Example_Supplier.Find(Supplier_Name);
+            if (Example_Supplier.Supplier_Phone_Number != "1168327625")
             {
                 OK = false;
             }
@@ -121,51 +121,45 @@ namespace Testing1
         public void TestSupplier_AddressFound()
         {
             clsSupply Example_Supplier = new clsSupply();
+            string Supplier_Name = "Bentley";
             Boolean Found = false;
             Boolean OK = true;
-            string SAddress = "12 Darwin Close";
-            Found = Example_Supplier.Find(SAddress);
-            if (Example_Supplier.Supplier_Address != "12 Darwin Close")
+            Found = Example_Supplier.Find(Supplier_Name);
+            if (Example_Supplier.Supplier_Address != "Watermead Business Park")
             {
                 OK = false;
-                {
-                    Assert.IsTrue(OK);
-                }
             }
+            Assert.IsTrue(OK);
         }
 
         [TestMethod]
         public void TestSupplier_EmailFound()
         {
             clsSupply Example_Supplier = new clsSupply();
+            string Supplier_Name = "Bentley";
             Boolean Found = false;
             Boolean OK = true;
-            string SEmail = "jhigginson@gmail.com";
-            Found = Example_Supplier.Find(SEmail);
-            if (Example_Supplier.Supplier_Email != "jhigginson@gmail.com")
+            Found = Example_Supplier.Find(Supplier_Name);
+            if (Example_Supplier.Supplier_Email != "bentleyleicester@gmail.com")
             {
                 OK = false;
-                {
-                    Assert.IsTrue(OK);
-                }
             }
+            Assert.IsTrue(OK);
         }
 
         [TestMethod]
         public void TestSupplier_CountryFound()
         {
             clsSupply Example_Supplier = new clsSupply();
+            string Supplier_Name = "Bentley";
             Boolean Found = false;
             Boolean OK = true;
-            string SCountry = "England";
-            Found = Example_Supplier.Find(SCountry);
+            Found = Example_Supplier.Find(Supplier_Name);
             if (Example_Supplier.Supplier_Country != "England")
             {
                 OK = false;
-                {
-                    Assert.IsTrue(OK);
-                }
             }
+            Assert.IsTrue(OK);
         }
 
         [TestMethod]
