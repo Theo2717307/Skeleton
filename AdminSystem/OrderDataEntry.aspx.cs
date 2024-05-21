@@ -34,8 +34,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.Order_timestamp = Convert.ToDateTime(order_timestamp);
             //capture the order processed
             AnOrder.Order_processed = chkOrderProcessed.Checked;
+
+            clsOrderCollection order_list = new clsOrderCollection();
+            order_list.ThisOrder = AnOrder;
+            order_list.Add();
             //store the order id in the session object
-            Session["AnOrder"] = AnOrder;
+            //Session["AnOrder"] = AnOrder;
             Response.Redirect("OrderViewer.aspx");
         }
         else

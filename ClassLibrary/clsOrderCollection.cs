@@ -10,7 +10,7 @@ namespace ClassLibrary
         //private data members
         private List<clsOrder>  mOrderList = new List<clsOrder>();
         private int mCount;
-        private clsOrder mOrder;
+        private clsOrder mThisOrder = new clsOrder();
 
         public List<clsOrder> OrderList
         {
@@ -25,22 +25,13 @@ namespace ClassLibrary
         }
         public clsOrder ThisOrder
         {
-            get { return mOrder; }
-            set { mOrder = value; }
+            get { return mThisOrder; }
+            set { mThisOrder = value; }
         }
 
         //Constructor for the public class
         public clsOrderCollection()
         {
-            /*
-            clsOrder test_order = new clsOrder();
-            test_order.Order_id = 1;
-            test_order.Customer_id = 2;
-            test_order.Order_timestamp = DateTime.Now;
-            test_order.Order_processed = false;
-            //add to list
-            mOrderList.Add(test_order);
-             */
             //variable for index
             Int32 index = 0;
             //var to store record count
@@ -67,6 +58,20 @@ namespace ClassLibrary
                 index++;
             }
 
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@customer_id", mThisOrder.Customer_id);
+            DB.AddParameter("@order_timestamp", mThisOrder.Order_timestamp);
+            DB.AddParameter("@order_processed", mThisOrder.Order_processed);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
         }
     }
 }
