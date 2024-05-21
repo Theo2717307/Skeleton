@@ -81,7 +81,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Customer_LastName = txtCustomer_LastName.Text;
         string Customer_PhoneNumber = txtCustomer_PhoneNumber.Text; 
         string Customer_Email = txtCustomer_Email.Text;
-        string Customer_Password = txtCustomer_Password.Text; 
         string Customer_Address = txtCustomer_Address.Text;
         string Customer_PostCode = txtCustomer_PostCode.Text;
         string Registration = txtRegistration.Text;
@@ -90,7 +89,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
 
         //validation the data
-        Error = AnCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Password, Customer_Address, Customer_PostCode, Registration);
+        Error = AnCustomer.Valid(Customer_FirstName, Customer_LastName, Customer_PhoneNumber, Customer_Email, Customer_Address, Customer_PostCode, Registration);
         if(Error == "")
         {
             //Capture the addressId
@@ -106,10 +105,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.Customer_PhoneNumber = Customer_PhoneNumber;
 
             //Capture the Email
-            AnCustomer.Customer_Email= Customer_Email;
-
-            //Capture the Password
-            AnCustomer.Customer_Password= Customer_Password;   
+            AnCustomer.Customer_Email= Customer_Email;  
 
             //Capture the Address
             AnCustomer.Customer_Address = Customer_Address;
@@ -180,7 +176,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomer_LastName.Text = anCustomer.Customer_LastName;
             txtCustomer_PhoneNumber.Text = anCustomer.Customer_PhoneNumber;
             txtCustomer_Email.Text = anCustomer.Customer_Email;
-            txtCustomer_Password.Text = anCustomer.Customer_Password;  
             txtCustomer_Address.Text = anCustomer.Customer_Address;
             txtCustomer_PostCode.Text = anCustomer.Customer_PostCode;
             txtRegistration.Text = anCustomer.Registration.ToString();
@@ -202,7 +197,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtCustomer_LastName.Text = CustomerBook.ThisCustomer.Customer_LastName.ToString();
         txtCustomer_PhoneNumber.Text = CustomerBook.ThisCustomer.Customer_PhoneNumber.ToString();
         txtCustomer_Email.Text = CustomerBook.ThisCustomer.Customer_Email.ToString();
-        txtCustomer_Password.Text = CustomerBook.ThisCustomer.Customer_Password.ToString();
         txtCustomer_Address.Text = CustomerBook.ThisCustomer.Customer_Address.ToString();
         txtCustomer_PostCode.Text = CustomerBook.ThisCustomer.Customer_PostCode.ToString();
         txtRegistration.Text = CustomerBook.ThisCustomer.Registration.ToString();

@@ -68,7 +68,6 @@ namespace ClassLibrary
                 anCustomer.Customer_LastName = Convert.ToString(DB.DataTable.Rows[Index]["Customer_LastName"]);
                 anCustomer.Customer_PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["Customer_PhoneNumber"]);
                 anCustomer.Customer_Email = Convert.ToString(DB.DataTable.Rows[Index]["Customer_Email"]);
-                anCustomer.Customer_Password = Convert.ToString(DB.DataTable.Rows[Index]["Customer_Password"]);
                 anCustomer.Customer_Address = Convert.ToString(DB.DataTable.Rows[Index]["Customer_Address"]);
                 anCustomer.Customer_PostCode = Convert.ToString(DB.DataTable.Rows[Index]["Customer_PostCode"]);
                 anCustomer.Registration = Convert.ToDateTime(DB.DataTable.Rows[Index]["Registration"]);
@@ -129,7 +128,6 @@ namespace ClassLibrary
             DB.AddParameter("@Customer_LastName", mThisCustomer.Customer_LastName);
             DB.AddParameter("@Customer_PhoneNumber", mThisCustomer.Customer_PhoneNumber);
             DB.AddParameter("@Customer_Email", mThisCustomer.Customer_Email);
-            DB.AddParameter("@Customer_Password", mThisCustomer.Customer_Password);
             DB.AddParameter("@Customer_Address", mThisCustomer.Customer_Address);
             DB.AddParameter("@Customer_PostCode", mThisCustomer.Customer_PostCode);
             DB.AddParameter("@Registration", mThisCustomer.Registration);
@@ -137,6 +135,17 @@ namespace ClassLibrary
 
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisCustomer
+            //connects to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters For the Stored procedure
+            DB.AddParameter("@Customer_Id", mThisCustomer.Customer_Id);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblCustomer_Delete");
         }
 
         public void Update()
@@ -149,7 +158,6 @@ namespace ClassLibrary
             DB.AddParameter("@Customer_LastName", mThisCustomer.Customer_LastName);
             DB.AddParameter("@Customer_PhoneNumber", mThisCustomer.Customer_PhoneNumber);
             DB.AddParameter("@Customer_Email", mThisCustomer.Customer_Email);
-            DB.AddParameter("@Customer_Password", mThisCustomer.Customer_Password);
             DB.AddParameter("@Customer_Address", mThisCustomer.Customer_Address);
             DB.AddParameter("@Customer_PostCode", mThisCustomer.Customer_PostCode);
             DB.AddParameter("@Registration", mThisCustomer.Registration);
