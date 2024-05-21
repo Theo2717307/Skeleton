@@ -72,7 +72,7 @@ namespace Testing5
 
             Int32 TestData = 1;
             AnStock.unit_price = TestData;
-            Assert.AreEqual(AnStock.product_id, TestData);
+            Assert.AreEqual(AnStock.unit_price, TestData);
         }
 
         public void last_restock_datePropertyOK()
@@ -81,7 +81,7 @@ namespace Testing5
              
             clsStock AnStock = new clsStock();
 
-        date TestData = 14/01/2024;
+            DateTime TestData = DateTime.Now.Date;
             AnStock.last_restock_date = TestData;
             Assert.AreEqual(AnStock.last_restock_date, TestData);
         }
@@ -92,9 +92,9 @@ namespace Testing5
 
             clsStock AnStock = new clsStock();
 
-            bool TestData = false;
-            AnStock.product_id = TestData;
-            Assert.AreEqual(AnStock.product_id, TestData);
+            Boolean TestData = false;
+            AnStock.discontinued = TestData;
+            Assert.AreEqual(AnStock.discontinued, TestData);
         }
 
 
