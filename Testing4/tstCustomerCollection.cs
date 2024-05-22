@@ -232,5 +232,47 @@ namespace Testing4
             Assert.IsFalse(Found );
         }
 
+        [TestMethod]
+        public void ReportByPostCodeMethodOK() 
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            //create an instance of te filtered data 
+            clsCustomerCollection FilterCustomer = new clsCustomerCollection();
+            //Apply a blank string (should return all records);
+            FilterCustomer.ReportByPostCode("");
+            //test to see that the two values rae the same
+            Assert.AreEqual(AllCustomer.Count, FilterCustomer.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPostCodeNoneFound() 
+        {
+            //create an instance of the class
+            clsCustomerCollection FilteredCutomers = new clsCustomerCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //Apply a post code that doesn't exist
+            FilteredCutomers.ReportByPostCode("YYY YYY");
+            if (FilteredCutomers.Count == 2)
+            {
+                //check to see that fist record is 25
+                if (FilteredCutomers.CustomerList[0].Customer_Id != 25)
+                {
+                    OK = false;
+                }
+                if (FilteredCutomers.CustomerList[1].Customer_Id != 26)
+                {
+                    OK = false;
+                }
+            }
+            else 
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue( OK );
+        }
+
     }
 }

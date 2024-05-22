@@ -21,9 +21,18 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     {
         //Create a new instance of the customer collection class
         clsCustomerCollection customerCollection = new clsCustomerCollection();
+        //find the record to delete
+        customerCollection.ThisCustomer.Find(Customer_Id);
         //Find the record to delete
         customerCollection.Delete();
         //rediret back to the main page
         Response.Redirect("CustomerList.aspx");
+    }
+
+    protected void btnNoId_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("CustomerList.aspx");
+
     }
 }

@@ -88,4 +88,38 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record form the list to delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsCustomerCollection anCustomer = new clsCustomerCollection();
+        //retrieve the values of post code from the presentation layer
+        anCustomer.ReportByPostCode(txtPostCode.Text);
+        //set the data source to the list of addresses in the collection
+        lstCustomerList.DataSource = anCustomer.CustomerList;
+        //set the name of hte primary key 
+        lstCustomerList.DataValueField = "Customer_Id";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "Customer_PostCode";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsCustomerCollection anCustomer = new clsCustomerCollection();
+        //Set an empty string
+        anCustomer.ReportByPostCode("");
+        //clear any existing filter to tidy up the interface
+        txtPostCode.Text = "";
+        lstCustomerList.DataSource = anCustomer.CustomerList;
+        //set the name of hte primary key 
+        lstCustomerList.DataValueField = "Customer_Id";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "Customer_PostCode";
+        //bind the data to the list
+        lstCustomerList.DataBind();
+
+    }
 }
