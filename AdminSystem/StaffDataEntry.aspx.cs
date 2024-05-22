@@ -27,7 +27,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-private void DisplayStaff()
+    private void DisplayStaff()
     {
         //create an instance of the staff book 
         clsStaffCollection StaffBook = new clsStaffCollection();
