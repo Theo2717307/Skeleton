@@ -22,6 +22,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //create a new instance of the saff book collection class
         clsStaffCollection StaffBook = new clsStaffCollection();
         //find the record to delete
+        StaffBook.ThisStaff.Find(Staff_ID);
         StaffBook.Delete();
         //redirect back to the main page
         Response.Redirect("StaffList.aspx");
@@ -32,8 +33,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 
     protected void btnNo_Click(object sender, EventArgs e)
     {
-        //create a new instance of the staff book collection class
-        clsStaffCollection StaffBook = new clsStaffCollection();
+
         //redirect back to the main page
         Response.Redirect("StaffList.aspx");
 
