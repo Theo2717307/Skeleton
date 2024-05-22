@@ -8,7 +8,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    int Customer_Id;
+    Int32 Customer_Id;
     protected void Page_Load(object sender, EventArgs e)
     {
         //get the number of the address to be processed
