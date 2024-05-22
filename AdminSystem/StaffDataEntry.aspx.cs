@@ -11,18 +11,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 Staff_ID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //get the number of the staff to be processed
-        Staff_ID = Convert.ToInt32(Session["Staff_ID"]);
-        if (IsPostBack == false)
-        {
-            //if this is not a new record
-            if (Staff_ID != -1)
-            {
-                //display the current data for the reocrd
-                DisplayStaff();
-            }
-
-        }
+        
 
 
     }
