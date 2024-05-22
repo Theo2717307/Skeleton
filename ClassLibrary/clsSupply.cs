@@ -113,5 +113,10 @@ namespace ClassLibrary
         {
             throw new NotImplementedException();
         }
+
+        public string Valid(string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country, bool supplier_Export, bool supplier_Trade_Restrictions)
+        {
+            return "";
+        }
     }
 }

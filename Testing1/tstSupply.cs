@@ -8,6 +8,16 @@ namespace Testing1
     [TestClass]
     public class tstSupply
     {
+
+        //good test data 
+        //create some test data to pass the method
+        string Supplier_Phone_Number = "1168327625";
+        string Supplier_Address = "Watermead Business Park";
+        string Supplier_Email = "bentleyleicester@gmail.com";
+        string Supplier_Country = "England";
+        Boolean Supplier_Export = false;
+        Boolean Supplier_Trade_Restrictions = false;
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -194,6 +204,19 @@ namespace Testing1
                     Assert.IsTrue(OK);
                 }
             }
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSupply Supplier_Name = new clsSupply();
+            //string variable to store any error message 
+            string Error = "";
+            //invoke the method
+            Error = Supplier_Name.Valid(Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country, Supplier_Export, Supplier_Trade_Restrictions);
+            //test to see if the result is correct
+            Assert.AreEqual(Error, "");
         }
     }
  }
