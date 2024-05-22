@@ -102,6 +102,55 @@ namespace Testing2
             //test to see the values are the same
             Assert.AreEqual(all_orders.ThisOrder, test_order);
         }
-
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection all_orders = new clsOrderCollection();
+            //create an item of the test data
+            clsOrder test_order = new clsOrder();
+            //variable to store primary key
+            Int32 primary_key = 0;
+            //set properties
+            test_order.Customer_id = 10;
+            test_order.Order_timestamp = DateTime.Now;
+            test_order.Order_processed = false;
+            //set this order to the test data
+            all_orders.ThisOrder = test_order;
+            primary_key = all_orders.Add();
+            //set the primary key of the test data
+            test_order.Order_id = primary_key;
+            //find the record
+            all_orders.ThisOrder.Find(primary_key);
+            //delete this record
+            all_orders.Delete();
+            //now find the record
+            Boolean found = all_orders.ThisOrder.Find(primary_key);
+            //test to see it was not found
+            Assert.IsFalse(found);
+        }
+        [TestMethod]
+        public void FilterByDateMethodOK()
+        {
+            //create an instance of the class
+            clsOrderCollection all_orders = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection filtered_orders = all_orders;
+            //apply a blank filter (should return all)
+            filtered_orders.FilterByDate("", "");
+            //test to see that the values are the same
+            
+            Assert.AreEqual(all_orders, filtered_orders);
+        }
+        [TestMethod]
+        public void FilterByDateMethodNoneFound()
+        {
+            //create an instance of the class
+            clsOrderCollection filtered_orders = new clsOrderCollection();
+            //apply a filter that for non-existant dates
+            filtered_orders.FilterByDate("22/05/2000", "23/05/2000");
+            //tests to see no records are found
+            Assert.AreEqual(0, filtered_orders.Count);
+        }
     }
 }
