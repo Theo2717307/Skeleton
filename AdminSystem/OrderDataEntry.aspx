@@ -32,9 +32,9 @@
         <p>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; "></asp:Label>
         </p>
-        <asp:Button ID="btnFind" runat="server" style="z-index: 1;" Text="Find" OnClick="btnFind_Click" />
-        <asp:Button ID="btnOK" runat="server" style="z-index: 1;" Text="OK" OnClick="btnOK_Click1" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1;" Text="Cancel" OnClick="btnCancel_Click" />
+        <asp:Button ID="btnFind" runat="server" style="z-index: 1; padding-inline: 25px; margin-inline: 2em;" Text="Find" OnClick="btnFind_Click" />
+        <asp:Button ID="btnOK" runat="server" style="z-index: 1; padding-inline: 25px; margin-inline: 2em;" Text="OK" OnClick="btnOK_Click1" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; padding-inline: 25px; margin-inline: 2em;" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>
