@@ -33,9 +33,9 @@ namespace ClassLibrary
         public clsOrderCollection()
         {
             //variable for index
-            Int32 index = 0;
+            //Int32 index = 0;
             //var to store record count
-            Int32 record_count = 0;
+            //Int32 record_count = 0;
             //object for data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
