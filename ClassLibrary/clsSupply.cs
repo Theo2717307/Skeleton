@@ -116,7 +116,22 @@ namespace ClassLibrary
 
         public string Valid(string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country, bool supplier_Export, bool supplier_Trade_Restrictions)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            //if the Supplier Phone Number is blank
+            if (supplier_Phone_Number.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Supplier Phone Number may not be blank : ";
+            }
+            //if the Supplier Phone Number is less than 11 characters
+            if (supplier_Phone_Number.Length < 11)
+            {
+                //record the error
+                Error = Error + "The Supplier Phone Number may not be less than 11 characters : ";
+            }
+            //return any error messages
+            return Error;
         }
     }
 }
