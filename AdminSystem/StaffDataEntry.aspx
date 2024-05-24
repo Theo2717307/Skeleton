@@ -5,13 +5,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: x-large;
+        }
+    </style>
 </head>
-<body style="height: 346px">
+<body style="height: 401px">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="lblStaff_ID" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute" Text="Staff ID" width="48px"></asp:Label>
             <asp:TextBox ID="txtStaff_ID" runat="server" height="22px" style="z-index: 1; left: 115px; top: 13px; position: absolute" width="128px"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 297px; top: 28px; position: absolute" Text="Find" />
+            <p class="auto-style1" style="height: 33px; margin-top: 0px">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STAFF DATA ENTRY PAGE</p>
         </div>
         <p>
             <asp:Label ID="lblFirstName" runat="server" style="z-index: 1; left: 10px; top: 53px; position: absolute; width: 92px;" Text="First Name"></asp:Label>
@@ -34,5 +41,21 @@
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 66px; top: 332px; position: absolute" Text="OK" width="128px" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 257px; top: 331px; position: absolute; right: 239px" Text="Cancel" width="128px" />
     </form>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
 </body>
 </html>
