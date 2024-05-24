@@ -24,6 +24,7 @@ namespace Testing1
             clsSupply Supplier_Name = new clsSupply();
             Assert.IsNotNull(Supplier_Name);
         }
+
         [TestMethod]
         public void Supplier_NamePropertyOK()
         {
@@ -216,9 +217,39 @@ namespace Testing1
             //invoke the method
             Error = Supplier_Name.Valid(Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country, Supplier_Export, Supplier_Trade_Restrictions);
             //test to see if the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_Phone_NumberMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsSupply Supplier_Name = new clsSupply();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Supplier_Phone_Number = ""; //this should trigger an error
+            //invoke the method 
+            Error = Supplier_Name.Valid(Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country, Supplier_Export, Supplier_Trade_Restrictions);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_Phone_NumberMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsSupply Supplier_Name = new clsSupply();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Supplier_Phone_Number = "1111111111"; //this should fail
+            //invoke the method
+            Error = Supplier_Name.Valid(Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country, Supplier_Export, Supplier_Trade_Restrictions);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
- }
+}
 
  
