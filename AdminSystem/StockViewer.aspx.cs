@@ -11,10 +11,24 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AnStock = new clsStock();
-        //capture the stock name
+        //get the data from the session object
         AnStock = (clsStock)Session["AnStock"];
-        //display stock name
+        //display stock name for this entry
         Response.Write(AnStock.stockName);
+
+        Response.Write(AnStock.stockDetails);
+        Response.Write(AnStock.unit_price);
+        Response.Write(AnStock.quantity);
+        Response.Write(AnStock.last_restock_date);
+
+
+
+
+
+
+
+
+
 
     }
 }

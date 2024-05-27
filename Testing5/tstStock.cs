@@ -7,7 +7,7 @@ namespace Testing5
     [TestClass]
     public class tstStock
     {
-       /* [TestMethod]
+        [TestMethod]
         public void TestMethod1()
         {
 
@@ -98,6 +98,23 @@ namespace Testing5
         }
 
 
-**/
+        public void FindMethodOK()
+
+        {
+            //Create an instance of the class we want to create 
+            clsStock AnStock = new clsStock();
+            // Boolean variable to store results of validation
+            Boolean Found = false;
+            //Test data to use with the method
+            Int32 product_id = 10;
+            //Invoke the method
+            Found = AnStock.Find(product_id);
+            //test to see if results are true
+            Assert.IsTrue(Found);
+
+        }
+
+
+
     }
 }

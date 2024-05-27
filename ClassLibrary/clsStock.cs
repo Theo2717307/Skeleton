@@ -15,5 +15,10 @@ namespace ClassLibrary
         public string stockDetails { get; set; }
         public DateTime last_restock_date { get; set; }
         public bool discontinued { get; set; }
+
+        public bool Find(int stockId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
