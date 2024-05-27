@@ -45,6 +45,9 @@
         <p>
          <asp:Button ID="btnCancel" runat="server" style="margin-bottom: 3px" Text="Cancel" /> 
         </p>
+        <asp:Button ID="btnOK" runat="server" style="margin-bottom: 3px" Text="OK" OnClick="btnOK_Click1" /> 
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
