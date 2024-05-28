@@ -10,22 +10,57 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-    //create  a new instance of clsStaff        
-    clsStaff AnStaff = new clsStaff();
-    //get the data from the ession object
-    AnStaff = (clsStaff)Session["AnStaff"];
-    //display the first name for this entry
-    Response.Write(AnStaff.FirstName + "<br>");
+        if (!IsPostBack && Request.QueryString["StaffID"] != null)
+        {
+            int staffID;
+            if (int.TryParse(Request.QueryString["StaffID"], out staffID))
+            {
+                DisplayStaffDetails(staffID);
+            }
+            else
+            {
+                ltlStaffDetails.Text = "Invalid Staff ID.";
+            }
+        }
+    }
 
-    //display the last name for this entry
-    Response.Write(AnStaff.LastName + "<br>");
-    //display the Position for this entry
-    Response.Write(AnStaff.Position + "<br>");
-    //display the department for this entry
-    Response.Write(AnStaff.Department + "<br>");
-    //display the start date of the staff member
-    Response.Write(AnStaff.StartDate + "<br>");
-    //dipslay if staff member is manager
-    Response.Write(AnStaff.IsManager + "<br>");
+    protected void btnViewStaff_Click(object sender, EventArgs e)
+    {
+        int staffID;
+        if (int.TryParse(txtStaffID.Text, out staffID))
+        {
+            // Redirect to the same page with the staff ID as a query parameter
+            Response.Redirect("StaffViewer.aspx?StaffID=" + staffID.ToString());
+        }
+        else
+        {
+            ltlStaffDetails.Text = "Please enter a valid Staff ID.";
+        }
+    }
+
+    private void DisplayStaffDetails(int staffID)
+    {
+        // Create an instance of the staff collection
+        clsStaffCollection staffCollection = new clsStaffCollection();
+        // Find the staff member with the given ID
+        clsStaff selectedStaff = staffCollection.Find(staffID);
+
+        if (selectedStaff != null)
+        {
+            // Display all staff details
+            ltlStaffDetails.Text = string.Format("First Name: {0}<br>Last Name: {1}<br>Position: {2}<br>Department: {3}<br>Start Date: {4}<br>Is Manager: {5}<br>",
+                selectedStaff.FirstName,
+                selectedStaff.LastName,
+                selectedStaff.Position,
+                selectedStaff.Department,
+                selectedStaff.StartDate.ToShortDateString(),
+                selectedStaff.IsManager
+            );
+            // Add other properties as needed
+        }
+        else
+        {
+            ltlStaffDetails.Text = "Staff member not found.";
+        }
     }
 }

@@ -11,7 +11,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 Staff_ID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        //get the number of the address to be processed
+        Staff_ID = Convert.ToInt32(Session["Staff_ID"]);
+        //If this is the first Time the page is displayed
+        if (IsPostBack == false)
+        {
+            if (Staff_ID != -1)
+            {
+                //update the list box
+                DisplayStaff();
+            }
+
+        }
 
 
     }
