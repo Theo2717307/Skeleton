@@ -15,13 +15,18 @@ public partial class _1_List : System.Web.UI.Page
        
         //If this is the first Time the page is displayed
         if (IsPostBack == false) 
-        { 
-            
-                //update the list box
-                DisplayCustomers();
-            
+        {
+
+            //update the list box
+            DisplayCustomers();
            
         }
+        //create a new instacne of user
+        clsCustomerUser AnUser = new clsCustomerUser();
+        //get data from the session object
+        AnUser = (clsCustomerUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayCustomers()
@@ -34,7 +39,7 @@ public partial class _1_List : System.Web.UI.Page
 
         lstCustomerList.DataValueField = "Customer_Id";
         //set the data field to display
-        lstCustomerList.DataTextField = "Customer_PostCode";
+        lstCustomerList.DataTextField = "Customer_FirstName";
         //Bind the data to the list
         lstCustomerList.DataBind();
     }
@@ -100,7 +105,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of hte primary key 
         lstCustomerList.DataValueField = "Customer_Id";
         //set the name of the field to display
-        lstCustomerList.DataTextField = "Customer_PostCode";
+        lstCustomerList.DataTextField = "Customer_FirstName";
         //bind the data to the list
         lstCustomerList.DataBind();
     }
@@ -117,9 +122,18 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of hte primary key 
         lstCustomerList.DataValueField = "Customer_Id";
         //set the name of the field to display
-        lstCustomerList.DataTextField = "Customer_PostCode";
+        lstCustomerList.DataTextField = "Customer_FirstName";
         //bind the data to the list
         lstCustomerList.DataBind();
+
+    }
+
+
+
+    
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
 
     }
 }

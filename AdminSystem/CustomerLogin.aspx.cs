@@ -28,6 +28,8 @@ public partial class CustomerLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = anUser.FindUser(UserName, Password);
+        //Add a session to capture the user name
+        Session["AnUser"] = anUser;
         //if username and/or password is empty
         if (txtUserName.Text == "")
         {
