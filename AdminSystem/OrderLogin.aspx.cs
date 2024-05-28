@@ -10,7 +10,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -28,6 +28,10 @@ public partial class _Default : System.Web.UI.Page
         password = Convert.ToString(text_password.Text);
         //find the record
         found = a_user.FindUser(username, password);
+
+        //Add a session to capture the username
+        Session["a_user"] = a_user;
+
         //if username or password is empty
         if (text_username.Text == "")
         {
@@ -53,6 +57,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

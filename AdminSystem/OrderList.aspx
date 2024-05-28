@@ -28,6 +28,13 @@
             <asp:Button ID="btnTo" runat="server" Text="select a date" OnClick="btnTo_Click"></asp:Button>
             <asp:Calendar ID="CalendarTo" runat="server" Visible="False" OnSelectionChanged="selection_changedTo"></asp:Calendar>
         </div>
+        <div>
+            <asp:Button ID="btnApply" runat="server" Text="Apply filter" OnClick="btnApply_Click"></asp:Button>
+            <asp:Button ID="btnClear" runat="server" Text="Clear filter" OnClick="btnClear_Click"></asp:Button>
+        </div>
+        <div>
+            <asp:Button ID="btnReturn" runat="server" Text="Return to Main Menu" OnClick="btnReturn_Click"></asp:Button>
+        </div>
 
     </form>
 </body>
