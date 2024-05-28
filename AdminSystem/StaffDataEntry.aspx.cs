@@ -129,5 +129,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtStartDate.Text = AnStaff.StartDate.ToString();
             chkIsManager.Checked = AnStaff.IsManager;
         }
+
+
+    }
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
