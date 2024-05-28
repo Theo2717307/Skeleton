@@ -249,6 +249,22 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void Supplier_Phone_NumberExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsSupply Supplier_Name = new clsSupply();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Supplier_Phone_Number = "";
+            Supplier_Phone_Number = Supplier_Phone_Number.PadRight(11, 'a'); //this should fail
+            //invoke the method
+            Error = Supplier_Name.Valid(Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country, Supplier_Export, Supplier_Trade_Restrictions);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
 
