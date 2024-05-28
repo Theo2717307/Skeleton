@@ -89,12 +89,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStaff.StartDate = Convert.ToDateTime(StartDate);
             //capute ismanager
             AnStaff.IsManager = chkIsManager.Checked;
-            //store the staff in session object
+            
+
+            
             clsStaffCollection StaffList = new clsStaffCollection();
-            StaffList.ThisStaff = AnStaff;
-            //add the new rec
-            StaffList.Add();
-            //navigate to the view page
+            //check if we are updating an exisitng record or adding a new one
+            
+            if (Staff_ID == 0)
+            {
+
+                //add the new record 
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Add();    
+
+            }
+            else
+            {
+
+                //update the existing record
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Update();
+            }
+
             Response.Redirect("StaffList.aspx");
         }
         else
