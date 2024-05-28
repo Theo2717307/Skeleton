@@ -16,6 +16,13 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayOrders();
         }
+
+        //create a new instance of clsOrderUser
+        clsOrderUser a_user = new clsOrderUser();
+        //get data from session object
+        a_user = (clsOrderUser)Session["a_user"];
+        //display the username
+        Response.Write("Logged in as: " + a_user.Username);
     }
 
     void DisplayOrders()
@@ -84,5 +91,21 @@ public partial class _1_List : System.Web.UI.Page
     {
         btnTo.Text = CalendarFrom.SelectedDate.ToString();
         CalendarTo.Visible = false;
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //TODO
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //TODO
     }
 }
