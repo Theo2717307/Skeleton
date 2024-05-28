@@ -137,6 +137,23 @@ namespace ClassLibrary
                 mStaffList.Add(AnStaff);
                 Index++;
             }
+
+           
+        }
+
+        public clsStaff Find(int staffID)
+        {
+            // Loop through each staff member in the list
+            foreach (clsStaff staff in mStaffList)
+            {
+                // If the staff ID matches, return the staff member
+                if (staff.Staff_ID == staffID)
+                {
+                    return staff;
+                }
+            }
+            // If no match is found, return null
+            return null;
         }
     }
 }
