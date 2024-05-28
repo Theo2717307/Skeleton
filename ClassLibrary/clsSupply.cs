@@ -130,6 +130,12 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Supplier Phone Number may not be less than 11 characters : ";
             }
+            //if the Supplier Phone Number is greater than 500 characters
+            if (supplier_Phone_Number.Length >= 11)
+            {
+                //record the error
+                Error = Error + "The Supplier Phone Number may not be greater than 11 characters : ";
+            }
             //return any error messages
             return Error;
         }
