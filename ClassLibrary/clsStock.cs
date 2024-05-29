@@ -151,8 +151,23 @@ namespace ClassLibrary
 
         public string Valid(string stockName, string stockDetails, string quantity, string unit_price, string last_restock_date)
         {
+            //create a string variable to store the errors
+            String Error = "";
+
+            //if the customer first name is blank
+            if (stockName.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The stock name may not be blank : ";
+            }
+
+            //return error messages
             return "";
         }
+
+
+
+
     }
 
 }

@@ -311,8 +311,20 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
-
-
+        [TestMethod]
+        public void stockName_FirstNameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock anStock = new clsStock();
+            //string c=variable to stor any error message
+            String Error = "";
+            //create some test data to pass to the methods
+            String stockName = ""; //This should trigger an error
+                                            //invoke the methods
+            Error = anstockName.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
+            //test to see that the restult is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
 
 
