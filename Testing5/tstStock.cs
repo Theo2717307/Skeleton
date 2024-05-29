@@ -11,11 +11,13 @@ namespace Testing5
         //good test data
         // create some data to pass the methods
         
-        String stockName = "VW Golf";
-        String stockDetails = "1 Litre";
-        String quantity = "32";
-        String unit_price = "10000";
-        String last_restock_date = DateTime.Now.ToShortDateString();
+        string stockName = "VW Golf";
+        string stockDetails = "1 Litre";
+        string quantity = "32";
+        string unit_price = "10000";
+        string last_restock_date = DateTime.Now.ToShortDateString();
+
+
         
 
         [TestMethod]
@@ -296,9 +298,24 @@ namespace Testing5
 
         }
 
-        
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an intsance of the class we want to create
+            clsStock anStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
 
-       
+
+
+
+
+
 
 
     }
