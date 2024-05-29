@@ -12,6 +12,20 @@ namespace ClassLibrary
         // Private member data for thisStaff
         private clsStaff mThisStaff = new clsStaff();
 
+
+
+        // Constructor for the class
+        public clsStaffCollection()
+        {
+            // Object for the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Execute the stored procedure
+            DB.Execute("sproc_tblStaff_SelectAll");
+            // Populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+
         // Public property for the staff list
         public List<clsStaff> StaffList
         {
@@ -53,15 +67,21 @@ namespace ClassLibrary
             }
         }
 
-        // Constructor for the class
-        public clsStaffCollection()
+       
+
+        public clsStaff Find(int staffID)
         {
-            // Object for the data connection
-            clsDataConnection DB = new clsDataConnection();
-            // Execute the stored procedure
-            DB.Execute("sproc_tblStaff_SelectAll");
-            // Populate the array list with the data table
-            PopulateArray(DB);
+            // Loop through each staff member in the list
+            foreach (clsStaff staff in mStaffList)
+            {
+                // If the staff ID matches, return the staff member
+                if (staff.Staff_ID == staffID)
+                {
+                    return staff;
+                }
+            }
+            // If no match is found, return null
+            return null;
         }
 
         public int Add()
@@ -141,19 +161,6 @@ namespace ClassLibrary
            
         }
 
-        public clsStaff Find(int staffID)
-        {
-            // Loop through each staff member in the list
-            foreach (clsStaff staff in mStaffList)
-            {
-                // If the staff ID matches, return the staff member
-                if (staff.Staff_ID == staffID)
-                {
-                    return staff;
-                }
-            }
-            // If no match is found, return null
-            return null;
-        }
+       
     }
 }
