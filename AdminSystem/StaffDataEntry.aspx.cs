@@ -95,7 +95,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             clsStaffCollection StaffList = new clsStaffCollection();
             //check if we are updating an exisitng record or adding a new one
             
-            if (Staff_ID == 0)
+            if (Staff_ID == -1)
             {
 
                 //add the new record 
@@ -106,7 +106,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             else
             {
 
+                
                 //update the existing record
+                StaffList.ThisStaff.Find(Staff_ID);
                 StaffList.ThisStaff = AnStaff;
                 StaffList.Update();
             }
