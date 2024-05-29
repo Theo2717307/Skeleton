@@ -147,7 +147,12 @@ namespace ClassLibrary
 
         }
 
+     
 
+        public string Valid(string stockName, string stockDetails, string quantity, string unit_price, string last_restock_date)
+        {
+            return "";
+        }
     }
 
 }
