@@ -55,4 +55,10 @@ public partial class CustomerLogin : System.Web.UI.Page
      Response.Redirect("TeamMainMenu.aspx");
 
  }
+
+    protected void btnCancel_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+
+    }
 }
