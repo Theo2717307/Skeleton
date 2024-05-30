@@ -35,7 +35,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStaffUser AnUser = new clsStaffUser();
             //create some test data to assign to the property
-            string TestData = "Dawn";
+            string TestData = "Admin_Staff";
             //assign the data to the property
             AnUser.UserName = TestData;
             //test to see that the two values are the same
@@ -47,7 +47,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStaffUser AnUser = new clsStaffUser();
             //create some test data to assign to the property
-            string TestData = "password123";
+            string TestData = "Staff123";
             //assign the data to the property
             AnUser.Password = TestData;
             //test to see that the two values are the same
@@ -60,7 +60,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStaffUser AnUser = new clsStaffUser();
             //create some test data to assign to the property
-            string TestData = "Staff Book";
+            string TestData = "Staff";
             //assign the data to the property
             AnUser.Department = TestData;
             //test to see that the two values are the same
@@ -70,14 +70,14 @@ namespace Testing3
         public void FindUserMethodOK()
         {
             //create an instance of class
-            clsStaffUser anUser = new clsStaffUser();
+            clsStaffUser AnUser = new clsStaffUser();
             //create a boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the methods
-            string UserName = "Dawn";
-            string Password = "pass124";
+            string UserName = "Admin_Staff";
+            string Password = "Staff123";
             //invoke the method
-            Found = anUser.FindUser(UserName, Password);
+            Found = AnUser.FindUser(UserName, Password);
             Assert.IsTrue(Found);
 
         }
@@ -93,8 +93,8 @@ namespace Testing3
             //create a Boolean variable to record if the data is Ok
             Boolean OK = true;
             //create some test data to use with the methods
-            string UserName = "Dawn";
-            string Password = "pass124";
+            string UserName = "Admin_Staff";
+            string Password = "Staff123";
             //invoke the methods
             Found = anUser.FindUser(UserName, Password);
             //check the user Id property
