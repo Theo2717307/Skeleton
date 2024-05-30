@@ -154,12 +154,84 @@ namespace ClassLibrary
             //create a string variable to store the errors
             String Error = "";
 
-            //if the customer first name is blank
+            //if the stock  name is blank
             if (stockName.Length == 0)
             {
                 //records the error 
                 Error = Error + "The stock name may not be blank : ";
             }
+
+            //if the stock name is greater than 50 character
+            if (stockName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The stock name must be less than 50 Character : ";
+            }
+
+            //if the stock details is blank
+            if (stockDetails.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The stock details may not be blank : ";
+            }
+
+            //if the stock details is greater than 50 character
+            if (stockDetails.Length > 50)
+            {
+                //record the error
+                Error = Error + "The stock details must be less than 50 Character : ";
+            }
+
+
+            //if the quantity is blank
+            if (quantity.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The quantity may not be blank : ";
+            }
+
+            //if the stock details is greater than 50 character
+            if (quantity.Length > 50)
+            {
+                //record the error
+                Error = Error + "The quantity must be less than 50 Character : ";
+            }
+
+            //if the unit price is blank
+            if (unit_price.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The unit price may not be blank : ";
+            }
+
+            //if the stock details is greater than 50 character
+            if (unit_price.Length > 50)
+            {
+                //record the error
+                Error = Error + "The unit price must be less than 50 Character : ";
+            }
+
+            //Create a temporary variable to store date values
+            DateTime DateTemp;
+
+            //Copy the Registration date value to the datetemp variable
+            DateTemp = Convert.ToDateTime(last_restock_date);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                //Record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+
+            if (DateTemp > DateTime.Now.Date)
+            {
+                //recrod the error
+                Error = Error + "The date cannot be in the Future : ";
+            }
+
+
+
+
+
 
             //return error messages
             return "";
