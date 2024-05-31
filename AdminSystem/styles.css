@@ -1,0 +1,55 @@
+﻿/* styles.css */
+body {
+    background-color: #F5F5F5; /* Light Gray */
+    color: #333333; /* Dark Gray for primary text */
+    font-family: 'Arial', sans-serif;
+}
+
+.header {
+    background-color: #001F3F; /* Navy Blue for headers */
+    color: #FFFFFF; /* White text */
+}
+
+.footer {
+    background-color: #333333; /* Dark Gray */
+    color: #FFFFFF; /* White text */
+}
+
+.content-area {
+    background-color: #FFFFFF; /* White for main content area */
+    color: #333333; /* Dark Gray for text */
+}
+
+.accent-element {
+    border: 1px solid #FFD700; /* Gold for borders */
+    color: #FFD700; /* Gold for highlights or icons */
+}
+
+.primary-button {
+    background-color: #001F3F; /* Navy Blue for buttons */
+    color: #FFFFFF; /* White text */
+}
+
+.secondary-button {
+    background-color: #333333; /* Dark Gray */
+    color: #FFFFFF; /* White text */
+}
+
+.form-input {
+    background-color: #FFFFFF; /* White */
+    border: 1px solid #FFD700; /* Gold border */
+    color: #333333; /* Dark Gray text */
+}
+
+a {
+    color: #001F3F; /* Navy Blue for links */
+    text-decoration: underline;
+}
+
+    a:hover, .primary-button:hover, .secondary-button:hover {
+        color: #FFD700; /* Gold for hover state */
+    }
+
+    a:active, .primary-button:active, .secondary-button:active {
+        color: #001F3F; /* Navy Blue for active state */
+    }

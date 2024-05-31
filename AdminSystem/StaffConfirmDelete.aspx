@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-</head>
+ <title>Staff List</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" /></head>
 <body style="height: 10px">
     <form id="form1" runat="server">
         <div>
