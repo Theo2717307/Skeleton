@@ -4,11 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
-        #form1 {
-            height: 536px;
-        }
+   <title>Staff List</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     </style>
 </head>
 <body>
@@ -32,10 +29,10 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 150px; top: 347px; position: absolute" Text="Delete" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 150px; top: 347px; position: absolute" Text="Delete" height="26px" width="55px" />
         <br />
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 15px; top: 347px; position: absolute" Text="Add" height="26px" width="55px" />
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 86px; top: 347px; position: absolute" Text="Edit" height="26px" width="55px" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 82px; top: 347px; position: absolute" Text="Edit" height="26px" width="55px" />
         <br />
         <br />
         <br />
