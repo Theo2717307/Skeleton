@@ -21,9 +21,9 @@
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 10px; top: 143px; position: absolute; height: 19px; width: 68px;" Text="Stock Details"></asp:Label>
         <asp:TextBox ID="txtStockDetails" runat="server" style="z-index: 1; left: 97px; top: 140px; position: absolute"></asp:TextBox>
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 10px; top: 185px; position: absolute" Text="Quantity" height="19px" width="68px"></asp:Label>
-        <asp:TextBox ID="txtQuantity" runat="server" style="z-index: 1; left: 97px; top: 183px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtquantity" runat="server" style="z-index: 1; left: 97px; top: 183px; position: absolute"></asp:TextBox>
         <asp:Label ID="Label4" runat="server" style="z-index: 1; left: 12px; top: 232px; position: absolute" Text="Unit Price" height="19px" width="68px"></asp:Label>
-        <asp:TextBox ID="txtUnitPrice" runat="server" style="z-index: 1; left: 97px; top: 227px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtunitprice" runat="server" style="z-index: 1; left: 97px; top: 227px; position: absolute"></asp:TextBox>
         <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 10px; top: 272px; position: absolute; width: 68px;" Text="Last Restock " height="19px"></asp:Label>
         <asp:TextBox ID="txtLastRestock" runat="server" style="z-index: 1; left: 97px; top: 272px; position: absolute"></asp:TextBox>
         <p>

@@ -60,9 +60,9 @@ namespace ClassLibrary
         }
 
         //private data member for the quantity property
-        private Int32 mquantity;
+        private string mquantity;
         // quantity public property
-        public int quantity
+        public string quantity
         {
             get
             {
@@ -78,13 +78,13 @@ namespace ClassLibrary
 
 
         //private data member for the unit price property
-        private Int32 munit_price;
+        private string munit_price;
 
 
 
 
         // unit price public property
-        public int unit_price
+        public string unit_price
         {
             get
             {
@@ -138,8 +138,8 @@ namespace ClassLibrary
             product_id = 10;
             mstockName = "VW Golf";
             mstockDetails = "1 Litre";
-            mquantity = 32;
-            munit_price = 10000;
+            mquantity = "32";
+            munit_price = "10000";
             mlast_restock_date = Convert.ToDateTime("15/01/2024");
             mdiscontinued = false;
             // always return true
@@ -234,7 +234,7 @@ namespace ClassLibrary
 
 
             //return error messages
-            return "";
+            return Error;
         }
 
 

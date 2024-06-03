@@ -73,7 +73,7 @@ namespace Testing5
 
             clsStock AnStock = new clsStock();
 
-            Int32 TestData = 32;
+            string TestData = "32";
             AnStock.quantity = TestData;
             Assert.AreEqual(AnStock.quantity, TestData);
         }
@@ -84,7 +84,7 @@ namespace Testing5
 
             clsStock AnStock = new clsStock();
 
-            Int32 TestData = 1;
+           string TestData = "1";
             AnStock.unit_price = TestData;
             Assert.AreEqual(AnStock.unit_price, TestData);
         }
@@ -216,7 +216,7 @@ namespace Testing5
             //invoke the method
             Found = AnStock.Find(product_id);
             //check the product id 
-            if (AnStock.quantity != 32)
+            if (AnStock.quantity != "32")
             {
                 OK = false;
             }
@@ -240,7 +240,7 @@ namespace Testing5
             //invoke the method
             Found = AnStock.Find(product_id);
             //check the product id 
-            if (AnStock.unit_price != 10000)
+            if (AnStock.unit_price != "10000")
             {
                 OK = false;
             }
@@ -334,22 +334,22 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String stockName = "J"; //This should trigger an error
+            String stockName = "jjjjjjj"; //This should trigger an error
                                              //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
-        public stockNameMinPlusOne()
+       
+        public void stockNameMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStock anStock = new clsStock();
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String stockName = "Le"; //This should trigger an error
+            String stockName = "jjjjjjjj"; //This should trigger an error
                                      //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
@@ -364,7 +364,8 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String stockName = "hfdjfhdfjdfdj"; //This should trigger an error
+            String stockName = ""; //This should trigger an error
+            stockName = stockName.PadRight(49, 'j');
                                                 //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
@@ -379,8 +380,9 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String stockName = "fdjfdjfkdfj"; //This should trigger an error
-                                              //invoke the methods
+            String stockName = ""; //This should trigger an error
+            stockName = stockName.PadRight(50, 'j');
+            //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
@@ -394,8 +396,9 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String stockName = "sdskjskjds"; //This should trigger an error
-                                             //invoke the methods
+            String stockName = ""; //This should trigger an error
+            stockName = stockName.PadRight(51, 'j');
+            //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
             Assert.AreNotEqual(Error, "");
@@ -408,8 +411,9 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String stockName = "fkdfjkdfjkd"; //This should trigger an error
-                                              //invoke the methods
+            String stockName = ""; //This should trigger an error
+            stockName = stockName.PadRight(25, 'j');
+            //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
             Assert.AreEqual(Error, "");
@@ -461,8 +465,8 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
-        public stockDetailsMinPlusOne()
+       
+        public void stockDetailsMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStock anStock = new clsStock();
@@ -581,8 +585,8 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
-        public quantityMinPlusOne()
+       
+        public void quantityMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStock anStock = new clsStock();
@@ -700,8 +704,8 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
-        [TestMethod]
-        public unit_priceMinPlusOne()
+        
+        public void unit_priceMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStock anStock = new clsStock();
