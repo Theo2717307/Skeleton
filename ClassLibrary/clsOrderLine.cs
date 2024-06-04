@@ -5,30 +5,32 @@ namespace ClassLibrary
     public class clsOrderLine
     {
         //private data members for the properties
-        private int mPrice;
-        private int mQuantity;
-        private int mProduct_id;
         private int mOrder_id;
+        private int mProduct_id;
+        private int mQuantity;
+        private int mPrice;
 
-        public int Price
+
+
+        public int Order_id
         {
-            get { return mPrice; } 
-            set { mPrice = value; }
-        }
-        public int Quantity
-        {
-            get { return mQuantity; }
-            set { mQuantity = value; }
+            get { return mOrder_id; }
+            set { mOrder_id = value; }
         }
         public int Product_id
         {
             get { return mProduct_id; }
             set { mProduct_id = value; }
         }
-        public int Order_id
+        public int Quantity
         {
-            get { return mOrder_id; }
-            set { mOrder_id = value; }
+            get { return mQuantity; }
+            set { mQuantity = value; }
+        }
+        public int Price
+        {
+            get { return mPrice; }
+            set { mPrice = value; }
         }
 
         public bool Find(int orderID, int productID)

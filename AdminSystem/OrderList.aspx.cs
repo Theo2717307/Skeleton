@@ -16,6 +16,7 @@ public partial class _1_List : System.Web.UI.Page
         {
             //update the list box
             DisplayOrders();
+            DisplayOrderLine();
         }
 
         //create a new instance of clsOrderUser
@@ -23,7 +24,10 @@ public partial class _1_List : System.Web.UI.Page
         //get data from session object
         a_user = (clsOrderUser)Session["a_user"];
         //display the username
-        Response.Write("Logged in as: " + a_user.Username);
+        if (a_user != null)
+        {
+            Response.Write("Logged in as: " + a_user.Username);
+        }
     }
 
     void DisplayOrders()
@@ -44,6 +48,9 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the order line collection
         clsOrderLineCollection order_lines = new clsOrderLineCollection();
         //set the data source to list of order lines in collection
+        
+        gridViewOrderLine.DataSource = order_lines.OrderLineList;
+        gridViewOrderLine.DataBind();
         
     }
     protected void btnADD_Click(object sender, EventArgs e)
@@ -117,9 +124,19 @@ public partial class _1_List : System.Web.UI.Page
         //TODO
     }
 
-    protected void lstOrderBox_MouseDoubleClick(object sender, EventArgs e)
+    protected void btnViewOrderLine_Click(object sender, EventArgs e)
     {
-        int index = lstOrderBox.SelectedIndex;
-        Console.WriteLine(index);
+        //create an instance of the order line
+        clsOrderLineCollection order_lines = new clsOrderLineCollection();
+        //retrieve the current order id
+        order_lines.FilterByOrderId(lstOrderBox.SelectedIndex);
+        gridViewOrderLine.DataSource = order_lines.OrderLineList;
+        //bind the data to the list
+        gridViewOrderLine.DataBind();
+    }
+
+    protected void btnResetOrderLine_Click(object sender, EventArgs e)
+    {
+        DisplayOrderLine();
     }
 }

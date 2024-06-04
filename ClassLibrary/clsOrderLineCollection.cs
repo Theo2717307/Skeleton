@@ -39,7 +39,18 @@ namespace ClassLibrary
             PopulateArray(DB);
 
         }
-
+        public void FilterByOrderId(Int32 order_id)
+        {
+            //filter the records by the order id
+            
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameter
+            DB.AddParameter("@order_id", order_id);
+            //execute the stored parameter
+            DB.Execute("sproc_tblOrderLine_SelectByOrderId");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
 
         void PopulateArray(clsDataConnection DB)
         {
