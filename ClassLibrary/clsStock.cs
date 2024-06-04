@@ -139,7 +139,7 @@ namespace ClassLibrary
             mstockName = "VW Golf";
             mstockDetails = "1 Litre";
             mquantity = "32";
-            munit_price = "10000";
+            munit_price = "10k";
             mlast_restock_date = Convert.ToDateTime("15/01/2024");
             mdiscontinued = false;
             // always return true

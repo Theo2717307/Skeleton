@@ -1,6 +1,6 @@
-﻿namespace ClassLibrary
-{
-    public class clsStockCollection
-    {
-    }
-}
+﻿using System;
+using System.Collections.Generic;
+
+namespace ClassLibrary
+{ }
+    
