@@ -8,8 +8,25 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:ListBox ID="lstOrderBox" runat="server" style="z-index: 1; position: initial; height: 414px; width: 414px; right: 1065px;"></asp:ListBox>
+        <div style="display: flex;">
+            <div>
+                <asp:ListBox ID="lstOrderBox" runat="server" 
+                    style="z-index: 1; min-height: 40vh; min-width: 30%;"></asp:ListBox>
+
+            </div>
+            <div style="display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 2vh;
+                        gap: 2vh; ">
+                <asp:Button ID="btnViewOrderLine"  runat="server" style="z-index: 1; position:center; " Text="Apply" OnClick="btnViewOrderLine_Click" />
+                <asp:Button ID="btnResetViewOrderLine" runat="server" Text="Reset" OnClick="btnResetOrderLine_Click" />
+            </div>
+            <div>
+                <asp:GridView ID="gridViewOrderLine" runat="server"
+                    style="z-index: 1; min-height: 40vh; min-width: 30%;"></asp:GridView>
+            </div>
         </div>
         <div>
             <asp:Button ID="btnADD" runat="server" style="z-index: 1; padding-inline: 25px; margin-inline: 2em;" Text="ADD" OnClick="btnADD_Click" />

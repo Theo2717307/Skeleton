@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,6 +16,7 @@ public partial class _1_List : System.Web.UI.Page
         {
             //update the list box
             DisplayOrders();
+            DisplayOrderLine();
         }
 
         //create a new instance of clsOrderUser
@@ -22,7 +24,10 @@ public partial class _1_List : System.Web.UI.Page
         //get data from session object
         a_user = (clsOrderUser)Session["a_user"];
         //display the username
-        Response.Write("Logged in as: " + a_user.Username);
+        if (a_user != null)
+        {
+            Response.Write("Logged in as: " + a_user.Username);
+        }
     }
 
     void DisplayOrders()
@@ -37,6 +42,16 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderBox.DataTextField = "Order_timestamp";
         //bind the data to the list
         lstOrderBox.DataBind();
+    }
+    void DisplayOrderLine()
+    {
+        //create an instance of the order line collection
+        clsOrderLineCollection order_lines = new clsOrderLineCollection();
+        //set the data source to list of order lines in collection
+        
+        gridViewOrderLine.DataSource = order_lines.OrderLineList;
+        gridViewOrderLine.DataBind();
+        
     }
     protected void btnADD_Click(object sender, EventArgs e)
     {
@@ -107,5 +122,21 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         //TODO
+    }
+
+    protected void btnViewOrderLine_Click(object sender, EventArgs e)
+    {
+        //create an instance of the order line
+        clsOrderLineCollection order_lines = new clsOrderLineCollection();
+        //retrieve the current order id
+        order_lines.FilterByOrderId(lstOrderBox.SelectedIndex);
+        gridViewOrderLine.DataSource = order_lines.OrderLineList;
+        //bind the data to the list
+        gridViewOrderLine.DataBind();
+    }
+
+    protected void btnResetOrderLine_Click(object sender, EventArgs e)
+    {
+        DisplayOrderLine();
     }
 }

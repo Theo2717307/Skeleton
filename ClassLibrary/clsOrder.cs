@@ -55,16 +55,6 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find_old(int testOrderID)
-        {
-            //set the private data members to the test data value
-            mOrder_id = 15;
-            mCustomer_id = 26;
-            mOrder_timestamp = Convert.ToDateTime("10/05/24");
-            mOrder_processed = true;
-            //always return true
-            return true;
-        }
         public bool Find(int orderID)
         {
             //create an instance of the data connection
