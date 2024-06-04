@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,6 +38,13 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderBox.DataTextField = "Order_timestamp";
         //bind the data to the list
         lstOrderBox.DataBind();
+    }
+    void DisplayOrderLine()
+    {
+        //create an instance of the order line collection
+        clsOrderLineCollection order_lines = new clsOrderLineCollection();
+        //set the data source to list of order lines in collection
+        
     }
     protected void btnADD_Click(object sender, EventArgs e)
     {
@@ -107,5 +115,11 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         //TODO
+    }
+
+    protected void lstOrderBox_MouseDoubleClick(object sender, EventArgs e)
+    {
+        int index = lstOrderBox.SelectedIndex;
+        Console.WriteLine(index);
     }
 }

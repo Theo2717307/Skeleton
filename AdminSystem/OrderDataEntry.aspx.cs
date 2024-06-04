@@ -51,7 +51,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        //redirect to the Order List page
+        Response.Redirect("OrderList.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
