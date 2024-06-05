@@ -36,7 +36,7 @@
             <asp:Label ID="lblError" runat="server" ForeColor="Red" style="z-index: 1; left: 16px; top: 300px; position: absolute"></asp:Label>
             <asp:Button ID="btnOK" runat="server" height="26px" OnClick="btnOK_Click" style="z-index: 1; left: 14px; top: 344px; position: absolute; right: 1411px" Text="OK" width="60px" />
             <asp:Label ID="lblSupplier_Trade_Restrictions" runat="server" style="z-index: 1; left: 16px; top: 270px; position: absolute; height: 24px" Text="Restrictions:"></asp:Label>
-            <asp:CheckBox ID="chkYes" runat="server" style="z-index: 1; top: 226px; position: absolute; left: 104px" Text="Yes" />
+            <asp:CheckBox ID="chkYes" runat="server" style="z-index: 1; top: 226px; position: absolute; left: 104px" Text="Yes" OnCheckedChanged="chkYes_CheckedChanged" />
         </p>
         <asp:Button ID="btnCancel" runat="server" height="26px" style="z-index: 1; left: 89px; top: 344px; position: absolute;" Text="Cancel" Width="60px" />
         <p>

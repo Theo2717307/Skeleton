@@ -104,7 +104,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(long pNumber)
+       /* public bool Find(long pNumber)
         {
             throw new NotImplementedException();
         }
@@ -112,9 +112,9 @@ namespace ClassLibrary
         public bool Find(bool sExport)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
-        public string Valid(string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country, bool supplier_Export, bool supplier_Trade_Restrictions)
+        public string Valid(string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country)
         {
             //create a string variable to store the error
             String Error = "";
@@ -131,10 +131,75 @@ namespace ClassLibrary
                 Error = Error + "The Supplier Phone Number may not be less than 11 characters : ";
             }
             //if the Supplier Phone Number is greater than 500 characters
-            if (supplier_Phone_Number.Length >= 11)
+            if (supplier_Phone_Number.Length >= 50)
             {
                 //record the error
                 Error = Error + "The Supplier Phone Number may not be greater than 11 characters : ";
+            }
+
+
+            //if the Supplier Address is blank
+            if (supplier_Address.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Supplier Address may not be blank : ";
+            }
+
+            //if the Supplier Phone Number is less than 11 characters
+            if (supplier_Address.Length < 6)
+            {
+                //record the error
+                Error = Error + "The Supplier Phone Number may not be less than 6 characters : ";
+            }
+
+            //if the Supplier Phone Number is greater than 500 characters
+            if (supplier_Address.Length >= 50)
+            {
+                //record the error
+                Error = Error + "The Supplier Address may not be greater than 50 characters : ";
+            }
+
+
+            //if the Supplier email is blank
+            if (supplier_Email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Supplier Address may not be blank : ";
+            }
+
+            //if the Suppliere email less than 3
+            if (supplier_Email.Length < 3)
+            {
+                //record the error
+                Error = Error + "The Supplier Phone Number may not be less than 3 characters : ";
+            }
+
+            //if the Supplier Phone Number is greater than 500 characters
+            if (supplier_Email.Length >= 30)
+            {
+                //record the error
+                Error = Error + "The Supplier Address may not be greater than 30 characters : ";
+            }
+
+            //if the Supplier email is blank
+            if (supplier_Country.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Supplier Address may not be blank : ";
+            }
+
+            //if the Suppliere email less than 3
+            if (supplier_Country.Length < 4)
+            {
+                //record the error
+                Error = Error + "The Supplier Phone Number may not be less than 3 characters : ";
+            }
+
+            //if the Supplier Phone Number is greater than 500 characters
+            if (supplier_Country.Length >= 20)
+            {
+                //record the error
+                Error = Error + "The Supplier Address may not be greater than 30 characters : ";
             }
             //return any error messages
             return Error;

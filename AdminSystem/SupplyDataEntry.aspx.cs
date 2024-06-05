@@ -18,24 +18,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of cls Supply
         clsSupply Supplier1 = new clsSupply();
         //capture the supplier name
-        Supplier1.Supplier_Name = txtSupplier_Name.Text;
+        //string Supplier_Name = txtSupplier_Name.Text;
         //capture the supplier number
-        Supplier1.Supplier_Phone_Number = txtSupplier_Phone_Number.Text;
+        string Supplier_Phone_Number = txtSupplier_Phone_Number.Text;
         //capture the supplier address
-        Supplier1.Supplier_Address = txtSupplier_Address.Text;
+        string Supplier_Address = txtSupplier_Address.Text;
         //capture the supplier email
-        Supplier1.Supplier_Email = txtSupplier_Email.Text;
+        string Supplier_Email = txtSupplier_Email.Text;
         //capture the supplier country
-        Supplier1.Supplier_Country = txtSupplier_Country.Text;
+        string Supplier_Country = txtSupplier_Country.Text;
         //capture the supplier export check box
-        Supplier1.Supplier_Export = Supplier1.Supplier_Export = chkYes.Checked;
+        string Supplier_Export = chkYes.Text;
         //capture the supplier trade restrictions check box
-        Supplier1.Supplier_Trade_Restrictions = Supplier1.Supplier_Trade_Restrictions = chkYes2.Checked;
+        string Supplier_Trade_Restrictions = chkYes2.Text;
 
-        //store the name in the session object
-        Session["Supplier1"] = Supplier1;
-        //navigate to the view page
-        Response.Redirect("SupplyViewer.aspx");
+        //validate the data
+        string Error = Supplier1.Valid(Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+        if(Error == "") 
+        {
+            //capture the supplier phone number
+            Supplier1.Supplier_Phone_Number = txtSupplier_Phone_Number.Text;
+            //capture supplier address
+            Supplier1.Supplier_Address = txtSupplier_Address.Text;
+            //capture the supplier email
+            Supplier1.Supplier_Email = txtSupplier_Email.Text;
+            //capture the supplier country
+            Supplier1.Supplier_Country = txtSupplier_Country.Text;
+
+            //store the name in the session object
+            Session["Supplier1"] = Supplier1;
+            //navigate to the view page
+            Response.Redirect("SupplyViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
+       
 
 
     }
@@ -68,5 +89,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkYes.Checked = Supplier_Name.Supplier_Export;
             chkYes2.Checked = Supplier_Name.Supplier_Trade_Restrictions;
         }
+    }
+
+    protected void chkYes_CheckedChanged(object sender, EventArgs e)
+    {
+
     }
 }
