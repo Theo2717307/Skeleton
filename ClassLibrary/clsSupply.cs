@@ -70,8 +70,22 @@ namespace ClassLibrary
             }
 
         }
-        public bool Supplier_Export { get; set; }
-        public bool Supplier_Trade_Restrictions { get; set; }
+        public bool Supplier_Export { get 
+            {
+                return mSupplier_Export;
+            } set 
+            {
+                mSupplier_Export = value;
+            } 
+        }
+        public bool Supplier_Trade_Restrictions { get 
+            {
+                return mSupplier_Trade_Restrictions;
+            } set 
+            {
+                mSupplier_Trade_Restrictions = value;
+            } 
+        }
 
         // FIND METHOD //
         public bool Find(string Supplier_Name)

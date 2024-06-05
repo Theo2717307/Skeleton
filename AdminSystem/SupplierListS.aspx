@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SupplyViewer.aspx.cs" Inherits="_1Viewer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SupplierListS.aspx.cs" Inherits="SupplierListS" %>
 
 <!DOCTYPE html>
-<asp:ListBox runat="server"></asp:ListBox>
-tml">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
 </head>
