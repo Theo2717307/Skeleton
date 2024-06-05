@@ -192,9 +192,4 @@ namespace ClassLibrary
 
     }
 
-    public class clsStockCollection
-    {
-        public int StockList { get; set; }
-        public int Count { get; set; }
-    }
 }
