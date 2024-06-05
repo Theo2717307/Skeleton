@@ -36,14 +36,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         {
+          
             AnStock.stockName = stockName;
             AnStock.stockDetails = stockDetails;
             AnStock.unit_price = unit_price;
             AnStock.quantity = quantity;
             AnStock.last_restock_date = Convert.ToDateTime(last_restock_date);
-            Session["AnStock"] = AnStock;
-            //navigate to view page
+            AnStock.discontinued = chkDiscontinued.Checked;
+            //create a new instance of stock collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the address property
+            StockList.ThisStock = AnStock;
+            //add the new record
+            StockList.Add();
+            //redirect back to list page
             Response.Redirect("StockViewer.aspx");
+
+
+
         }
         else
         {

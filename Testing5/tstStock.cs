@@ -525,7 +525,7 @@ namespace Testing5
             stockDetails = stockDetails.PadRight(51, 'j');
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -602,7 +602,7 @@ namespace Testing5
                                         //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -613,7 +613,7 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String quantity = ""; //This should trigger an error
+            String quantity = new string ('a',49); //This should trigger an error
                                                    //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
@@ -735,7 +735,7 @@ namespace Testing5
             //string c=variable to stor any error message
             String Error = "";
             //create some test data to pass to the methods
-            String unit_price = ""; //This should trigger an error
+            String unit_price = new string ('a',49); //This should trigger an error
                                                //invoke the methods
             Error = anStock.Valid(stockName, stockDetails, quantity, unit_price, last_restock_date);
             //test to see that the restult is correct
