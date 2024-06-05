@@ -51,19 +51,7 @@ namespace Testing5
             }
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            //create an instancE of class to create
-            clsStockCollection AllStock = new clsStockCollection();
-            //some test data to assign to the property
-            Int32 SomeCount = 2;
-            //assign the data to the property
-            AllStock.Count = SomeCount;
-            //Test to see that two values are the same
-            Assert.AreEqual(AllStock.Count, SomeCount);
-
-        }
+       
 
 
         [TestMethod]
@@ -117,14 +105,76 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void TwoRecordsPresent()
+        public void AddMethodOK()
         {
+
             //create an instancE of class to create
             clsStockCollection AllStock = new clsStockCollection();
-            // Test to see both values are the same
-            Assert.AreEqual(AllStock.Count, 2);
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            // Variable to store primary key
+            Int32 PrimaryKey = 0;
+            // set the properties
+            TestItem.discontinued = true;
+            TestItem.product_id = 9;
+            TestItem.stockName = "VW Golf";
+            TestItem.stockDetails = "1 litre";
+            TestItem.quantity = "30";
+            TestItem.unit_price = "13k";
+            TestItem.last_restock_date = DateTime.Now;
+            //set ThisStock to the test data
+            AllStock.ThisStock =TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.product_id = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see two values are the same
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
         }
 
-    
+        [TestMethod]
+        public void UpdateMethodOK()
+
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.discontinued = true;
+            TestItem.stockName = "VW Golf";
+            TestItem.stockDetails = "1 litre";
+            TestItem.last_restock_date = DateTime.Now;
+            TestItem.unit_price = "13k";
+            TestItem.quantity = "30";
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.product_id = PrimaryKey;
+            //modify the test record
+            TestItem.discontinued = false;
+            TestItem.stockName = "BMW 2 Series";
+            TestItem.stockDetails = "2 litre";
+            TestItem.last_restock_date = DateTime.Now;
+            TestItem.unit_price = "12k";
+            TestItem.quantity = "15";
+            //set the record based on the new test data
+            AllStock.ThisStock = TestItem;
+            //update the record
+            AllStock.Update();
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see if ThisStaff matche sthe test data
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
+        }
+
     }
 }
