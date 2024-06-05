@@ -116,17 +116,24 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnApply_Click(object sender, EventArgs e)
     {
-        //TODO
+        //create an instance of the order collection
+        clsOrderCollection orders = new clsOrderCollection();
+        //retrieve the current filters selected
+        String date_from = CalendarFrom.SelectedDate.ToString();
+        String date_to = CalendarTo.SelectedDate.ToString();
+        orders.FilterByDate(date_from, date_to);
+        lstOrderBox.DataSource = orders.OrderList;
+        lstOrderBox.DataBind();
     }
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
-        //TODO
+        DisplayOrders();
     }
 
     protected void btnViewOrderLine_Click(object sender, EventArgs e)
     {
-        //create an instance of the order line
+        //create an instance of the order line collection
         clsOrderLineCollection order_lines = new clsOrderLineCollection();
         //retrieve the current order id
         order_lines.FilterByOrderId(lstOrderBox.SelectedIndex);

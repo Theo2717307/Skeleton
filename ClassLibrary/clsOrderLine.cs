@@ -109,7 +109,7 @@ namespace ClassLibrary
             Int32 price_temp;
             try
             {
-                price_temp = Convert.ToInt32(quantity);
+                price_temp = Convert.ToInt32(price);
                 if (price_temp < 0) { error_message += "price must be a positive number : "; }
             }
             catch
