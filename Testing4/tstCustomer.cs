@@ -167,7 +167,7 @@ namespace Testing4
             //invoke the methods 
             Found = anCustomer.Find(Customer_Id);
             //check the customer firstname property
-            if (anCustomer.Customer_FirstName != "Karkit")
+            if (anCustomer.Customer_FirstName != "kit")
             {
                 OK = false;
             }
@@ -300,7 +300,7 @@ namespace Testing4
             //invoke the methods 
             Found = anCustomer.Find(Customer_Id);
             //check the customer address property
-            if (anCustomer.Registration != Convert.ToDateTime("20/02/2023"))
+            if (anCustomer.Registration != Convert.ToDateTime("28/05/2024"))
             {
                 OK = false;
             }
