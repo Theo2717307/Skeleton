@@ -11,15 +11,19 @@ using System.Web.UI.WebControls;
 public partial class _1_DataEntry : System.Web.UI.Page
 
 {
-    Int32 vehicleIdVariable;
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        //get the number of the address to be processed
-        vehicleIdVariable = Convert.ToInt32(Session["vehicle_id"]);
-        //If this is the first Time the page is displayed
+
+   Int32 Product_Id;
+
+	protected void Page_Load(object sender, EventArgs e)
+	{
+        // get the number of the stock to be processed
+        Product_Id = Convert.ToInt32(Session["product_id"]);
         if (IsPostBack == false)
         {
-            if (vehicleIdVariable != -1)
+            //if this is not a new record
+            if (Product_Id != -1)
+
+    
             {
                 //update the list box
                 DisplayStock();
@@ -35,10 +39,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create instance of the stock book
         clsStockCollection StockBook = new clsStockCollection();
-        //find the record to updat
-        StockBook.ThisStock.Find(vehicleIdVariable);
-        //dispaly the data for the record
-        txtVehicleID.Text = StockBook.ThisStock.vehicle_id.ToString();
+
+
+   //find the record to update
+        StockBook.ThisStock.Find(Product_Id);
+        //display the data for the record
+        txtProductID.Text = StockBook.ThisStock.product_id.ToString();
+        
         txtStockName.Text = StockBook.ThisStock.stockName.ToString();
         txtStockDetails.Text = StockBook.ThisStock.stockDetails.ToString();
         txtquantity.Text = StockBook.ThisStock.quantity.ToString();

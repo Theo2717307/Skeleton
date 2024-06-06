@@ -14,6 +14,14 @@
         <div>
             <asp:ListBox ID="lstStockList" runat="server" style="z-index: 1; left: 15px; top: 42px; position: absolute; height: 290px; width: 437px"></asp:ListBox>
         </div>
+
+        <asp:ListBox ID="lstStockList" runat="server" Height="272px" Width="272px"></asp:ListBox>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" /> 
+        </p> 
+        <p>
+            <! -- <asp:Button ID="btnEdit" runat="server" Height="23px" OnClick="btnEdit_Click" Text="Edit" /> 
+
         <br />
         <br />
         <br />

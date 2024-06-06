@@ -6,6 +6,7 @@ namespace ClassLibrary
 {
     public class clsSupply
     {
+        private Int32 mSupplier_Id;
         private String mSupplier_Name;
         private String mSupplier_Phone_Number;
         private String mSupplier_Address;
@@ -70,21 +71,51 @@ namespace ClassLibrary
             }
 
         }
-        public bool Supplier_Export { get; set; }
-        public bool Supplier_Trade_Restrictions { get; set; }
+        public bool Supplier_Export {
+            get 
+            {
+                return mSupplier_Export;
+            } set
+            {
+                mSupplier_Export = value;
+            }
+        }
+        public bool Supplier_Trade_Restrictions
+        {
+            get
+            {
+                return mSupplier_Trade_Restrictions;
+            }
+            set
+            {
+                mSupplier_Trade_Restrictions = value;
+            }
+        }
+        public Int32 Supplier_Id {
+            get
+            {
+                return mSupplier_Id;
+            }
+            set
+            {
+                mSupplier_Id = value;
+            }
+        }
 
         // FIND METHOD //
-        public bool Find(string Supplier_Name)
+      
+        public bool Find(int Supplier_Id)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the supplier name to search for
-            DB.AddParameter("@Supplier_Name", Supplier_Name);
+            DB.AddParameter("@Supplier_Id", Supplier_Id);
             //execute the stored procedure
-            DB.Execute("sproc_tblSupply_FilterBySupplier_Name");
+            DB.Execute("sproc_tblSupply_FilterBySupplier_Id");
             if (DB.Count == 1)
             {
                 //copy the data from the databse to the private data members
+                mSupplier_Id = Convert.ToInt32(DB.DataTable.Rows[0]["Supplier_Id"]);
                 mSupplier_Name = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Name"]);
                 mSupplier_Phone_Number = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Phone_Number"]);
                 mSupplier_Address = Convert.ToString(DB.DataTable.Rows[0]["Supplier_Address"]);
@@ -104,38 +135,92 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(long pNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Find(bool sExport)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Valid(string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country, bool supplier_Export, bool supplier_Trade_Restrictions)
+        public string Valid(string supplier_Name, string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country)
         {
             //create a string variable to store the error
             String Error = "";
-            //if the Supplier Phone Number is blank
+            
+            
+
+
+            //if the supplier first name is blank
+            if (supplier_Name.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The Supplier Name may not be blank : ";
+            }
+
+            //if the supplier first name is greater than 50 character
+            if (supplier_Name.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Supplier Name must be less than 50 Character : ";
+            }
+
+            //if the phone Number 
             if (supplier_Phone_Number.Length == 0)
             {
-                //record the error
-                Error = Error + "The Supplier Phone Number may not be blank : ";
+                Error = Error + "The Supplier Phone may not be blank : ";
             }
-            //if the Supplier Phone Number is less than 11 characters
+
+            //if the phone number 
+            if (supplier_Phone_Number.Length > 20)
+            {
+                //record the error
+                Error = Error + "The PhoneNumber must be less than 20 Character : ";
+            }
+
             if (supplier_Phone_Number.Length < 11)
             {
-                //record the error
-                Error = Error + "The Supplier Phone Number may not be less than 11 characters : ";
+                Error = Error + "Phone number must be greater than 11";
             }
-            //if the Supplier Phone Number is greater than 500 characters
-            if (supplier_Phone_Number.Length >= 11)
+
+
+            
+
+            if (supplier_Address.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The Address may not be blank : ";
+            }
+
+            //if the Customer password is greater than 20 character
+            if (supplier_Address.Length > 50)
             {
                 //record the error
-                Error = Error + "The Supplier Phone Number may not be greater than 11 characters : ";
+                Error = Error + "The Address must be less than 50 Character : ";
             }
+
+
+            if (supplier_Email.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The Address may not be blank : ";
+            }
+
+            //if the Customer password is greater than 20 character
+            if (supplier_Email.Length > 30)
+            {
+                //record the error
+                Error = Error + "The Email must be less than 30 Character : ";
+            }
+   
+
+
+
+            if (supplier_Country.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The supplier Country may not be blank : ";
+            }
+
+            //if the Customer password is greater than 20 character
+            if (supplier_Country.Length > 20)
+            {
+                //record the error
+                Error = Error + "The supplier must be less than 50 Character : ";
+            }
+
             //return any error messages
             return Error;
         }
