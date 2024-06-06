@@ -34,15 +34,15 @@ namespace Testing5
 
 
         [TestMethod]
-        public void product_idPropertyOK()
+        public void vehicle_idPropertyOK()
         {
 
 
             clsStock AnStock = new clsStock();
 
             Int32 TestData = 10;
-            AnStock.product_id = TestData;
-            Assert.AreEqual(AnStock.product_id, TestData);
+            AnStock.vehicle_id = TestData;
+            Assert.AreEqual(AnStock.vehicle_id, TestData);
         }
 
         public void stockNamePropertyOK()
@@ -120,9 +120,9 @@ namespace Testing5
             // Boolean variable to store results of validation
             Boolean Found = false;
             //Test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //Invoke the method
-            Found = AnStock.Find(product_id);
+            Found = AnStock.Find(vehicle_id);
             //test to see if results are true
             Assert.IsTrue(Found);
 
@@ -131,7 +131,7 @@ namespace Testing5
     
 
 
-        public void Testproduct_idFound()
+        public void Testvehicle_idFound()
         {
             //Create an instance of the class we want to create 
             clsStock AnStock = new clsStock();
@@ -140,11 +140,11 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
-            //check the product id 
-            if (AnStock.product_id != 21)
+            Found = AnStock.Find(vehicle_id);
+            //check the vehicle id 
+            if (AnStock.vehicle_id != 21)
             {
                 OK = false;
             }
@@ -164,9 +164,9 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
+            Found = AnStock.Find(vehicle_id);
             //check the product id 
             if (AnStock.stockName != "VW Golf")
             {
@@ -188,10 +188,10 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
-            //check the product id 
+            Found = AnStock.Find(vehicle_id);
+            //check the vehicle id 
             if (AnStock.stockDetails != "1 Litre")
             {
                 OK = false;
@@ -212,10 +212,10 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
-            //check the product id 
+            Found = AnStock.Find(vehicle_id);
+            //check the vehicle id 
             if (AnStock.quantity != "32")
             {
                 OK = false;
@@ -236,9 +236,9 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
+            Found = AnStock.Find(vehicle_id);
             //check the product id 
             if (AnStock.unit_price != "13k")
             {
@@ -259,9 +259,9 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
+            Found = AnStock.Find(vehicle_id);
             //check the product id 
             if (AnStock.last_restock_date != Convert.ToDateTime("15/01/2024"))
             {
@@ -283,9 +283,9 @@ namespace Testing5
             //Boolean to record if data is ok
             Boolean OK = true;
             // test data to use with the method
-            Int32 product_id = 10;
+            Int32 vehicle_id = 10;
             //invoke the method
-            Found = AnStock.Find(product_id);
+            Found = AnStock.Find(vehicle_id);
             //check the product id 
             if (AnStock.discontinued != true)
             {
