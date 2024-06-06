@@ -8,7 +8,7 @@ namespace ClassLibrary
     public class clsStock
     {
         //private data member for the product id property
-        private Int32 mproduct_id;
+        private Int32 mvehicle_id;
         private string mstockName;
         private string mstockDetails;
         private string munit_price;
@@ -20,17 +20,17 @@ namespace ClassLibrary
 
        
         //product_id public property
-        public Int32 product_id
+        public Int32 vehicle_id
         {
             get
             {
                 // this line of code sends data out of the property
-                return mproduct_id;
+                return mvehicle_id;
 
             }
             set
             {
-                mproduct_id = value;
+                mvehicle_id = value;
             }
         }
 
@@ -129,24 +129,43 @@ namespace ClassLibrary
                 mdiscontinued = value;
             }
         }
-      
 
-        public bool Find(int product_id)
+
+        public bool Find(int stockDetails)
         {
-            // set the private data members to the test data value
-            mproduct_id = 10;
-            mstockName = "VW Golf";
-            mstockDetails = "1 Litre";
-            mquantity = "32";
-            munit_price = "10k";
-            mlast_restock_date = Convert.ToDateTime("15/01/2024");
-            mdiscontinued = false;
-            // always return true
-            return true;
+            // Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
 
+            // Add the parameter for the Staff_ID to search for
+            DB.AddParameter("@stockDetails", stockDetails);
+
+            // Execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterBystockDetails");
+
+            // If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // Copy the data from the database to the private data members
+                mvehicle_id = Convert.ToInt32(DB.DataTable.Rows[0]["vehicle_id"]);
+                mstockName = Convert.ToString(DB.DataTable.Rows[0]["stockName"]);
+                mstockDetails = Convert.ToString(DB.DataTable.Rows[0]["stockDetails"]);
+                mquantity = Convert.ToString(DB.DataTable.Rows[0]["quantity"]);
+                munit_price = Convert.ToString(DB.DataTable.Rows[0]["unit_price"]);
+                mlast_restock_date = Convert.ToDateTime(DB.DataTable.Rows[0]["last_restock_date"]);
+                mdiscontinued = Convert.ToBoolean(DB.DataTable.Rows[0]["discontinued"]);
+
+                // Return that everything worked OK
+                return true;
+            }
+            // If no record was found
+            else
+            {
+                // Return false indicating there is a problem
+                return false;
+            }
         }
 
-     
+
 
         public string Valid(string stockName, string stockDetails, string quantity, string unit_price, string last_restock_date)
         {

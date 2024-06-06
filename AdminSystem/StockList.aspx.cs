@@ -24,7 +24,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the data source to list of stock in the collection
         lstStockList.DataSource = Stock.StockList;
         // set the name of the primary key
-        lstStockList.DataValueField = "product_id";
+        lstStockList.DataValueField = "vehicle_id";
         //set the data field to display
         lstStockList.DataTextField = "stockName";
         //bind the data to the list
@@ -36,7 +36,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //store -1 into the session object t indicate this is a new record
-        Session["product_id"] = -1;
+        Session["vehicle_id"] = -1;
         //redirect to the data entry page
         Response.Redirect("StockDataEntry.aspx");
 
@@ -45,14 +45,14 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         //variable to store the primary key value of the record to be edited
-        Int32 product_id;
+        Int32 vehicle_id;
         //if a record has been selected from the list
         if (lstStockList.SelectedIndex != -1)
         {
             //get the primary key value of the record to edit
-            product_id = Convert.ToInt32(lstStockList.SelectedValue);
+            vehicle_id = Convert.ToInt32(lstStockList.SelectedValue);
             //store the data in the session object
-            Session["product_id"] = product_id;
+            Session["vehicle_id"] = vehicle_id;
             //redirect to the edit page
             Response.Redirect("StockDataEntry.aspx");
         }
@@ -60,5 +60,43 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to edit";
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be dlted
+        Int32 vehicle_id;
+        //if a record has been selected fromthe list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            //get th primary key value of the record delete
+            vehicle_id = Convert.ToInt32(lstStockList.SelectedValue);
+            //store the data in the session object
+            Session["vehicle_id"] = vehicle_id;
+            // redirect to the delete page
+            Response.Redirect("StockConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            //display an error messgae
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the staff object
+        clsStockCollection AnStock = new clsStockCollection();
+        //retrieve the value of positn from presentation layer
+        AnStock.ReportBystockDetails(txtFilter.Text);
+        //set the data source to the list of staff  in th ecollection
+        lstStockList.DataSource = AnStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "vehicle_id";
+        //set the name of the field to display
+        lstStockList.DataTextField = "stockDetaills";
+        //bind the data to the list
+        lstStockList.DataBind();
+
     }
 }
