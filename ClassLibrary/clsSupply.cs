@@ -135,10 +135,27 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string supplier_name, string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country)
+        public string Valid(string supplier_Name, string supplier_Phone_Number, string supplier_Address, string supplier_Email, string supplier_Country)
         {
             //create a string variable to store the error
             String Error = "";
+            
+            
+
+
+            //if the supplier first name is blank
+            if (supplier_Name.Length == 0)
+            {
+                //records the error 
+                Error = Error + "The Supplier Name may not be blank : ";
+            }
+
+            //if the supplier first name is greater than 50 character
+            if (supplier_Name.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Supplier Name must be less than 50 Character : ";
+            }
 
             //if the phone Number 
             if (supplier_Phone_Number.Length == 0)
@@ -159,29 +176,7 @@ namespace ClassLibrary
             }
 
 
-
-            //if the supplier first name is blank
-            if (supplier_name.Length == 0)
-            {
-                //records the error 
-                Error = Error + "The Supplier Name may not be blank : ";
-            }
-
-            //if the supplier first name is greater than 50 character
-            if (supplier_name.Length > 50)
-            {
-                //record the error
-                Error = Error + "The Supplier Name must be less than 50 Character : ";
-            }
-            if (supplier_name.Length < 2)
-            {
-                Error = Error + "Supplier Name must be greater than 2 ";
-            }
-
             
-
-            
-            /*
 
             if (supplier_Address.Length == 0)
             {
@@ -204,16 +199,14 @@ namespace ClassLibrary
             }
 
             //if the Customer password is greater than 20 character
-            if (supplier_Email.Length > 50)
+            if (supplier_Email.Length > 30)
             {
                 //record the error
-                Error = Error + "The Email must be less than 50 Character : ";
+                Error = Error + "The Email must be less than 30 Character : ";
             }
-            if (supplier_Email.Length < 3)
-            {
-                //record the error
-                Error = Error + "The Email length is too short : ";
-            }
+   
+
+
 
             if (supplier_Country.Length == 0)
             {
@@ -222,11 +215,11 @@ namespace ClassLibrary
             }
 
             //if the Customer password is greater than 20 character
-            if (supplier_Country.Length > 50)
+            if (supplier_Country.Length > 20)
             {
                 //record the error
                 Error = Error + "The supplier must be less than 50 Character : ";
-            }*/
+            }
 
             //return any error messages
             return Error;

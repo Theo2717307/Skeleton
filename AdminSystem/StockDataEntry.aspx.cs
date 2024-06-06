@@ -11,16 +11,16 @@ using System.Web.UI.WebControls;
 public partial class _1_DataEntry : System.Web.UI.Page
 
 {
-    Int32 product_id;
+   Int32 Product_Id;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
         // get the number of the stock to be processed
-        product_id = Convert.ToInt32(Session["product_id"]);
+        Product_Id = Convert.ToInt32(Session["product_id"]);
         if (IsPostBack == false)
         {
             //if this is not a new record
-            if (product_id != -1)
+            if (Product_Id != -1)
             {
                 //display the current data for the record
                 DisplayStocks();
@@ -35,7 +35,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create instance of the stock book
         clsStockCollection StockBook = new clsStockCollection();
         //find the record to update
-        StockBook.ThisStock.Find(product_id);
+        StockBook.ThisStock.Find(Product_Id);
         //display the data for the record
         txtProductID.Text = StockBook.ThisStock.product_id.ToString();
         txtStockName.Text = StockBook.ThisStock.stockName.ToString();

@@ -12,7 +12,7 @@ namespace Testing1
         //good test data 
         //create some test data to pass the method
         string Supplier_Name = "BMW";
-        string Supplier_Phone_Number = "1168327625";
+        string Supplier_Phone_Number = "11683276254";
         string Supplier_Address = "Watermead Business Park";
         string Supplier_Email = "bentleyleicester@gmail.com";
         string Supplier_Country = "England";
@@ -146,7 +146,7 @@ namespace Testing1
             Boolean Found = false;
             Boolean OK = true;
             Found = Example_Supplier.Find(Supplier_Id);
-            if (Example_Supplier.Supplier_Phone_Number != "1168327625")
+            if (Example_Supplier.Supplier_Phone_Number != "11683276254")
             {
                 OK = false;
             }
@@ -250,7 +250,7 @@ namespace Testing1
             //string variable to store error
             String Error = "";
             //this should failed
-            string Supplier_Name = "a";
+            string Supplier_Name = "";
             //invoke the methods
             Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
             //test to see that the result is correct
@@ -265,7 +265,7 @@ namespace Testing1
             //string variable to store error
             String Error = "";
             //this should failed
-            string Supplier_Name = "aa";
+            string Supplier_Name = "a";
             //invoke the methods
             Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
             //test to see that the result is correct
@@ -487,6 +487,382 @@ namespace Testing1
             //this should failed
             string Supplier_Phone_Number = "";
             Supplier_Phone_Number = Supplier_Phone_Number.PadRight(100, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMinlessOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMin()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "a";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMinPlusOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "ss";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMaxLessOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            Supplier_Address = Supplier_Address.PadRight(49, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMax()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            Supplier_Address = Supplier_Address.PadRight(50, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMaxPlusOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            Supplier_Address = Supplier_Address.PadRight(51, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressMid()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            Supplier_Address = Supplier_Address.PadRight(50, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_AddressExtremeMax()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            Supplier_Address = Supplier_Address.PadRight(100, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void Supplier_EmailsMinlessOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Address = "";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailMin()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "a";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailMinPlusOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "ss";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailMaxLessOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "";
+            Supplier_Email = Supplier_Email.PadRight(29, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailMax()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "";
+            Supplier_Email = Supplier_Email.PadRight(30, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailMaxPlusOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "";
+            Supplier_Email = Supplier_Email.PadRight(31, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailMid()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "";
+            Supplier_Email = Supplier_Email.PadRight(15, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_EmailExtremeMax()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Email = "";
+            Supplier_Email = Supplier_Email.PadRight(100, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountryMinlessOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountryMin()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "a";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountryMinPlusOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "ss";
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountrylMaxLessOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "";
+            Supplier_Country = Supplier_Country.PadRight(19, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountryMax()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "";
+            Supplier_Country = Supplier_Country.PadRight(20, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountryMaxPlusOne()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "";
+            Supplier_Country = Supplier_Country.PadRight(21, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountrylMid()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "";
+            Supplier_Country = Supplier_Country.PadRight(10, 's');
+            //invoke the methods
+            Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Supplier_CountryExtremeMax()
+        {
+            //create an instance of the class
+            clsSupply anSupply = new clsSupply();
+            //string variable to store error
+            String Error = "";
+            //this should failed
+            string Supplier_Country = "";
+            Supplier_Country = Supplier_Country.PadRight(100, 's');
             //invoke the methods
             Error = anSupply.Valid(Supplier_Name, Supplier_Phone_Number, Supplier_Address, Supplier_Email, Supplier_Country);
             //test to see that the result is correct
