@@ -17,6 +17,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of cls Supply
         clsSupply Supplier1 = new clsSupply();
+        //capture the supplier Id
+        Supplier1.Supplier_Id = Convert.ToInt32(txtSupplier_Id.Text);
         //capture the supplier name
         Supplier1.Supplier_Name = txtSupplier_Name.Text;
         //capture the supplier number
@@ -50,17 +52,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create an instance of the name class
         clsSupply Supplier_Name = new clsSupply();
         //create a variable to store the primary key
-        string Bentley;
+        Int32 Supplier_Id;
         //create a variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        Bentley = (txtSupplier_Name.Text);
+        Supplier_Id = Convert.ToInt32(txtSupplier_Id.Text);
         //find the record
-        Found = Supplier_Name.Find(Bentley);
+        Found = Supplier_Name.Find(Supplier_Id);
         //if found
         if (Found == true)
         {
             //display the values of the properties in the form
+            txtSupplier_Name.Text = Supplier_Name.Supplier_Name;
             txtSupplier_Phone_Number.Text = Supplier_Name.Supplier_Phone_Number;
             txtSupplier_Address.Text = Supplier_Name.Supplier_Address;
             txtSupplier_Email.Text = Supplier_Name.Supplier_Email;
@@ -68,5 +71,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkYes.Checked = Supplier_Name.Supplier_Export;
             chkYes2.Checked = Supplier_Name.Supplier_Trade_Restrictions;
         }
+    }
+
+    protected void btnFind_Click1(object sender, EventArgs e)
+    {
+        //create an instance of the name class
+        clsSupply Supplier = new clsSupply();
+        //create a variable to store the primary key
+        Int32 Supplier_Id;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        Supplier_Id = Convert.ToInt32(txtSupplier_Id.Text);
+        //find the record
+        Found = Supplier.Find(Supplier_Id);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtSupplier_Name.Text = Supplier.Supplier_Name;
+            txtSupplier_Phone_Number.Text = Supplier.Supplier_Phone_Number;
+            txtSupplier_Address.Text = Supplier.Supplier_Address;
+            txtSupplier_Email.Text = Supplier.Supplier_Email;
+            txtSupplier_Country.Text = Supplier.Supplier_Country;
+            chkYes.Checked = Supplier.Supplier_Export;
+            chkYes2.Checked = Supplier.Supplier_Trade_Restrictions;
+        }
+
     }
 }
