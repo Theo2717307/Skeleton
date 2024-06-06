@@ -7,44 +7,33 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 public partial class _1_List : System.Web.UI.Page
 {
-    Int32 product_id;
+ 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        // if this is the first time the page is displayed
-        product_id = Convert.ToInt32(Session["product_id"]);
-    if (IsPostBack == false)
+        if (IsPostBack == false)
         {
-            if (product_id != -1)
-            {
-
-                //update the list box
-                DisplayStock();
-
-            }
-      
+            //update the list box
+            DisplayStocks();
         }
     }
 
-    void DisplayStock()
+    void DisplayStocks()
     {
         //create an instance of the stock collection
         clsStockCollection Stock = new clsStockCollection();
         //set the data source to list of stock in the collection
-         
-            
         lstStockList.DataSource = Stock.StockList;
         // set the name of the primary key
-        lstStockList.DataValueField = "stockName";
+        lstStockList.DataValueField = "product_id";
         //set the data field to display
-        lstStockList.DataTextField = "stockDetails";
+        lstStockList.DataTextField = "stockName";
         //bind the data to the list
         lstStockList.DataBind();
 
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnAdd_Click(object sender, EventArgs e)
     {
         //store -1 into the session object t indicate this is a new record
         Session["product_id"] = -1;
