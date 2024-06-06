@@ -11,50 +11,54 @@ using System.Web.UI.WebControls;
 public partial class _1_DataEntry : System.Web.UI.Page
 
 {
-    Int32 product_id;
-
-	protected void Page_Load(object sender, EventArgs e)
-	{
-        // get the number of the stock to be processed
-        product_id = Convert.ToInt32(Session["product_id"]);
+    Int32 vehicleIdVariable;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //get the number of the address to be processed
+        vehicleIdVariable = Convert.ToInt32(Session["vehicle_id"]);
+        //If this is the first Time the page is displayed
         if (IsPostBack == false)
         {
-            //if this is not a new record
-            if (product_id != -1)
+            if (vehicleIdVariable != -1)
             {
-                //display the current data for the record
-                DisplayStocks();
+                //update the list box
+                DisplayStock();
             }
 
         }
 
-	}
 
-         void DisplayStocks()
-         {
+    }
+
+
+    private void DisplayStock()
+    {
         //create instance of the stock book
         clsStockCollection StockBook = new clsStockCollection();
-        //find the record to update
-        StockBook.ThisStock.Find(product_id);
-        //display the data for the record
-        txtProductID.Text = StockBook.ThisStock.product_id.ToString();
+        //find the record to updat
+        StockBook.ThisStock.Find(vehicleIdVariable);
+        //dispaly the data for the record
+        txtVehicleID.Text = StockBook.ThisStock.vehicle_id.ToString();
         txtStockName.Text = StockBook.ThisStock.stockName.ToString();
         txtStockDetails.Text = StockBook.ThisStock.stockDetails.ToString();
         txtquantity.Text = StockBook.ThisStock.quantity.ToString();
         txtunitprice.Text = StockBook.ThisStock.unit_price.ToString();
         txtLastRestock.Text = StockBook.ThisStock.last_restock_date.ToString();
         chkDiscontinued.Text = StockBook.ThisStock.discontinued.ToString();
+    }
+    protected void btnClearFilter_Click(object sender, EventArgs e){
+    
+    }
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
 
-
-       }
-
-
-       protected void btnOK_Click1(object sender, EventArgs e)
+    }
+    
+    protected void btnOK_Click1(object sender, EventArgs e)
        {
 
         // create new instance of clsStock
         clsStock AnStock = new clsStock();
-        string product_id = txtProductID.Text;
         string stockName = txtStockName.Text;
         string stockDetails = txtStockDetails.Text;
         string unit_price = txtunitprice.Text;
@@ -69,7 +73,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         {
-            AnStock.product_id = Convert.ToInt32(product_id);
+            AnStock.vehicle_id = vehicleIdVariable;
             AnStock.stockName = stockName;
             AnStock.stockDetails = stockDetails;
             AnStock.unit_price = unit_price;
@@ -80,19 +84,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new instance of stock collection
             clsStockCollection StockList = new clsStockCollection();
 
-            //set ThisStock property
-            StockList.ThisStock = AnStock;
-            //Add the new record
-            StockList.Add();
+            if (vehicleIdVariable == -1)
+            {
+                // Add the new record
+                StockList.ThisStock = AnStock;
+                StockList.Add();
+            }
+            else
+            {
+                // Update the existing record
+                StockList.ThisStock.Find(vehicleIdVariable);
+                StockList.ThisStock = AnStock;
+                StockList.Update();
+            }
 
-            //redirect back to list page
+            // redirect back to list page
             Response.Redirect("StockList.aspx");
-
         }
-
-        //other wise it must be an update
         else
         {
+            // display errors
             lblError.Text = Error;
         }
 

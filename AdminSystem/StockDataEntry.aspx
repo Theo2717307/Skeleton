@@ -10,12 +10,12 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Label ID="product_id" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute" Text="Product ID"></asp:Label>
+        <asp:Label ID="vehicle_id" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute" Text="Vehicle ID"></asp:Label>
         <p>
             <asp:TextBox ID="txtStockName" runat="server" style="z-index: 1; left: 97px; top: 90px; position: absolute"></asp:TextBox>
         </p>
         <p>
-            <asp:TextBox ID="txtProductID" runat="server" style="z-index: 1; left: 97px; top: 31px; position: absolute; margin-bottom: 5px"></asp:TextBox>
+            <asp:TextBox ID="txtVehicleID" runat="server" style="z-index: 1; left: 97px; top: 31px; position: absolute; margin-bottom: 5px"></asp:TextBox>
             <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 11px; top: 92px; position: absolute; height: 19px; bottom: 565px; width: 68px;" Text="Stock Name"></asp:Label>
         </p>
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 10px; top: 143px; position: absolute; height: 19px; width: 68px;" Text="Stock Details"></asp:Label>

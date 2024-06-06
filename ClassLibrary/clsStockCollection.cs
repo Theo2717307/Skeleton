@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 
 namespace ClassLibrary
-{ 
+{
     public class clsStockCollection
     {
         //Private datamember for the list
@@ -14,13 +14,18 @@ namespace ClassLibrary
         // private data member for ThisStock
         clsStock mThisStock = new clsStock();
 
+
+        // Constructor for the class
+        
+   
+
         public clsStock ThisStock
         {
             get
             {
                 //return the private data
                 return mThisStock;
-            
+
             }
             set
             {
@@ -29,6 +34,16 @@ namespace ClassLibrary
             }
         }
 
+        // Constructor for the class
+        public clsStockCollection()
+        {
+            // Object for the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Execute the stored procedure
+            DB.Execute("sproc_tblStock_SelectAll");
+            // Populate the array list with the data table
+            PopulateArray(DB);
+        }
 
 
         //public property for the stock list
@@ -40,8 +55,8 @@ namespace ClassLibrary
 
                 //set the private data
                 return mStockList;
-            
-            
+
+
             }
             set
             {
@@ -50,11 +65,11 @@ namespace ClassLibrary
                 mStockList = value;
             }
 
-        
-        
+
+
         }
-       
-        
+
+
         //public property for count 
         public int Count
         {
@@ -70,8 +85,8 @@ namespace ClassLibrary
             {
 
                 //later
-            }   
-        
+            }
+
         }
         public int Add()
         {
@@ -90,56 +105,58 @@ namespace ClassLibrary
 
         }
 
-
-
-
-        //constructor for the class
-        public clsStockCollection()
+        public void Delete()
         {
-
-            clsStock TestItem = new clsStock();
-            //setting properties
-            TestItem.discontinued = true;
-            TestItem.product_id = 9;
-            TestItem.stockName = "VW Golf";
-            TestItem.stockDetails = "1 litre";
-            TestItem.quantity = "30";
-            TestItem.unit_price = "13k";
-            TestItem.last_restock_date = DateTime.Now;
-            //add item to the test list
-            mStockList.Add(TestItem);
-            //re initialise thee object for some new data
-            TestItem = new clsStock();
-            //set the properties
-            TestItem.discontinued = true;
-            TestItem.product_id = 1;
-            TestItem.stockName = "BMW 4 Series";
-            TestItem.stockDetails = "2 litre";
-            TestItem.quantity = "20";
-            TestItem.unit_price = "15k";
-            TestItem.last_restock_date = DateTime.Now;
-            //add item to the test list
-            mStockList.Add(TestItem);
-
-
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store record count
-            Int32 RecordCount = 0;
-            //onject for the data connect
             clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_tblStock_SelectAll");
-            //get count records
+            DB.AddParameter("@vehicle_id", mThisStock.vehicle_id);
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+
+
+
+
+        public void Update()
+        {
+            // Updates the record pointed to by mThisStock
+            clsDataConnection DB = new clsDataConnection();
+            // Set the parameters for the stored procedure
+            DB.AddParameter("@vehicle_id", mThisStock.vehicle_id);
+            DB.AddParameter("@stockName", mThisStock.stockName);
+            DB.AddParameter("@stockDetails", mThisStock.stockDetails);
+            DB.AddParameter("@quantity", mThisStock.quantity);
+            DB.AddParameter("@unit_price", mThisStock.unit_price);
+            DB.AddParameter("@last_restock_date", mThisStock.last_restock_date);
+            DB.AddParameter("@discontinued", mThisStock.discontinued);
+            // Execute the query
+            DB.Execute("sproc_tblStock_Update");
+        }
+
+
+
+        public void ReportBystockDetails(string stockDetails)
+        {
+            // Filters the records based on a full or partial position
+            clsDataConnection DB = new clsDataConnection();
+            // Send the Position parameter to the database
+            DB.AddParameter("@stockDetails", stockDetails);
+            // Execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterBystockDetails");
+            // Populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            // Populate the array list based on the data table in the parameter DB
+            Int32 Index = 0;
+            Int32 RecordCount;
             RecordCount = DB.Count;
-            //while there are records to process
+            mStockList = new List<clsStock>();
             while (Index < RecordCount)
             {
-                //create a blank address
                 clsStock AnStock = new clsStock();
-                // read in fields for current record
-
-                AnStock.product_id = Convert.ToInt32(DB.DataTable.Rows[Index]["product_id"]);
+                AnStock.vehicle_id = Convert.ToInt32(DB.DataTable.Rows[Index]["vehicle_id"]);
                 AnStock.stockName = Convert.ToString(DB.DataTable.Rows[Index]["stockName"]);
                 AnStock.stockDetails = Convert.ToString(DB.DataTable.Rows[Index]["stockDetails"]);
                 AnStock.quantity = Convert.ToString(DB.DataTable.Rows[Index]["quantity"]);
@@ -148,35 +165,13 @@ namespace ClassLibrary
                 AnStock.discontinued = Convert.ToBoolean(DB.DataTable.Rows[Index]["discontinued"]);
                 mStockList.Add(AnStock);
                 Index++;
-
-
             }
-        }
-
-
-
-            public void Update()
-            {
-                // Updates the record pointed to by mThisStaff
-                clsDataConnection DB = new clsDataConnection();
-                // Set the parameters for the stored procedure
-                DB.AddParameter("@product_id", mThisStock.product_id);
-                DB.AddParameter("@stockName", mThisStock.stockName);
-                DB.AddParameter("@stockDetails", mThisStock.stockDetails);
-                DB.AddParameter("@quantity", mThisStock.quantity);
-                DB.AddParameter("@unit_price", mThisStock.unit_price);
-                DB.AddParameter("@last_restock_date", mThisStock.last_restock_date);
-                DB.AddParameter("@discontinued", mThisStock.discontinued);
-                // Execute the query
-                DB.Execute("sproc_tblStock_Update");
-            }
-            
-            
 
 
         }
-        
+
 
     }
+}
 
     
