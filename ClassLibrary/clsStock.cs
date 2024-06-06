@@ -9,8 +9,18 @@ namespace ClassLibrary
     {
         //private data member for the product id property
         private Int32 mproduct_id;
+        private string mstockName;
+        private string mstockDetails;
+        private string munit_price;
+        private string mquantity;
+        private DateTime mlast_restock_date;
+        private bool mdiscontinued;
+
+
+
+       
         //product_id public property
-        public int product_id
+        public Int32 product_id
         {
             get
             {
@@ -25,8 +35,6 @@ namespace ClassLibrary
         }
 
 
-        //private data member for the stock name property
-        private string mstockName;
         // stock name public property
         public string stockName
         {
@@ -43,7 +51,7 @@ namespace ClassLibrary
         }
 
         //private data member for the stock details property
-        private string mstockDetails;
+       
         //stockDetails public property
         public string stockDetails
         {
@@ -55,12 +63,12 @@ namespace ClassLibrary
             }
             set
             {
-                mstockName = value;
+                mstockDetails = value;
             }
         }
 
         //private data member for the quantity property
-        private string mquantity;
+        
         // quantity public property
         public string quantity
         {
@@ -75,11 +83,6 @@ namespace ClassLibrary
                 mquantity = value;
             }
         }
-
-
-        //private data member for the unit price property
-        private string munit_price;
-
 
 
 
@@ -98,8 +101,7 @@ namespace ClassLibrary
             }
         }
 
-        //private data member for the last restock date property
-        private DateTime mlast_restock_date;
+        
         // last_restock_date public property
         public DateTime last_restock_date
         {
@@ -113,9 +115,6 @@ namespace ClassLibrary
                 mlast_restock_date = value;
             }
         }
-
-        //private data member for the discontinued property
-        private Boolean mdiscontinued;
         // active public property
         public bool discontinued
         {
@@ -135,7 +134,7 @@ namespace ClassLibrary
         public bool Find(int product_id)
         {
             // set the private data members to the test data value
-            product_id = 10;
+            mproduct_id = 10;
             mstockName = "VW Golf";
             mstockDetails = "1 Litre";
             mquantity = "32";
