@@ -281,6 +281,8 @@ namespace Testing2
             String error_message = "";
             Boolean test_order_processed = false;
             error_message = AnOrder.Valid(order_id, customer_id, order_timestamp, test_order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
         }
         [TestMethod]
         public void Order_ProcessedMax()
@@ -289,8 +291,114 @@ namespace Testing2
             String error_message = "";
             Boolean test_order_processed = true;
             error_message = AnOrder.Valid(order_id, customer_id, order_timestamp, test_order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
         }
-        
+
+
+        /******************Customer ID TESTS******************/
+        [TestMethod]
+        public void CustomerIdMinExtreme()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "-2147483648";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMinMinus1()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "-1";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMinBoundary()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "0";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMinPlus1()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "1";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMaxMinus1()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "2147483646";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMaxBoundary()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "2147483647";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMaxPlus1()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "2147483648";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "1073741823";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdInvalidString()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = "an invalid string";
+            error_message = AnOrder.Valid(order_id, test_customer_id, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void CustomerIdInvalidNull()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error_message = "";
+            String test_customer_id = null;
+            error_message = AnOrder.Valid(order_id, null, order_timestamp, order_processed);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+
+
 
     }
 }

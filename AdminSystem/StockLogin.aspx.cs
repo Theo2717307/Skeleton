@@ -16,7 +16,7 @@ public partial class _Default : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         //create an instance of the order user class
-        clsStockUser a_user = new ClassLibrary.clsStockUser();
+        //clsStockUser a_user = new ClassLibrary.clsStockUser();
         //create the variables to store the username and password
         String username;
         String password;
@@ -27,10 +27,10 @@ public partial class _Default : System.Web.UI.Page
         //get the password entered by the user
         password = Convert.ToString(text_password.Text);
         //find the record
-        found = a_user.FindUser(username, password);
+        //found = a_user.FindUser(username, password);
 
         //Add a session to capture the username
-        Session["a_user"] = a_user;
+        //Session["a_user"] = a_user;
 
         //if username or password is empty
         if (text_username.Text == "")
