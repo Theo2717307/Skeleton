@@ -148,9 +148,11 @@ namespace ClassLibrary
             Int32 order_id_temp;
             Int32 customer_id_temp;
             //ORDER ID
+            
             try
             {
-                order_id_temp = Convert.ToInt32(order_id);
+                if (order_id == null) { error_message += "order_id must not null : "; }
+                order_id_temp = Convert.ToInt32(order_id);       
                 if (order_id_temp < 0) { error_message += "order_id must be a positive number : "; }
             }
             catch
@@ -160,6 +162,7 @@ namespace ClassLibrary
             //CUSTOMER ID
             try
             {
+                if (customer_id == null) { error_message += "order_id must not null : "; }
                 customer_id_temp = Convert.ToInt32(customer_id);
                 if (customer_id_temp < 0) { error_message += "customer_id must be a positive number : "; }
             }

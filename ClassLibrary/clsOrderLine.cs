@@ -77,6 +77,7 @@ namespace ClassLibrary
             //ORDER ID
             try
             {
+                if (order_id == null) { error_message += "order_id must not be null : "; }
                 order_id_temp = Convert.ToInt32(order_id);
                 if (order_id_temp < 0) { error_message += "order_id must be a positive number : "; }
             }
@@ -87,6 +88,7 @@ namespace ClassLibrary
             //PRODUCT ID
             try
             {
+                if (product_id == null) { error_message += "product_id must not be null : "; }
                 product_id_temp = Convert.ToInt32(product_id);
                 if (product_id_temp < 0) { error_message += "product_id must be a positive number : "; }
             }
@@ -98,6 +100,7 @@ namespace ClassLibrary
             Int32 quantity_temp;
             try
             {
+                if (quantity == null) { error_message += "quantity must not be null : "; }
                 quantity_temp = Convert.ToInt32(quantity);
                 if (quantity_temp < 0) { error_message += "quantity must be a positive number : "; }
             }
@@ -109,6 +112,7 @@ namespace ClassLibrary
             Int32 price_temp;
             try
             {
+                if (price == null) { error_message += "price must not be null : "; }
                 price_temp = Convert.ToInt32(price);
                 if (price_temp < 0) { error_message += "price must be a positive number : "; }
             }

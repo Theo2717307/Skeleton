@@ -44,7 +44,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
    //find the record to update
         StockBook.ThisStock.Find(Product_Id);
         //display the data for the record
-        txtProductID.Text = StockBook.ThisStock.product_id.ToString();
+        txtVehicleID.Text = StockBook.ThisStock.vehicle_id.ToString();
         
         txtStockName.Text = StockBook.ThisStock.stockName.ToString();
         txtStockDetails.Text = StockBook.ThisStock.stockDetails.ToString();
@@ -66,6 +66,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         // create new instance of clsStock
         clsStock AnStock = new clsStock();
+        int vehicleIdVariable = Convert.ToInt32(txtVehicleID.Text);
         string stockName = txtStockName.Text;
         string stockDetails = txtStockDetails.Text;
         string unit_price = txtunitprice.Text;
@@ -80,6 +81,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         {
+            
             AnStock.vehicle_id = vehicleIdVariable;
             AnStock.stockName = stockName;
             AnStock.stockDetails = stockDetails;

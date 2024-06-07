@@ -44,7 +44,7 @@ namespace Testing2
             clsOrderLine AnOrderLine = new clsOrderLine();
             //create a test integer
             Int32 TestData = 1;
-            //assign the integer to customer_id
+            //assign the integer to product_id
             AnOrderLine.Product_id = TestData;
             //test to see if the values are equal
             Assert.AreEqual(AnOrderLine.Product_id, TestData);
@@ -194,6 +194,414 @@ namespace Testing2
             error_message = AnOrderLine.Valid(order_id, product_id, quantity, price);
             //Test to see that the result is correct
             Assert.AreEqual(error_message, "");
+        }
+
+
+        /******************Order ID TESTS******************/
+        [TestMethod]
+        public void OrderIdMinExtreme()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "-2147483648";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMinMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "-1";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMinBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "0";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMinPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "1";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMaxMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "2147483646";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMaxBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "2147483647";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMaxPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "2147483648";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "1073741823";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdInvalidString()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = "an invalid string";
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void OrderIdInvalidNull()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_order_id = null;
+            error_message = AnOrderLine.Valid(test_order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        /******************Product ID TESTS******************/
+        [TestMethod]
+        public void ProductIdMinExtreme()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "-2147483648";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMinMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "-1";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMinBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "0";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMinPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "1";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMaxMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "2147483646";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMaxBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "2147483647";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMaxPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "2147483648";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "1073741823";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdInvalidString()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = "an invalid string";
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void ProductIdInvalidNull()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_product_id = null;
+            error_message = AnOrderLine.Valid(order_id, test_product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+
+        /******************Quantity TESTS******************/
+        [TestMethod]
+        public void QuantityMinExtreme()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "-2147483648";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMinMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "-1";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMinBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "0";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMinPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "1";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMaxMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "2147483646";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMaxBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "2147483647";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMaxPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "2147483648";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "1073741823";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityInvalidString()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = "an invalid string";
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void QuantityInvalidNull()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_quantity = null;
+            error_message = AnOrderLine.Valid(order_id, product_id, test_quantity, price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+
+        /******************Price TESTS******************/
+        [TestMethod]
+        public void PriceMinExtreme()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "-2147483648";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMinMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "-1";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMinBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "0";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMinPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "1";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMaxMinus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "2147483646";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMaxBoundary()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "2147483647";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMaxPlus1()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "2147483648";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceMid()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "1073741823";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceInvalidString()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = "an invalid string";
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
+        }
+        [TestMethod]
+        public void PriceInvalidNull()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            String error_message = "";
+            String test_price = null;
+            error_message = AnOrderLine.Valid(order_id, product_id, quantity, test_price);
+            //test to see if pass or fail
+            Assert.AreNotEqual(error_message, "");
         }
     }
 }
