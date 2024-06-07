@@ -229,7 +229,18 @@ namespace Testing5
 
         }
 
-       
+        [TestMethod]
+        public void ReportBystockDetailsNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStock = new clsStockCollection();
+            //apply a department that doesnt exists
+            FilteredStock.ReportBystockDetails("Jeep");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStock.Count);
+
+        }
+
         [TestMethod]
         public void ReportBystockDetailsTestDataFound()
         {

@@ -22,13 +22,13 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the stock collection
         clsStockCollection Stock = new clsStockCollection();
         //set the data source to list of stock in the collection
-        lstStockList.DataSource = Stock.StockList;
+        lstStockList1.DataSource = Stock.StockList;
         // set the name of the primary key
-        lstStockList.DataValueField = "vehicle_id";
+        lstStockList1.DataValueField = "vehicle_id";
         //set the data field to display
-        lstStockList.DataTextField = "stockName";
+        lstStockList1.DataTextField = "stockName";
         //bind the data to the list
-        lstStockList.DataBind();
+        lstStockList1.DataBind();
 
 
     }
@@ -47,10 +47,10 @@ public partial class _1_List : System.Web.UI.Page
         //variable to store the primary key value of the record to be edited
         Int32 vehicle_id;
         //if a record has been selected from the list
-        if (lstStockList.SelectedIndex != -1)
+        if (lstStockList1.SelectedIndex != -1)
         {
             //get the primary key value of the record to edit
-            vehicle_id = Convert.ToInt32(lstStockList.SelectedValue);
+            vehicle_id = Convert.ToInt32(lstStockList1.SelectedValue);
             //store the data in the session object
             Session["vehicle_id"] = vehicle_id;
             //redirect to the edit page
@@ -67,10 +67,10 @@ public partial class _1_List : System.Web.UI.Page
         //variable to store the primary key value of the record to be dlted
         Int32 vehicle_id;
         //if a record has been selected fromthe list
-        if (lstStockList.SelectedIndex != -1)
+        if (lstStockList2.SelectedIndex != -1)
         {
             //get th primary key value of the record delete
-            vehicle_id = Convert.ToInt32(lstStockList.SelectedValue);
+            vehicle_id = Convert.ToInt32(lstStockList2.SelectedValue);
             //store the data in the session object
             Session["vehicle_id"] = vehicle_id;
             // redirect to the delete page
@@ -90,13 +90,13 @@ public partial class _1_List : System.Web.UI.Page
         //retrieve the value of positn from presentation layer
         AnStock.ReportBystockDetails(txtFilter.Text);
         //set the data source to the list of staff  in th ecollection
-        lstStockList.DataSource = AnStock.StockList;
+        lstStockList2.DataSource = AnStock.StockList;
         //set the name of the primary key
-        lstStockList.DataValueField = "vehicle_id";
+        lstStockList2.DataValueField = "vehicle_id";
         //set the name of the field to display
-        lstStockList.DataTextField = "stockDetaills";
+        lstStockList2.DataTextField = "stockDetaills";
         //bind the data to the list
-        lstStockList.DataBind();
+        lstStockList2.DataBind();
 
     }
 }

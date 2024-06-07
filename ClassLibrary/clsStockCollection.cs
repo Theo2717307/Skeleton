@@ -105,6 +105,21 @@ namespace ClassLibrary
 
         }
 
+        public clsStock Find(int vehicle_id)
+        {
+            // Loop through each stock in the list
+            foreach (clsStock stock in mStockList)
+            {
+                // If the vehicle ID matches, return the stock 
+                if (stock.vehicle_id == vehicle_id)
+                {
+                    return stock;
+                }
+            }
+            // If no match is found, return null
+            return null;
+        }
+
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();

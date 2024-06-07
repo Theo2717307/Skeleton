@@ -46,7 +46,7 @@ public partial class _Default : System.Web.UI.Page
         else if (found == true)
         {
             //redirect to list page
-            Response.Redirect("OrderList.aspx");
+            Response.Redirect("StockList.aspx");
         }
         else if (found == false)
         {

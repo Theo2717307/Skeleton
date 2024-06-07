@@ -10,7 +10,8 @@ namespace Testing5
 
         //good test data
         // create some data to pass the methods
-        
+
+        string vehicle_id = "2";
         string stockName = "VW Golf";
         string stockDetails = "1 Litre";
         string quantity = "32";
