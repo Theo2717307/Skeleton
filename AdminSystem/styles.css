@@ -1,0 +1,163 @@
+/* styles.css */
+
+
+
+/* Base styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+
+
+p {
+    margin-bottom: 10px;
+}
+
+
+
+/* Buttons */
+
+button, .button {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+
+    button:hover, .button:hover {
+        background-color: #0056b3;
+    }
+
+
+
+    button.secondary, .button.secondary {
+        background-color: #6C757D;
+    }
+
+
+
+        button.secondary:hover, .button.secondary:hover {
+            background-color: #5a6268;
+        }
+
+
+
+    button.error, .button.error {
+        background-color: #DC3545;
+    }
+
+
+
+        button.error:hover, .button.error:hover {
+            background-color: #c82333;
+        }
+
+
+
+/* Forms */
+
+input[type="text"], input[type="password"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+
+label {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+
+
+/* Error messages */
+
+.error {
+    color: #DC3545;
+}
+
+
+
+/* GridView */
+
+.grid-view {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+
+    .grid-view th, .grid-view td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+
+
+    .grid-view th {
+        background-color: #007BFF;
+        color: white;
+    }
+
+
+
+    .grid-view tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+
+
+    .grid-view tr:hover {
+        background-color: #ddd;
+    }
+
+
+
+/* Layout */
+
+.header, .footer {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+
+.main-content {
+    padding: 20px;
+}
